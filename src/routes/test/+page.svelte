@@ -3,11 +3,10 @@
 	let career2 = "";
 	let result: string | null = null;
 	const merge = async () => {
-		const response = await fetch(`/api/merge`,
-			{
-				method: "POST",
-				body: JSON.stringify({ career1, career2 })
-			});
+		const response = await fetch(`/api/merge`, {
+			method: "POST",
+			body: JSON.stringify({ career1, career2 })
+		});
 		const data = await response.json();
 		result = data.result;
 	};

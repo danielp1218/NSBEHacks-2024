@@ -36,20 +36,20 @@ export const POST: RequestHandler = async ({ request }) => {
 	}
 
 	if (!record1 && !record2) {
-		const result = await openai.chat.completions
-			.create({
-				model: "gpt-4",
-				messages: [
-					{
-						role: "system",
-						content: "Please find the union between two careers into a more specific career that shares elements from both. Respond with 1 to 3 words."
-					},
-					{
-						role: "user",
-						content: `Find the union between ${career1} and ${career2}`
-					}
-				]
-			});
+		const result = await openai.chat.completions.create({
+			model: "gpt-4",
+			messages: [
+				{
+					role: "system",
+					content:
+						"Please find the union between two careers into a more specific career that shares elements from both. Respond with 1 to 3 words."
+				},
+				{
+					role: "user",
+					content: `Find the union between ${career1} and ${career2}`
+				}
+			]
+		});
 
 		if (!result.choices[0].message.content) {
 			error(500, "Something went wrong");
