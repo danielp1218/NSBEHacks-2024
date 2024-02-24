@@ -1,6 +1,6 @@
 <script lang="ts">
     import {browser} from "$app/environment";
-    import {createEventDispatcher, onMount} from "svelte";
+    import {createEventDispatcher} from "svelte";
 
     const dispatch = createEventDispatcher();
     export let x: number = 0;
@@ -8,6 +8,8 @@
     export let height: number = 50;
     export let width: number = 50;
     export let text: string;
+
+    export let created : boolean = false;
 
     if (browser) {
         x = Math.max(0, Math.min(x - width / 2, window.innerWidth - width));
@@ -36,18 +38,18 @@
     }
 
     const titleCase = (str: string) => {
+        if(!str) return "";
         return str.toLowerCase().split(' ').map(function (word) {
             return word.replace(word[0], word[0].toUpperCase());
         }).join(' ');
     };
 
     function init(el: HTMLDivElement) {
-        console.log(el.className);
-        if (!el.className.startsWith("draggable career-item")) return;
-        el.focus();
-        handleMouseDown();
+        if(created){
+            handleMouseDown();
+            el.focus();
+        }
     }
-
 
 </script>
 

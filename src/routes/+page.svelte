@@ -9,6 +9,7 @@
 		height: number;
 		width: number;
 		text: string;
+		created?: boolean;
 	};
 
 	let items: Item[] = [
@@ -55,11 +56,14 @@
 
 		item1.x = (item1.x + item2.x) / 2;
 		item1.y = (item1.y + item2.y) / 2;
-		item1.text = await getNewText(item1.text, item2.text);
-		itemNames.add(item1.text);
-		items.splice(index2, 1);
-		itemNames = itemNames;
 
+		items.splice(index2, 1);
+		let temp:string= item1.text;
+		item1.text = "Generating...";
+		items = items;
+		item1.text = await getNewText(temp, item2.text);
+		itemNames.add(item1.text);
+		itemNames = itemNames;
 		items = items;
 	}
 
@@ -90,7 +94,8 @@
 			y: event.clientY,
 			height: 50,
 			width: 50,
-			text
+			text,
+			created: true
 		};
 		items = [...items, newItem];
 		itemNames.add(text);
@@ -115,6 +120,7 @@
 		bind:y={item.y}
 		bind:height={item.height}
 		bind:width={item.width}
+		created={item.created}
 		on:drop={async (event) => await checkForOverlap(item, event.detail.x, event.detail.y, true)}
 	/>
 {/each}
