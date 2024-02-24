@@ -1,74 +1,81 @@
 <script lang="ts">
-	import { createEventDispatcher } from "svelte";
+    import {browser} from "$app/environment";
+    import {createEventDispatcher} from "svelte";
 
-	const dispatch = createEventDispatcher();
-	export let x: number = 0;
-	export let y: number = 0;
-	export let height: number = 50;
-	export let width: number = 50;
-	export let text: string = "Hello World";
+    const dispatch = createEventDispatcher();
+    export let x: number = 0;
+    export let y: number = 0;
+    export let height: number = 50;
+    export let width: number = 50;
+    export let text: string;
 
-	let moving: boolean = false;
+    if (browser) {
+        x = Math.max(0, Math.min(x - width / 2, window.innerWidth - width));
+        y = Math.max(0, Math.min(y - height / 2, window.innerHeight - height));
+    }
 
-	function handleMouseDown() {
-		moving = true;
-	}
+    let moving: boolean = false;
 
-	function handleMouseMove(e: MouseEvent) {
-		if (moving) {
-			x += e.movementX;
-			y += e.movementY;
-			dispatch("drag", { x, y });
-		}
-	}
+    function handleMouseDown() {
+        moving = true;
+    }
 
-	function handleMouseUp() {
-		if (moving) {
-			dispatch("drop", { x, y });
-		}
-		moving = false;
-	}
+    function handleMouseMove(e: MouseEvent) {
+        if (moving) {
+            x += e.movementX;
+            y += e.movementY;
+            dispatch("drag", {x, y});
+        }
+    }
+
+    function handleMouseUp() {
+        if (moving) {
+            dispatch("drop", {x, y});
+        }
+        moving = false;
+    }
 </script>
 
 <div
-	class="draggable career-item"
-	style="left: {x}px; top: {y}px"
-	on:mousedown={handleMouseDown}
-	class:z-50={moving}
-	bind:clientHeight={height}
-	bind:clientWidth={width}
+        class="draggable career-item"
+        style="left: {x}px; top: {y}px"
+        on:mousedown={handleMouseDown}
+        class:z-50={moving}
+        bind:clientHeight={height}
+        bind:clientWidth={width}
 >
-	<h1 class="career-item-text">{text}</h1>
+    <h1 class="career-item-text select-none">{text}</h1>
 </div>
 
-<svelte:window on:mouseup={handleMouseUp} on:mousemove={handleMouseMove} />
+<svelte:window on:mouseup={handleMouseUp} on:mousemove={handleMouseMove}/>
 
 <style>
-	.draggable {
-		user-select: none;
-		cursor: move;
-		position: absolute;
-		pointer-events: auto;
-	}
-	.career-item {
-		background: #8696FE;
-		border-radius: 5px;
-		padding: 12px;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		transition: 0.3s background-color;
-		white-space: nowrap;
-	}
+    .draggable {
+        user-select: none;
+        cursor: move;
+        position: absolute;
+        pointer-events: auto;
+    }
 
-	.career-item:hover {
-		background: #4942E4;
-		transition: 0.3s background-color;
-		cursor: grab;
-	}
+    .career-item {
+        background: #8696FE;
+        border-radius: 5px;
+        padding: 12px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: 0.3s background-color;
+        white-space: nowrap;
+    }
 
-	.career-item-text {
-		color: #faf6ed;
-		font-family: Kumbh Sans, sans-serif;
-	}
+    .career-item:hover {
+        background: #4942E4;
+        transition: 0.3s background-color;
+        cursor: grab;
+    }
+
+    .career-item-text {
+        color: #faf6ed;
+        font-family: Kumbh Sans, sans-serif;
+    }
 </style>

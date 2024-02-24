@@ -3,7 +3,7 @@
 </script>
 
 <div class="career-item">
-    <h1 class="career-item-text">{text}</h1>
+    <h1 class="career-item-text select-none">{text}</h1>
 </div>
 
 <style>
