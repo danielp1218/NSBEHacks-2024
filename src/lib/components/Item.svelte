@@ -53,11 +53,12 @@
 	.career-item {
 		background: #8696FE;
 		border-radius: 5px;
-		padding: 4px;
+		padding: 12px;
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		transition: 0.3s background-color;
+		white-space: nowrap;
 	}
 
 	.career-item:hover {

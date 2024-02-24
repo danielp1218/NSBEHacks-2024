@@ -12,9 +12,13 @@
 	};
 
 	let items: Item[] = [
-		{ id: 1, x: 0, y: 0, height:50, width:50, text: "Item 1" },
-		{ id: 2, x: 50, y: 0, height:50, width:50,text: "Item 2" },
-		{ id: 3, x: 10, y: 10, height:50, width:50,text: "Item 3" }
+		{ id: 1, x: 0, y: 0, height: 50, width: 50, text: "Math" },
+		{ id: 2, x: 50, y: 0, height: 50, width: 50, text: "Science" },
+		{ id: 3, x: 10, y: 10, height: 50, width: 50, text: "Art" },
+		{ id: 4, x: 10, y: 10, height: 50, width: 50, text: "Business" },
+		{ id: 5, x: 10, y: 10, height: 50, width: 50, text: "Service" },
+		{ id: 6, x: 10, y: 10, height: 50, width: 50, text: "Social Science" },
+		{ id: 7, x: 10, y: 10, height: 50, width: 50, text: "Technology" }
 	];
 
 	let itemNames: Set<string> = new Set();
@@ -65,11 +69,11 @@
 </script>
 
 <div class="w-64 h-full fixed overflow-y-auto bg-gray-800 text-white right-0 p-3">
-	<div class="grid grid-flow-col auto-cols-max">
+	<div class="sidebar">
 		{#each itemNames as text}
 			<ItemSource {text} />
 		{/each}
-    </div>
+	</div>
 </div>
 
 {#each items as item (item.id)}
@@ -82,3 +86,12 @@
 		on:drop={(event) => checkForOverlap(item, event.detail.x, event.detail.y, true)}
 	/>
 {/each}
+
+<style>
+    .sidebar {
+        display: grid;
+        gap: 12px;
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        overflow-x: auto;
+    }
+</style>
