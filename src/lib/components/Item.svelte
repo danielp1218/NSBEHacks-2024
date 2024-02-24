@@ -1,6 +1,6 @@
 <script lang="ts">
     import {browser} from "$app/environment";
-    import {createEventDispatcher} from "svelte";
+    import {createEventDispatcher, onMount} from "svelte";
 
     const dispatch = createEventDispatcher();
     export let x: number = 0;
@@ -35,10 +35,22 @@
         moving = false;
     }
 
-    const sentenceCase = (str: string) => {
-        return str.charAt(0).toUpperCase() + str.slice(1);
+    const titleCase = (str: string) => {
+        return str.toLowerCase().split(' ').map(function (word) {
+            return word.replace(word[0], word[0].toUpperCase());
+        }).join(' ');
     };
+
+    function init(el: HTMLDivElement) {
+        console.log(el.className);
+        if (!el.className.startsWith("draggable career-item")) return;
+        el.focus();
+        handleMouseDown();
+    }
+
+
 </script>
+
 
 <div
         class="draggable career-item"
@@ -47,11 +59,12 @@
         class:z-50={moving}
         bind:clientHeight={height}
         bind:clientWidth={width}
+        use:init
 >
-    <h1 class="career-item-text select-none">{sentenceCase(text)}</h1>
+    <h1 class="career-item-text select-none">{titleCase(text)}</h1>
 </div>
 
-<svelte:window on:mouseup={handleMouseUp} on:mousemove={handleMouseMove}/>
+<svelte:window on:mouseup={handleMouseUp} on:mousemove={handleMouseMove} on:load={()=>(moving=false)}/>
 
 <style>
     .draggable {
