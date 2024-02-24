@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Item from "$lib/components/Item.svelte";
+	import ItemSource from "$lib/components/ItemSource.svelte";
 
 	type Item = {
 		id: number;
@@ -15,6 +16,11 @@
 		{ id: 2, x: 50, y: 0, height:50, width:50,text: "Item 2" },
 		{ id: 3, x: 10, y: 10, height:50, width:50,text: "Item 3" }
 	];
+
+	let itemNames: Set<string> = new Set();
+	for (const item of items) {
+		itemNames.add(item.text);
+	}
 
 	function checkForOverlap(
 		currentItem: Item,
@@ -46,7 +52,9 @@
 		item1.x = (item1.x + item2.x) / 2;
 		item1.y = (item1.y + item2.y) / 2;
 		item1.text = getNewText(item1.text, item2.text);
+		itemNames.add(item1.text);
 		items.splice(index2, 1);
+		itemNames = itemNames;
 
 		items = items;
 	}
@@ -55,6 +63,14 @@
 		return text1 + " " + text2;
 	}
 </script>
+
+<div class="w-64 h-full fixed overflow-y-auto bg-gray-800 text-white right-0 p-3">
+	<div class="grid grid-flow-col auto-cols-max">
+		{#each itemNames as text}
+			<ItemSource {text} />
+		{/each}
+    </div>
+</div>
 
 {#each items as item (item.id)}
 	<Item

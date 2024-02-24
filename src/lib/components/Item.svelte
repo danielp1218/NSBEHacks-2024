@@ -31,14 +31,14 @@
 </script>
 
 <div
-	class="draggable bg-gray-100 border-gray-600 border-4"
+	class="draggable career-item"
 	style="left: {x}px; top: {y}px"
 	on:mousedown={handleMouseDown}
 	class:z-50={moving}
 	bind:clientHeight={height}
 	bind:clientWidth={width}
 >
-	<h1>{text}</h1>
+	<h1 class="career-item-text">{text}</h1>
 </div>
 
 <svelte:window on:mouseup={handleMouseUp} on:mousemove={handleMouseMove} />
@@ -49,5 +49,25 @@
 		cursor: move;
 		position: absolute;
 		pointer-events: auto;
+	}
+	.career-item {
+		background: #8696FE;
+		border-radius: 5px;
+		padding: 4px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		transition: 0.3s background-color;
+	}
+
+	.career-item:hover {
+		background: #4942E4;
+		transition: 0.3s background-color;
+		cursor: grab;
+	}
+
+	.career-item-text {
+		color: #faf6ed;
+		font-family: Kumbh Sans, sans-serif;
 	}
 </style>
