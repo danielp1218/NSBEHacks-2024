@@ -42,7 +42,7 @@ export const POST: RequestHandler = async ({ request }) => {
 				messages: [
 					{
 						role: "system",
-						content: "Please find the union between two careers into a more specific career that shares elements from both. Respond with 1 to 3 words."
+						content: "Please find the union between two careers into a more specific career that shares elements from both. If they are the exact same make it more specialised. Respond with 1 to 3 words."
 					},
 					{
 						role: "user",

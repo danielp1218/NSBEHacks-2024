@@ -1,7 +1,7 @@
 <script lang="ts">
     import Item from '$lib/components/Item.svelte';
 
-    const itemsize = {
+    const itemSize = {
         width: 50,
         height: 50
     }
@@ -27,8 +27,8 @@
         const overlapIndex = items.findIndex((item, idx) => {
             if (idx === curIndex) return false; // Skip checking against itself
             // Check if the current div overlaps with div
-            const horizontalOverlap = currentX < item.x + itemsize.width && currentX + itemsize.width > item.x;
-            const verticalOverlap = currentY < item.y + itemsize.height && currentY + itemsize.height > item.y;
+            const horizontalOverlap = currentX < item.x + itemSize.width && currentX + itemSize.width > item.x;
+            const verticalOverlap = currentY < item.y + itemSize.height && currentY + itemSize.height > item.y;
             return horizontalOverlap && verticalOverlap;
         });
 
