@@ -13,18 +13,18 @@
 	};
 
 	let items: Item[] = [
-		{ id: 1, x: 0, y: 0, height: 50, width: 50, text: "Math" },
-		{ id: 2, x: 200, y: 0, height: 50, width: 50, text: "Science" },
-		{ id: 3, x: 400, y: 10, height: 50, width: 50, text: "Art" },
-		{ id: 4, x: 600, y: 10, height: 50, width: 50, text: "Business" },
-		{ id: 5, x: 0, y: 200, height: 50, width: 50, text: "Service" },
-		{ id: 6, x: 200, y: 200, height: 50, width: 50, text: "Social Science" },
-		{ id: 7, x: 400, y: 200, height: 50, width: 50, text: "Technology" }
+		{ id: 1, x: 200, y: 200, height: 50, width: 50, text: "Math" },
+		{ id: 2, x: 400, y: 200, height: 50, width: 50, text: "Science" },
+		{ id: 3, x: 600, y: 200, height: 50, width: 50, text: "Art" },
+		{ id: 4, x: 800, y: 200, height: 50, width: 50, text: "Business" },
+		{ id: 5, x: 200, y: 400, height: 50, width: 50, text: "Service" },
+		{ id: 6, x: 400, y: 400, height: 50, width: 50, text: "Social Science" },
+		{ id: 7, x: 600, y: 400, height: 50, width: 50, text: "Technology" }
 	];
 
 	let itemNames: Set<string> = new Set();
 	for (const item of items) {
-		itemNames.add(item.text);
+		itemNames.add(item.text.toLowerCase());
 	}
 
 	async function checkForOverlap(
@@ -62,7 +62,7 @@
 		item1.text = "Generating...";
 		items = items;
 		item1.text = await getNewText(temp, item2.text);
-		itemNames.add(item1.text);
+		itemNames.add(item1.text.toLowerCase());
 		itemNames = itemNames;
 		items = items;
 	}

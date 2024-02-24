@@ -1,6 +1,5 @@
 <script lang="ts">
-    import {browser} from "$app/environment";
-    import {createEventDispatcher} from "svelte";
+    import {createEventDispatcher, onMount} from "svelte";
 
     const dispatch = createEventDispatcher();
     export let x: number = 0;
@@ -10,11 +9,6 @@
     export let text: string;
 
     export let created : boolean = false;
-
-    if (browser) {
-        x = Math.max(0, Math.min(x - width / 2, window.innerWidth - width));
-        y = Math.max(0, Math.min(y - height / 2, window.innerHeight - height));
-    }
 
     let moving: boolean = false;
 
@@ -38,19 +32,23 @@
     }
 
     const titleCase = (str: string) => {
-        if(!str) return "";
+        if (!str) return "";
         return str.toLowerCase().split(' ').map(function (word) {
-            return word.replace(word[0], word[0].toUpperCase());
+            // Check if the word is 'it', if so, return 'IT'
+            if (word === "it") {
+                return "IT";
+            } else {
+                return word.replace(word[0], word[0].toUpperCase());
+            }
         }).join(' ');
     };
 
-    function init(el: HTMLDivElement) {
+    onMount(() => {
         if(created){
             handleMouseDown();
-            el.focus();
+            created=false;
         }
-    }
-
+    });
 </script>
 
 
@@ -61,7 +59,6 @@
         class:z-50={moving}
         bind:clientHeight={height}
         bind:clientWidth={width}
-        use:init
 >
     <h1 class="career-item-text select-none">{titleCase(text)}</h1>
 </div>
@@ -85,6 +82,7 @@
         align-items: center;
         transition: 0.3s background-color;
         white-space: nowrap;
+        transform: translate(-50%, -50%);
     }
 
     .career-item:hover {
