@@ -34,6 +34,10 @@
         }
         moving = false;
     }
+
+    const sentenceCase = (str: string) => {
+        return str.charAt(0).toUpperCase() + str.slice(1);
+    };
 </script>
 
 <div
@@ -44,7 +48,7 @@
         bind:clientHeight={height}
         bind:clientWidth={width}
 >
-    <h1 class="career-item-text select-none">{text}</h1>
+    <h1 class="career-item-text select-none">{sentenceCase(text)}</h1>
 </div>
 
 <svelte:window on:mouseup={handleMouseUp} on:mousemove={handleMouseMove}/>

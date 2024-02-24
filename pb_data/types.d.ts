@@ -1,4 +1,4 @@
-// 1707578530
+// 1706035800
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 // -------------------------------------------------------------------
@@ -1644,8 +1644,8 @@ namespace os {
   * than ReadFrom. This is used to permit ReadFrom to call io.Copy
   * without leading to a recursive call to ReadFrom.
   */
- type _subDeTLW = File
- interface fileWithoutReadFrom extends _subDeTLW {
+ type _subqkJLX = File
+ interface fileWithoutReadFrom extends _subqkJLX {
  }
  interface fileWithoutReadFrom {
   /**
@@ -2302,8 +2302,8 @@ namespace os {
  /**
   * File represents an open file descriptor.
   */
- type _subRkTMD = file
- interface File extends _subRkTMD {
+ type _subofVvL = file
+ interface File extends _subofVvL {
  }
  /**
   * A FileInfo describes a file and is returned by Stat and Lstat.
@@ -2724,6 +2724,24 @@ namespace middleware {
 }
 
 /**
+ * Package validation provides configurable and extensible rules for validating data of various types.
+ */
+namespace ozzo_validation {
+ /**
+  * Error interface represents an validation error
+  */
+ interface Error {
+  [key:string]: any;
+  error(): string
+  code(): string
+  message(): string
+  setMessage(_arg0: string): Error
+  params(): _TygojaDict
+  setParams(_arg0: _TygojaDict): Error
+ }
+}
+
+/**
  * Package dbx provides a set of DB-agnostic and easy-to-use query building methods for relational databases.
  */
 namespace dbx {
@@ -3059,14 +3077,14 @@ namespace dbx {
  /**
   * MssqlBuilder is the builder for SQL Server databases.
   */
- type _subUQZEt = BaseBuilder
- interface MssqlBuilder extends _subUQZEt {
+ type _subUySZb = BaseBuilder
+ interface MssqlBuilder extends _subUySZb {
  }
  /**
   * MssqlQueryBuilder is the query builder for SQL Server databases.
   */
- type _subfSzYL = BaseQueryBuilder
- interface MssqlQueryBuilder extends _subfSzYL {
+ type _subTQxgt = BaseQueryBuilder
+ interface MssqlQueryBuilder extends _subTQxgt {
  }
  interface newMssqlBuilder {
   /**
@@ -3137,8 +3155,8 @@ namespace dbx {
  /**
   * MysqlBuilder is the builder for MySQL databases.
   */
- type _subTGuvM = BaseBuilder
- interface MysqlBuilder extends _subTGuvM {
+ type _subUuLgX = BaseBuilder
+ interface MysqlBuilder extends _subUuLgX {
  }
  interface newMysqlBuilder {
   /**
@@ -3213,14 +3231,14 @@ namespace dbx {
  /**
   * OciBuilder is the builder for Oracle databases.
   */
- type _subXzJXv = BaseBuilder
- interface OciBuilder extends _subXzJXv {
+ type _subglxnT = BaseBuilder
+ interface OciBuilder extends _subglxnT {
  }
  /**
   * OciQueryBuilder is the query builder for Oracle databases.
   */
- type _subHtJcZ = BaseQueryBuilder
- interface OciQueryBuilder extends _subHtJcZ {
+ type _subdCqIY = BaseQueryBuilder
+ interface OciQueryBuilder extends _subdCqIY {
  }
  interface newOciBuilder {
   /**
@@ -3283,8 +3301,8 @@ namespace dbx {
  /**
   * PgsqlBuilder is the builder for PostgreSQL databases.
   */
- type _subVHvHG = BaseBuilder
- interface PgsqlBuilder extends _subVHvHG {
+ type _sublOCxD = BaseBuilder
+ interface PgsqlBuilder extends _sublOCxD {
  }
  interface newPgsqlBuilder {
   /**
@@ -3351,8 +3369,8 @@ namespace dbx {
  /**
   * SqliteBuilder is the builder for SQLite databases.
   */
- type _subeKjtL = BaseBuilder
- interface SqliteBuilder extends _subeKjtL {
+ type _subKCbOx = BaseBuilder
+ interface SqliteBuilder extends _subKCbOx {
  }
  interface newSqliteBuilder {
   /**
@@ -3451,8 +3469,8 @@ namespace dbx {
  /**
   * StandardBuilder is the builder that is used by DB for an unknown driver.
   */
- type _subtcocw = BaseBuilder
- interface StandardBuilder extends _subtcocw {
+ type _subBUnWF = BaseBuilder
+ interface StandardBuilder extends _subBUnWF {
  }
  interface newStandardBuilder {
   /**
@@ -3518,8 +3536,8 @@ namespace dbx {
   * DB enhances sql.DB by providing a set of DB-agnostic query building methods.
   * DB allows easier query building and population of data into Go variables.
   */
- type _subAVDKa = Builder
- interface DB extends _subAVDKa {
+ type _subekgVQ = Builder
+ interface DB extends _subekgVQ {
   /**
    * FieldMapper maps struct fields to DB columns. Defaults to DefaultFieldMapFunc.
    */
@@ -4323,8 +4341,8 @@ namespace dbx {
   * Rows enhances sql.Rows by providing additional data query methods.
   * Rows can be obtained by calling Query.Rows(). It is mainly used to populate data row by row.
   */
- type _subgTgRl = sql.Rows
- interface Rows extends _subgTgRl {
+ type _subjVlJJ = sql.Rows
+ interface Rows extends _subjVlJJ {
  }
  interface Rows {
   /**
@@ -4337,17 +4355,13 @@ namespace dbx {
  }
  interface Rows {
   /**
-   * ScanStruct populates the current row of data into a struct (must be a pointer).
+   * ScanStruct populates the current row of data into a struct.
+   * The struct must be given as a pointer.
    * 
-   * Currently there are 2 supported mechanisms to populate the row of data into the struct.
+   * ScanStruct associates struct fields with DB table columns through a field mapping function.
+   * It populates a struct field with the data of its associated column.
+   * Note that only exported struct fields will be populated.
    * 
-   * 1. If the struct implements the [ColumnValueMapper] interface, only
-   * the  explicitly returned ColumnValueMapper.ColumnValueMap() fields will
-   * be populated (this is usually useful if your struct has dynamic or unexported fields).
-   * 
-   * 2. Otherwise - ScanStruct associates struct fields with DB table
-   * columns through an auto field mapping function.
-   * Note that in this case only exported struct fields will be populated.
    * By default, DefaultFieldMapFunc() is used to map struct fields to table columns.
    * This function separates each word in a field name with a underscore and turns every letter into lower case.
    * For example, "LastName" is mapped to "last_name", "MyID" is mapped to "my_id", and so on.
@@ -4686,8 +4700,8 @@ namespace dbx {
   }): string }
  interface structInfo {
  }
- type _subJnsVc = structInfo
- interface structValue extends _subJnsVc {
+ type _subUYoEc = structInfo
+ interface structValue extends _subUYoEc {
  }
  interface fieldInfo {
  }
@@ -4704,20 +4718,6 @@ namespace dbx {
    * the loaded data.
    */
   postScan(): void
- }
- /**
-  * ColumnValueMapper is an optional interface used by ScanStruct to
-  * dynamically specify the fields to populate when scanning the fetched row data.
-  */
- interface ColumnValueMapper {
-  [key:string]: any;
-  /**
-   * ColumnValueMap returns a map with explicitly defined fields to populate.
-   * The keys of the map represents the db column names.
-   * The values of the map can be any pointer or value that implements sql.Scanner
-   * (including non-exported or even non-struct fields).
-   */
-  columnValueMap(): _TygojaDict
  }
  interface defaultFieldMapFunc {
   /**
@@ -4740,8 +4740,8 @@ namespace dbx {
  /**
   * Tx enhances sql.Tx with additional querying methods.
   */
- type _subBMzqq = Builder
- interface Tx extends _subBMzqq {
+ type _subAKFmg = Builder
+ interface Tx extends _subAKFmg {
  }
  interface Tx {
   /**
@@ -4754,24 +4754,6 @@ namespace dbx {
    * Rollback aborts the transaction.
    */
   rollback(): void
- }
-}
-
-/**
- * Package validation provides configurable and extensible rules for validating data of various types.
- */
-namespace ozzo_validation {
- /**
-  * Error interface represents an validation error
-  */
- interface Error {
-  [key:string]: any;
-  error(): string
-  code(): string
-  message(): string
-  setMessage(_arg0: string): Error
-  params(): _TygojaDict
-  setParams(_arg0: _TygojaDict): Error
  }
 }
 
@@ -5122,8 +5104,8 @@ namespace filesystem {
    */
   open(): io.ReadSeekCloser
  }
- type _subcrYmK = bytes.Reader
- interface bytesReadSeekCloser extends _subcrYmK {
+ type _subfcMQM = bytes.Reader
+ interface bytesReadSeekCloser extends _subfcMQM {
  }
  interface bytesReadSeekCloser {
   /**
@@ -6131,10 +6113,10 @@ namespace forms {
    * 
    * ```
    * 	// mark only only 2 files for removal
-   * 	form.RemoveFiles("documents", "file1_aw4bdrvws6.txt", "file2_xwbs36bafv.txt")
+   * 	form.AddFiles("documents", "file1_aw4bdrvws6.txt", "file2_xwbs36bafv.txt")
    * 
    * 	// mark all "documents" files for removal
-   * 	form.RemoveFiles("documents")
+   * 	form.AddFiles("documents")
    * ```
    */
   removeFiles(key: string, ...toDelete: string[]): void
@@ -6253,8 +6235,8 @@ namespace forms {
  /**
   * SettingsUpsert is a [settings.Settings] upsert (create/update) form.
   */
- type _subhTSjs = settings.Settings
- interface SettingsUpsert extends _subhTSjs {
+ type _submkAlb = settings.Settings
+ interface SettingsUpsert extends _submkAlb {
  }
  interface newSettingsUpsert {
   /**
@@ -6344,111 +6326,6 @@ namespace forms {
 }
 
 /**
- * Package template is a thin wrapper around the standard html/template
- * and text/template packages that implements a convenient registry to
- * load and cache templates on the fly concurrently.
- * 
- * It was created to assist the JSVM plugin HTML rendering, but could be used in other Go code.
- * 
- * Example:
- * 
- * ```
- * 	registry := template.NewRegistry()
- * 
- * 	html1, err := registry.LoadFiles(
- * 		// the files set wil be parsed only once and then cached
- * 		"layout.html",
- * 		"content.html",
- * 	).Render(map[string]any{"name": "John"})
- * 
- * 	html2, err := registry.LoadFiles(
- * 		// reuse the already parsed and cached files set
- * 		"layout.html",
- * 		"content.html",
- * 	).Render(map[string]any{"name": "Jane"})
- * ```
- */
-namespace template {
- interface newRegistry {
-  /**
-   * NewRegistry creates and initializes a new templates registry with
-   * some defaults (eg. global "raw" template function for unescaped HTML).
-   * 
-   * Use the Registry.Load* methods to load templates into the registry.
-   */
-  (): (Registry)
- }
- /**
-  * Registry defines a templates registry that is safe to be used by multiple goroutines.
-  * 
-  * Use the Registry.Load* methods to load templates into the registry.
-  */
- interface Registry {
- }
- interface Registry {
-  /**
-   * AddFuncs registers new global template functions.
-   * 
-   * The key of each map entry is the function name that will be used in the templates.
-   * If a function with the map entry name already exists it will be replaced with the new one.
-   * 
-   * The value of each map entry is a function that must have either a
-   * single return value, or two return values of which the second has type error.
-   * 
-   * Example:
-   * 
-   *  r.AddFuncs(map[string]any{
-   * ```
-   *    "toUpper": func(str string) string {
-   *        return strings.ToUppser(str)
-   *    },
-   *    ...
-   * ```
-   *  })
-   */
-  addFuncs(funcs: _TygojaDict): (Registry)
- }
- interface Registry {
-  /**
-   * LoadFiles caches (if not already) the specified filenames set as a
-   * single template and returns a ready to use Renderer instance.
-   * 
-   * There must be at least 1 filename specified.
-   */
-  loadFiles(...filenames: string[]): (Renderer)
- }
- interface Registry {
-  /**
-   * LoadString caches (if not already) the specified inline string as a
-   * single template and returns a ready to use Renderer instance.
-   */
-  loadString(text: string): (Renderer)
- }
- interface Registry {
-  /**
-   * LoadFS caches (if not already) the specified fs and globPatterns
-   * pair as single template and returns a ready to use Renderer instance.
-   * 
-   * There must be at least 1 file matching the provided globPattern(s)
-   * (note that most file names serves as glob patterns matching themselves).
-   */
-  loadFS(fsys: fs.FS, ...globPatterns: string[]): (Renderer)
- }
- /**
-  * Renderer defines a single parsed template.
-  */
- interface Renderer {
- }
- interface Renderer {
-  /**
-   * Render executes the template with the specified data as the dot object
-   * and returns the result as plain string.
-   */
-  render(data: any): string
- }
-}
-
-/**
  * Package apis implements the default PocketBase api services and middlewares.
  */
 namespace apis {
@@ -6534,8 +6411,8 @@ namespace apis {
  interface healthApi {
  }
  interface healthCheckResponse {
-  message: string
   code: number
+  message: string
   data: {
    canBackup: boolean
   }
@@ -6786,12 +6663,117 @@ namespace apis {
  }
 }
 
+/**
+ * Package template is a thin wrapper around the standard html/template
+ * and text/template packages that implements a convenient registry to
+ * load and cache templates on the fly concurrently.
+ * 
+ * It was created to assist the JSVM plugin HTML rendering, but could be used in other Go code.
+ * 
+ * Example:
+ * 
+ * ```
+ * 	registry := template.NewRegistry()
+ * 
+ * 	html1, err := registry.LoadFiles(
+ * 		// the files set wil be parsed only once and then cached
+ * 		"layout.html",
+ * 		"content.html",
+ * 	).Render(map[string]any{"name": "John"})
+ * 
+ * 	html2, err := registry.LoadFiles(
+ * 		// reuse the already parsed and cached files set
+ * 		"layout.html",
+ * 		"content.html",
+ * 	).Render(map[string]any{"name": "Jane"})
+ * ```
+ */
+namespace template {
+ interface newRegistry {
+  /**
+   * NewRegistry creates and initializes a new templates registry with
+   * some defaults (eg. global "raw" template function for unescaped HTML).
+   * 
+   * Use the Registry.Load* methods to load templates into the registry.
+   */
+  (): (Registry)
+ }
+ /**
+  * Registry defines a templates registry that is safe to be used by multiple goroutines.
+  * 
+  * Use the Registry.Load* methods to load templates into the registry.
+  */
+ interface Registry {
+ }
+ interface Registry {
+  /**
+   * AddFuncs registers new global template functions.
+   * 
+   * The key of each map entry is the function name that will be used in the templates.
+   * If a function with the map entry name already exists it will be replaced with the new one.
+   * 
+   * The value of each map entry is a function that must have either a
+   * single return value, or two return values of which the second has type error.
+   * 
+   * Example:
+   * 
+   *  r.AddFuncs(map[string]any{
+   * ```
+   *    "toUpper": func(str string) string {
+   *        return strings.ToUppser(str)
+   *    },
+   *    ...
+   * ```
+   *  })
+   */
+  addFuncs(funcs: _TygojaDict): (Registry)
+ }
+ interface Registry {
+  /**
+   * LoadFiles caches (if not already) the specified filenames set as a
+   * single template and returns a ready to use Renderer instance.
+   * 
+   * There must be at least 1 filename specified.
+   */
+  loadFiles(...filenames: string[]): (Renderer)
+ }
+ interface Registry {
+  /**
+   * LoadString caches (if not already) the specified inline string as a
+   * single template and returns a ready to use Renderer instance.
+   */
+  loadString(text: string): (Renderer)
+ }
+ interface Registry {
+  /**
+   * LoadFS caches (if not already) the specified fs and globPatterns
+   * pair as single template and returns a ready to use Renderer instance.
+   * 
+   * There must be at least 1 file matching the provided globPattern(s)
+   * (note that most file names serves as glob patterns matching themselves).
+   */
+  loadFS(fsys: fs.FS, ...globPatterns: string[]): (Renderer)
+ }
+ /**
+  * Renderer defines a single parsed template.
+  */
+ interface Renderer {
+ }
+ interface Renderer {
+  /**
+   * Render executes the template with the specified data as the dot object
+   * and returns the result as plain string.
+   */
+  render(data: any): string
+ }
+}
+
 namespace pocketbase {
  /**
   * appWrapper serves as a private CoreApp instance wrapper.
   */
- type _subvKoDp = CoreApp
- interface appWrapper extends _subvKoDp {
+ type _subCNPNS = CoreApp
+ interface appWrapper extends _subCNPNS {
  }
  /**
   * PocketBase defines a PocketBase app launcher.
@@ -6799,8 +6781,8 @@ namespace pocketbase {
   * It implements [CoreApp] via embedding and all of the app interface methods
   * could be accessed directly through the instance (eg. PocketBase.DataDir()).
   */
- type _subdXron = appWrapper
- interface PocketBase extends _subdXron {
+ type _subwFaXb = appWrapper
+ interface PocketBase extends _subwFaXb {
   /**
    * RootCmd is the main console command
    */
@@ -7732,6 +7714,169 @@ namespace time {
 }
 
 /**
+ * Package context defines the Context type, which carries deadlines,
+ * cancellation signals, and other request-scoped values across API boundaries
+ * and between processes.
+ * 
+ * Incoming requests to a server should create a [Context], and outgoing
+ * calls to servers should accept a Context. The chain of function
+ * calls between them must propagate the Context, optionally replacing
+ * it with a derived Context created using [WithCancel], [WithDeadline],
+ * [WithTimeout], or [WithValue]. When a Context is canceled, all
+ * Contexts derived from it are also canceled.
+ * 
+ * The [WithCancel], [WithDeadline], and [WithTimeout] functions take a
+ * Context (the parent) and return a derived Context (the child) and a
+ * [CancelFunc]. Calling the CancelFunc cancels the child and its
+ * children, removes the parent's reference to the child, and stops
+ * any associated timers. Failing to call the CancelFunc leaks the
+ * child and its children until the parent is canceled or the timer
+ * fires. The go vet tool checks that CancelFuncs are used on all
+ * control-flow paths.
+ * 
+ * The [WithCancelCause] function returns a [CancelCauseFunc], which
+ * takes an error and records it as the cancellation cause. Calling
+ * [Cause] on the canceled context or any of its children retrieves
+ * the cause. If no cause is specified, Cause(ctx) returns the same
+ * value as ctx.Err().
+ * 
+ * Programs that use Contexts should follow these rules to keep interfaces
+ * consistent across packages and enable static analysis tools to check context
+ * propagation:
+ * 
+ * Do not store Contexts inside a struct type; instead, pass a Context
+ * explicitly to each function that needs it. The Context should be the first
+ * parameter, typically named ctx:
+ * 
+ * ```
+ * 	func DoSomething(ctx context.Context, arg Arg) error {
+ * 		// ... use ctx ...
+ * 	}
+ * ```
+ * 
+ * Do not pass a nil [Context], even if a function permits it. Pass [context.TODO]
+ * if you are unsure about which Context to use.
+ * 
+ * Use context Values only for request-scoped data that transits processes and
+ * APIs, not for passing optional parameters to functions.
+ * 
+ * The same Context may be passed to functions running in different goroutines;
+ * Contexts are safe for simultaneous use by multiple goroutines.
+ * 
+ * See https://blog.golang.org/context for example code for a server that uses
+ * Contexts.
+ */
+namespace context {
+ /**
+  * A Context carries a deadline, a cancellation signal, and other values across
+  * API boundaries.
+  * 
+  * Context's methods may be called by multiple goroutines simultaneously.
+  */
+ interface Context {
+  [key:string]: any;
+  /**
+   * Deadline returns the time when work done on behalf of this context
+   * should be canceled. Deadline returns ok==false when no deadline is
+   * set. Successive calls to Deadline return the same results.
+   */
+  deadline(): [time.Time, boolean]
+  /**
+   * Done returns a channel that's closed when work done on behalf of this
+   * context should be canceled. Done may return nil if this context can
+   * never be canceled. Successive calls to Done return the same value.
+   * The close of the Done channel may happen asynchronously,
+   * after the cancel function returns.
+   * 
+   * WithCancel arranges for Done to be closed when cancel is called;
+   * WithDeadline arranges for Done to be closed when the deadline
+   * expires; WithTimeout arranges for Done to be closed when the timeout
+   * elapses.
+   * 
+   * Done is provided for use in select statements:
+   * 
+   *  // Stream generates values with DoSomething and sends them to out
+   *  // until DoSomething returns an error or ctx.Done is closed.
+   *  func Stream(ctx context.Context, out chan<- Value) error {
+   *  	for {
+   *  		v, err := DoSomething(ctx)
+   *  		if err != nil {
+   *  			return err
+   *  		}
+   *  		select {
+   *  		case <-ctx.Done():
+   *  			return ctx.Err()
+   *  		case out <- v:
+   *  		}
+   *  	}
+   *  }
+   * 
+   * See https://blog.golang.org/pipelines for more examples of how to use
+   * a Done channel for cancellation.
+   */
+  done(): undefined
+  /**
+   * If Done is not yet closed, Err returns nil.
+   * If Done is closed, Err returns a non-nil error explaining why:
+   * Canceled if the context was canceled
+   * or DeadlineExceeded if the context's deadline passed.
+   * After Err returns a non-nil error, successive calls to Err return the same error.
+   */
+  err(): void
+  /**
+   * Value returns the value associated with this context for key, or nil
+   * if no value is associated with key. Successive calls to Value with
+   * the same key returns the same result.
+   * 
+   * Use context values only for request-scoped data that transits
+   * processes and API boundaries, not for passing optional parameters to
+   * functions.
+   * 
+   * A key identifies a specific value in a Context. Functions that wish
+   * to store values in Context typically allocate a key in a global
+   * variable then use that key as the argument to context.WithValue and
+   * Context.Value. A key can be any type that supports equality;
+   * packages should define keys as an unexported type to avoid
+   * collisions.
+   * 
+   * Packages that define a Context key should provide type-safe accessors
+   * for the values stored using that key:
+   * 
+   * ```
+   * 	// Package user defines a User type that's stored in Contexts.
+   * 	package user
+   * 
+   * 	import "context"
+   * 
+   * 	// User is the type of value stored in the Contexts.
+   * 	type User struct {...}
+   * 
+   * 	// key is an unexported type for keys defined in this package.
+   * 	// This prevents collisions with keys defined in other packages.
+   * 	type key int
+   * 
+   * 	// userKey is the key for user.User values in Contexts. It is
+   * 	// unexported; clients use user.NewContext and user.FromContext
+   * 	// instead of using this key directly.
+   * 	var userKey key
+   * 
+   * 	// NewContext returns a new Context that carries value u.
+   * 	func NewContext(ctx context.Context, u *User) context.Context {
+   * 		return context.WithValue(ctx, userKey, u)
+   * 	}
+   * 
+   * 	// FromContext returns the User value stored in ctx, if any.
+   * 	func FromContext(ctx context.Context) (*User, bool) {
+   * 		u, ok := ctx.Value(userKey).(*User)
+   * 		return u, ok
+   * 	}
+   * ```
+   */
+  value(key: any): any
+ }
+}
+
+/**
  * Package fs defines basic interfaces to a file system.
  * A file system can be provided by the host operating system
  * but also by other packages.
@@ -7926,293 +8071,645 @@ namespace fs {
 }
 
 /**
- * Package context defines the Context type, which carries deadlines,
- * cancellation signals, and other request-scoped values across API boundaries
- * and between processes.
+ * Package sql provides a generic interface around SQL (or SQL-like)
+ * databases.
  * 
- * Incoming requests to a server should create a [Context], and outgoing
- * calls to servers should accept a Context. The chain of function
- * calls between them must propagate the Context, optionally replacing
- * it with a derived Context created using [WithCancel], [WithDeadline],
- * [WithTimeout], or [WithValue]. When a Context is canceled, all
- * Contexts derived from it are also canceled.
+ * The sql package must be used in conjunction with a database driver.
+ * See https://golang.org/s/sqldrivers for a list of drivers.
  * 
- * The [WithCancel], [WithDeadline], and [WithTimeout] functions take a
- * Context (the parent) and return a derived Context (the child) and a
- * [CancelFunc]. Calling the CancelFunc cancels the child and its
- * children, removes the parent's reference to the child, and stops
- * any associated timers. Failing to call the CancelFunc leaks the
- * child and its children until the parent is canceled or the timer
- * fires. The go vet tool checks that CancelFuncs are used on all
- * control-flow paths.
+ * Drivers that do not support context cancellation will not return until
+ * after the query is completed.
  * 
- * The [WithCancelCause] function returns a [CancelCauseFunc], which
- * takes an error and records it as the cancellation cause. Calling
- * [Cause] on the canceled context or any of its children retrieves
- * the cause. If no cause is specified, Cause(ctx) returns the same
- * value as ctx.Err().
- * 
- * Programs that use Contexts should follow these rules to keep interfaces
- * consistent across packages and enable static analysis tools to check context
- * propagation:
- * 
- * Do not store Contexts inside a struct type; instead, pass a Context
- * explicitly to each function that needs it. The Context should be the first
- * parameter, typically named ctx:
- * 
- * ```
- * 	func DoSomething(ctx context.Context, arg Arg) error {
- * 		// ... use ctx ...
- * 	}
- * ```
- * 
- * Do not pass a nil [Context], even if a function permits it. Pass [context.TODO]
- * if you are unsure about which Context to use.
- * 
- * Use context Values only for request-scoped data that transits processes and
- * APIs, not for passing optional parameters to functions.
- * 
- * The same Context may be passed to functions running in different goroutines;
- * Contexts are safe for simultaneous use by multiple goroutines.
- * 
- * See https://blog.golang.org/context for example code for a server that uses
- * Contexts.
+ * For usage examples, see the wiki page at
+ * https://golang.org/s/sqlwiki.
  */
-namespace context {
+namespace sql {
  /**
-  * A Context carries a deadline, a cancellation signal, and other values across
-  * API boundaries.
-  * 
-  * Context's methods may be called by multiple goroutines simultaneously.
+  * TxOptions holds the transaction options to be used in DB.BeginTx.
   */
- interface Context {
-  [key:string]: any;
+ interface TxOptions {
   /**
-   * Deadline returns the time when work done on behalf of this context
-   * should be canceled. Deadline returns ok==false when no deadline is
-   * set. Successive calls to Deadline return the same results.
+   * Isolation is the transaction isolation level.
+   * If zero, the driver or database's default level is used.
    */
-  deadline(): [time.Time, boolean]
+  isolation: IsolationLevel
+  readOnly: boolean
+ }
+ /**
+  * DB is a database handle representing a pool of zero or more
+  * underlying connections. It's safe for concurrent use by multiple
+  * goroutines.
+  * 
+  * The sql package creates and frees connections automatically; it
+  * also maintains a free pool of idle connections. If the database has
+  * a concept of per-connection state, such state can be reliably observed
+  * within a transaction (Tx) or connection (Conn). Once DB.Begin is called, the
+  * returned Tx is bound to a single connection. Once Commit or
+  * Rollback is called on the transaction, that transaction's
+  * connection is returned to DB's idle connection pool. The pool size
+  * can be controlled with SetMaxIdleConns.
+  */
+ interface DB {
+ }
+ interface DB {
   /**
-   * Done returns a channel that's closed when work done on behalf of this
-   * context should be canceled. Done may return nil if this context can
-   * never be canceled. Successive calls to Done return the same value.
-   * The close of the Done channel may happen asynchronously,
-   * after the cancel function returns.
-   * 
-   * WithCancel arranges for Done to be closed when cancel is called;
-   * WithDeadline arranges for Done to be closed when the deadline
-   * expires; WithTimeout arranges for Done to be closed when the timeout
-   * elapses.
-   * 
-   * Done is provided for use in select statements:
-   * 
-   *  // Stream generates values with DoSomething and sends them to out
-   *  // until DoSomething returns an error or ctx.Done is closed.
-   *  func Stream(ctx context.Context, out chan<- Value) error {
-   *  	for {
-   *  		v, err := DoSomething(ctx)
-   *  		if err != nil {
-   *  			return err
-   *  		}
-   *  		select {
-   *  		case <-ctx.Done():
-   *  			return ctx.Err()
-   *  		case out <- v:
-   *  		}
-   *  	}
-   *  }
-   * 
-   * See https://blog.golang.org/pipelines for more examples of how to use
-   * a Done channel for cancellation.
+   * PingContext verifies a connection to the database is still alive,
+   * establishing a connection if necessary.
    */
-  done(): undefined
+  pingContext(ctx: context.Context): void
+ }
+ interface DB {
   /**
-   * If Done is not yet closed, Err returns nil.
-   * If Done is closed, Err returns a non-nil error explaining why:
-   * Canceled if the context was canceled
-   * or DeadlineExceeded if the context's deadline passed.
-   * After Err returns a non-nil error, successive calls to Err return the same error.
+   * Ping verifies a connection to the database is still alive,
+   * establishing a connection if necessary.
+   * 
+   * Ping uses context.Background internally; to specify the context, use
+   * PingContext.
+   */
+  ping(): void
+ }
+ interface DB {
+  /**
+   * Close closes the database and prevents new queries from starting.
+   * Close then waits for all queries that have started processing on the server
+   * to finish.
+   * 
+   * It is rare to Close a DB, as the DB handle is meant to be
+   * long-lived and shared between many goroutines.
+   */
+  close(): void
+ }
+ interface DB {
+  /**
+   * SetMaxIdleConns sets the maximum number of connections in the idle
+   * connection pool.
+   * 
+   * If MaxOpenConns is greater than 0 but less than the new MaxIdleConns,
+   * then the new MaxIdleConns will be reduced to match the MaxOpenConns limit.
+   * 
+   * If n <= 0, no idle connections are retained.
+   * 
+   * The default max idle connections is currently 2. This may change in
+   * a future release.
+   */
+  setMaxIdleConns(n: number): void
+ }
+ interface DB {
+  /**
+   * SetMaxOpenConns sets the maximum number of open connections to the database.
+   * 
+   * If MaxIdleConns is greater than 0 and the new MaxOpenConns is less than
+   * MaxIdleConns, then MaxIdleConns will be reduced to match the new
+   * MaxOpenConns limit.
+   * 
+   * If n <= 0, then there is no limit on the number of open connections.
+   * The default is 0 (unlimited).
+   */
+  setMaxOpenConns(n: number): void
+ }
+ interface DB {
+  /**
+   * SetConnMaxLifetime sets the maximum amount of time a connection may be reused.
+   * 
+   * Expired connections may be closed lazily before reuse.
+   * 
+   * If d <= 0, connections are not closed due to a connection's age.
+   */
+  setConnMaxLifetime(d: time.Duration): void
+ }
+ interface DB {
+  /**
+   * SetConnMaxIdleTime sets the maximum amount of time a connection may be idle.
+   * 
+   * Expired connections may be closed lazily before reuse.
+   * 
+   * If d <= 0, connections are not closed due to a connection's idle time.
+   */
+  setConnMaxIdleTime(d: time.Duration): void
+ }
+ interface DB {
+  /**
+   * Stats returns database statistics.
+   */
+  stats(): DBStats
+ }
+ interface DB {
+  /**
+   * PrepareContext creates a prepared statement for later queries or executions.
+   * Multiple queries or executions may be run concurrently from the
+   * returned statement.
+   * The caller must call the statement's Close method
+   * when the statement is no longer needed.
+   * 
+   * The provided context is used for the preparation of the statement, not for the
+   * execution of the statement.
+   */
+  prepareContext(ctx: context.Context, query: string): (Stmt)
+ }
+ interface DB {
+  /**
+   * Prepare creates a prepared statement for later queries or executions.
+   * Multiple queries or executions may be run concurrently from the
+   * returned statement.
+   * The caller must call the statement's Close method
+   * when the statement is no longer needed.
+   * 
+   * Prepare uses context.Background internally; to specify the context, use
+   * PrepareContext.
+   */
+  prepare(query: string): (Stmt)
+ }
+ interface DB {
+  /**
+   * ExecContext executes a query without returning any rows.
+   * The args are for any placeholder parameters in the query.
+   */
+  execContext(ctx: context.Context, query: string, ...args: any[]): Result
+ }
+ interface DB {
+  /**
+   * Exec executes a query without returning any rows.
+   * The args are for any placeholder parameters in the query.
+   * 
+   * Exec uses context.Background internally; to specify the context, use
+   * ExecContext.
+   */
+  exec(query: string, ...args: any[]): Result
+ }
+ interface DB {
+  /**
+   * QueryContext executes a query that returns rows, typically a SELECT.
+   * The args are for any placeholder parameters in the query.
+   */
+  queryContext(ctx: context.Context, query: string, ...args: any[]): (Rows)
+ }
+ interface DB {
+  /**
+   * Query executes a query that returns rows, typically a SELECT.
+   * The args are for any placeholder parameters in the query.
+   * 
+   * Query uses context.Background internally; to specify the context, use
+   * QueryContext.
+   */
+  query(query: string, ...args: any[]): (Rows)
+ }
+ interface DB {
+  /**
+   * QueryRowContext executes a query that is expected to return at most one row.
+   * QueryRowContext always returns a non-nil value. Errors are deferred until
+   * Row's Scan method is called.
+   * If the query selects no rows, the *Row's Scan will return ErrNoRows.
+   * Otherwise, the *Row's Scan scans the first selected row and discards
+   * the rest.
+   */
+  queryRowContext(ctx: context.Context, query: string, ...args: any[]): (Row)
+ }
+ interface DB {
+  /**
+   * QueryRow executes a query that is expected to return at most one row.
+   * QueryRow always returns a non-nil value. Errors are deferred until
+   * Row's Scan method is called.
+   * If the query selects no rows, the *Row's Scan will return ErrNoRows.
+   * Otherwise, the *Row's Scan scans the first selected row and discards
+   * the rest.
+   * 
+   * QueryRow uses context.Background internally; to specify the context, use
+   * QueryRowContext.
+   */
+  queryRow(query: string, ...args: any[]): (Row)
+ }
+ interface DB {
+  /**
+   * BeginTx starts a transaction.
+   * 
+   * The provided context is used until the transaction is committed or rolled back.
+   * If the context is canceled, the sql package will roll back
+   * the transaction. Tx.Commit will return an error if the context provided to
+   * BeginTx is canceled.
+   * 
+   * The provided TxOptions is optional and may be nil if defaults should be used.
+   * If a non-default isolation level is used that the driver doesn't support,
+   * an error will be returned.
+   */
+  beginTx(ctx: context.Context, opts: TxOptions): (Tx)
+ }
+ interface DB {
+  /**
+   * Begin starts a transaction. The default isolation level is dependent on
+   * the driver.
+   * 
+   * Begin uses context.Background internally; to specify the context, use
+   * BeginTx.
+   */
+  begin(): (Tx)
+ }
+ interface DB {
+  /**
+   * Driver returns the database's underlying driver.
+   */
+  driver(): any
+ }
+ interface DB {
+  /**
+   * Conn returns a single connection by either opening a new connection
+   * or returning an existing connection from the connection pool. Conn will
+   * block until either a connection is returned or ctx is canceled.
+   * Queries run on the same Conn will be run in the same database session.
+   * 
+   * Every Conn must be returned to the database pool after use by
+   * calling Conn.Close.
+   */
+  conn(ctx: context.Context): (Conn)
+ }
+ /**
+  * Tx is an in-progress database transaction.
+  * 
+  * A transaction must end with a call to Commit or Rollback.
+  * 
+  * After a call to Commit or Rollback, all operations on the
+  * transaction fail with ErrTxDone.
+  * 
+  * The statements prepared for a transaction by calling
+  * the transaction's Prepare or Stmt methods are closed
+  * by the call to Commit or Rollback.
+  */
+ interface Tx {
+ }
+ interface Tx {
+  /**
+   * Commit commits the transaction.
+   */
+  commit(): void
+ }
+ interface Tx {
+  /**
+   * Rollback aborts the transaction.
+   */
+  rollback(): void
+ }
+ interface Tx {
+  /**
+   * PrepareContext creates a prepared statement for use within a transaction.
+   * 
+   * The returned statement operates within the transaction and will be closed
+   * when the transaction has been committed or rolled back.
+   * 
+   * To use an existing prepared statement on this transaction, see Tx.Stmt.
+   * 
+   * The provided context will be used for the preparation of the context, not
+   * for the execution of the returned statement. The returned statement
+   * will run in the transaction context.
+   */
+  prepareContext(ctx: context.Context, query: string): (Stmt)
+ }
+ interface Tx {
+  /**
+   * Prepare creates a prepared statement for use within a transaction.
+   * 
+   * The returned statement operates within the transaction and will be closed
+   * when the transaction has been committed or rolled back.
+   * 
+   * To use an existing prepared statement on this transaction, see Tx.Stmt.
+   * 
+   * Prepare uses context.Background internally; to specify the context, use
+   * PrepareContext.
+   */
+  prepare(query: string): (Stmt)
+ }
+ interface Tx {
+  /**
+   * StmtContext returns a transaction-specific prepared statement from
+   * an existing statement.
+   * 
+   * Example:
+   * 
+   * ```
+   * 	updateMoney, err := db.Prepare("UPDATE balance SET money=money+? WHERE id=?")
+   * 	...
+   * 	tx, err := db.Begin()
+   * 	...
+   * 	res, err := tx.StmtContext(ctx, updateMoney).Exec(123.45, 98293203)
+   * ```
+   * 
+   * The provided context is used for the preparation of the statement, not for the
+   * execution of the statement.
+   * 
+   * The returned statement operates within the transaction and will be closed
+   * when the transaction has been committed or rolled back.
+   */
+  stmtContext(ctx: context.Context, stmt: Stmt): (Stmt)
+ }
+ interface Tx {
+  /**
+   * Stmt returns a transaction-specific prepared statement from
+   * an existing statement.
+   * 
+   * Example:
+   * 
+   * ```
+   * 	updateMoney, err := db.Prepare("UPDATE balance SET money=money+? WHERE id=?")
+   * 	...
+   * 	tx, err := db.Begin()
+   * 	...
+   * 	res, err := tx.Stmt(updateMoney).Exec(123.45, 98293203)
+   * ```
+   * 
+   * The returned statement operates within the transaction and will be closed
+   * when the transaction has been committed or rolled back.
+   * 
+   * Stmt uses context.Background internally; to specify the context, use
+   * StmtContext.
+   */
+  stmt(stmt: Stmt): (Stmt)
+ }
+ interface Tx {
+  /**
+   * ExecContext executes a query that doesn't return rows.
+   * For example: an INSERT and UPDATE.
+   */
+  execContext(ctx: context.Context, query: string, ...args: any[]): Result
+ }
+ interface Tx {
+  /**
+   * Exec executes a query that doesn't return rows.
+   * For example: an INSERT and UPDATE.
+   * 
+   * Exec uses context.Background internally; to specify the context, use
+   * ExecContext.
+   */
+  exec(query: string, ...args: any[]): Result
+ }
+ interface Tx {
+  /**
+   * QueryContext executes a query that returns rows, typically a SELECT.
+   */
+  queryContext(ctx: context.Context, query: string, ...args: any[]): (Rows)
+ }
+ interface Tx {
+  /**
+   * Query executes a query that returns rows, typically a SELECT.
+   * 
+   * Query uses context.Background internally; to specify the context, use
+   * QueryContext.
+   */
+  query(query: string, ...args: any[]): (Rows)
+ }
+ interface Tx {
+  /**
+   * QueryRowContext executes a query that is expected to return at most one row.
+   * QueryRowContext always returns a non-nil value. Errors are deferred until
+   * Row's Scan method is called.
+   * If the query selects no rows, the *Row's Scan will return ErrNoRows.
+   * Otherwise, the *Row's Scan scans the first selected row and discards
+   * the rest.
+   */
+  queryRowContext(ctx: context.Context, query: string, ...args: any[]): (Row)
+ }
+ interface Tx {
+  /**
+   * QueryRow executes a query that is expected to return at most one row.
+   * QueryRow always returns a non-nil value. Errors are deferred until
+   * Row's Scan method is called.
+   * If the query selects no rows, the *Row's Scan will return ErrNoRows.
+   * Otherwise, the *Row's Scan scans the first selected row and discards
+   * the rest.
+   * 
+   * QueryRow uses context.Background internally; to specify the context, use
+   * QueryRowContext.
+   */
+  queryRow(query: string, ...args: any[]): (Row)
+ }
+ /**
+  * Stmt is a prepared statement.
+  * A Stmt is safe for concurrent use by multiple goroutines.
+  * 
+  * If a Stmt is prepared on a Tx or Conn, it will be bound to a single
+  * underlying connection forever. If the Tx or Conn closes, the Stmt will
+  * become unusable and all operations will return an error.
+  * If a Stmt is prepared on a DB, it will remain usable for the lifetime of the
+  * DB. When the Stmt needs to execute on a new underlying connection, it will
+  * prepare itself on the new connection automatically.
+  */
+ interface Stmt {
+ }
+ interface Stmt {
+  /**
+   * ExecContext executes a prepared statement with the given arguments and
+   * returns a Result summarizing the effect of the statement.
+   */
+  execContext(ctx: context.Context, ...args: any[]): Result
+ }
+ interface Stmt {
+  /**
+   * Exec executes a prepared statement with the given arguments and
+   * returns a Result summarizing the effect of the statement.
+   * 
+   * Exec uses context.Background internally; to specify the context, use
+   * ExecContext.
+   */
+  exec(...args: any[]): Result
+ }
+ interface Stmt {
+  /**
+   * QueryContext executes a prepared query statement with the given arguments
+   * and returns the query results as a *Rows.
+   */
+  queryContext(ctx: context.Context, ...args: any[]): (Rows)
+ }
+ interface Stmt {
+  /**
+   * Query executes a prepared query statement with the given arguments
+   * and returns the query results as a *Rows.
+   * 
+   * Query uses context.Background internally; to specify the context, use
+   * QueryContext.
+   */
+  query(...args: any[]): (Rows)
+ }
+ interface Stmt {
+  /**
+   * QueryRowContext executes a prepared query statement with the given arguments.
+   * If an error occurs during the execution of the statement, that error will
+   * be returned by a call to Scan on the returned *Row, which is always non-nil.
+   * If the query selects no rows, the *Row's Scan will return ErrNoRows.
+   * Otherwise, the *Row's Scan scans the first selected row and discards
+   * the rest.
+   */
+  queryRowContext(ctx: context.Context, ...args: any[]): (Row)
+ }
+ interface Stmt {
+  /**
+   * QueryRow executes a prepared query statement with the given arguments.
+   * If an error occurs during the execution of the statement, that error will
+   * be returned by a call to Scan on the returned *Row, which is always non-nil.
+   * If the query selects no rows, the *Row's Scan will return ErrNoRows.
+   * Otherwise, the *Row's Scan scans the first selected row and discards
+   * the rest.
+   * 
+   * Example usage:
+   * 
+   * ```
+   * 	var name string
+   * 	err := nameByUseridStmt.QueryRow(id).Scan(&name)
+   * ```
+   * 
+   * QueryRow uses context.Background internally; to specify the context, use
+   * QueryRowContext.
+   */
+  queryRow(...args: any[]): (Row)
+ }
+ interface Stmt {
+  /**
+   * Close closes the statement.
+   */
+  close(): void
+ }
+ /**
+  * Rows is the result of a query. Its cursor starts before the first row
+  * of the result set. Use Next to advance from row to row.
+  */
+ interface Rows {
+ }
+ interface Rows {
+  /**
+   * Next prepares the next result row for reading with the Scan method. It
+   * returns true on success, or false if there is no next result row or an error
+   * happened while preparing it. Err should be consulted to distinguish between
+   * the two cases.
+   * 
+   * Every call to Scan, even the first one, must be preceded by a call to Next.
+   */
+  next(): boolean
+ }
+ interface Rows {
+  /**
+   * NextResultSet prepares the next result set for reading. It reports whether
+   * there is further result sets, or false if there is no further result set
+   * or if there is an error advancing to it. The Err method should be consulted
+   * to distinguish between the two cases.
+   * 
+   * After calling NextResultSet, the Next method should always be called before
+   * scanning. If there are further result sets they may not have rows in the result
+   * set.
+   */
+  nextResultSet(): boolean
+ }
+ interface Rows {
+  /**
+   * Err returns the error, if any, that was encountered during iteration.
+   * Err may be called after an explicit or implicit Close.
    */
   err(): void
+ }
+ interface Rows {
   /**
-   * Value returns the value associated with this context for key, or nil
-   * if no value is associated with key. Successive calls to Value with
-   * the same key returns the same result.
+   * Columns returns the column names.
+   * Columns returns an error if the rows are closed.
+   */
+  columns(): Array<string>
+ }
+ interface Rows {
+  /**
+   * ColumnTypes returns column information such as column type, length,
+   * and nullable. Some information may not be available from some drivers.
+   */
+  columnTypes(): Array<(ColumnType | undefined)>
+ }
+ interface Rows {
+  /**
+   * Scan copies the columns in the current row into the values pointed
+   * at by dest. The number of values in dest must be the same as the
+   * number of columns in Rows.
    * 
-   * Use context values only for request-scoped data that transits
-   * processes and API boundaries, not for passing optional parameters to
-   * functions.
-   * 
-   * A key identifies a specific value in a Context. Functions that wish
-   * to store values in Context typically allocate a key in a global
-   * variable then use that key as the argument to context.WithValue and
-   * Context.Value. A key can be any type that supports equality;
-   * packages should define keys as an unexported type to avoid
-   * collisions.
-   * 
-   * Packages that define a Context key should provide type-safe accessors
-   * for the values stored using that key:
+   * Scan converts columns read from the database into the following
+   * common Go types and special types provided by the sql package:
    * 
    * ```
-   * 	// Package user defines a User type that's stored in Contexts.
-   * 	package user
-   * 
-   * 	import "context"
-   * 
-   * 	// User is the type of value stored in the Contexts.
-   * 	type User struct {...}
-   * 
-   * 	// key is an unexported type for keys defined in this package.
-   * 	// This prevents collisions with keys defined in other packages.
-   * 	type key int
-   * 
-   * 	// userKey is the key for user.User values in Contexts. It is
-   * 	// unexported; clients use user.NewContext and user.FromContext
-   * 	// instead of using this key directly.
-   * 	var userKey key
-   * 
-   * 	// NewContext returns a new Context that carries value u.
-   * 	func NewContext(ctx context.Context, u *User) context.Context {
-   * 		return context.WithValue(ctx, userKey, u)
-   * 	}
-   * 
-   * 	// FromContext returns the User value stored in ctx, if any.
-   * 	func FromContext(ctx context.Context) (*User, bool) {
-   * 		u, ok := ctx.Value(userKey).(*User)
-   * 		return u, ok
-   * 	}
+   * 	*string
+   * 	*[]byte
+   * 	*int, *int8, *int16, *int32, *int64
+   * 	*uint, *uint8, *uint16, *uint32, *uint64
+   * 	*bool
+   * 	*float32, *float64
+   * 	*interface{}
+   * 	*RawBytes
+   * 	*Rows (cursor value)
+   * 	any type implementing Scanner (see Scanner docs)
    * ```
-   */
-  value(key: any): any
- }
-}
-
-/**
- * Package jwt is a Go implementation of JSON Web Tokens: http://self-issued.info/docs/draft-jones-json-web-token.html
- * 
- * See README.md for more info.
- */
-namespace jwt {
- /**
-  * MapClaims is a claims type that uses the map[string]interface{} for JSON decoding.
-  * This is the default claims type if you don't supply one
-  */
- interface MapClaims extends _TygojaDict{}
- interface MapClaims {
-  /**
-   * VerifyAudience Compares the aud claim against cmp.
-   * If required is false, this method will return true if the value matches or is unset
-   */
-  verifyAudience(cmp: string, req: boolean): boolean
- }
- interface MapClaims {
-  /**
-   * VerifyExpiresAt compares the exp claim against cmp (cmp <= exp).
-   * If req is false, it will return true, if exp is unset.
-   */
-  verifyExpiresAt(cmp: number, req: boolean): boolean
- }
- interface MapClaims {
-  /**
-   * VerifyIssuedAt compares the exp claim against cmp (cmp >= iat).
-   * If req is false, it will return true, if iat is unset.
-   */
-  verifyIssuedAt(cmp: number, req: boolean): boolean
- }
- interface MapClaims {
-  /**
-   * VerifyNotBefore compares the nbf claim against cmp (cmp >= nbf).
-   * If req is false, it will return true, if nbf is unset.
-   */
-  verifyNotBefore(cmp: number, req: boolean): boolean
- }
- interface MapClaims {
-  /**
-   * VerifyIssuer compares the iss claim against cmp.
-   * If required is false, this method will return true if the value matches or is unset
-   */
-  verifyIssuer(cmp: string, req: boolean): boolean
- }
- interface MapClaims {
-  /**
-   * Valid validates time based claims "exp, iat, nbf".
-   * There is no accounting for clock skew.
-   * As well, if any of the above claims are not in the token, it will still
-   * be considered a valid claim.
-   */
-  valid(): void
- }
-}
-
-/**
- * Package types implements some commonly used db serializable types
- * like datetime, json, etc.
- */
-namespace types {
- /**
-  * JsonArray defines a slice that is safe for json and db read/write.
-  */
- interface JsonArray<T> extends Array<T>{}
- interface JsonArray<T> {
-  /**
-   * MarshalJSON implements the [json.Marshaler] interface.
-   */
-  marshalJSON(): string|Array<number>
- }
- interface JsonArray<T> {
-  /**
-   * Value implements the [driver.Valuer] interface.
-   */
-  value(): any
- }
- interface JsonArray<T> {
-  /**
-   * Scan implements [sql.Scanner] interface to scan the provided value
-   * into the current JsonArray[T] instance.
-   */
-  scan(value: any): void
- }
- /**
-  * JsonMap defines a map that is safe for json and db read/write.
-  */
- interface JsonMap extends _TygojaDict{}
- interface JsonMap {
-  /**
-   * MarshalJSON implements the [json.Marshaler] interface.
-   */
-  marshalJSON(): string|Array<number>
- }
- interface JsonMap {
-  /**
-   * Get retrieves a single value from the current JsonMap.
    * 
-   * This helper was added primarily to assist the goja integration since custom map types
-   * don't have direct access to the map keys (https://pkg.go.dev/github.com/dop251/goja#hdr-Maps_with_methods).
-   */
-  get(key: string): any
- }
- interface JsonMap {
-  /**
-   * Set sets a single value in the current JsonMap.
+   * In the most simple case, if the type of the value from the source
+   * column is an integer, bool or string type T and dest is of type *T,
+   * Scan simply assigns the value through the pointer.
    * 
-   * This helper was added primarily to assist the goja integration since custom map types
-   * don't have direct access to the map keys (https://pkg.go.dev/github.com/dop251/goja#hdr-Maps_with_methods).
+   * Scan also converts between string and numeric types, as long as no
+   * information would be lost. While Scan stringifies all numbers
+   * scanned from numeric database columns into *string, scans into
+   * numeric types are checked for overflow. For example, a float64 with
+   * value 300 or a string with value "300" can scan into a uint16, but
+   * not into a uint8, though float64(255) or "255" can scan into a
+   * uint8. One exception is that scans of some float64 numbers to
+   * strings may lose information when stringifying. In general, scan
+   * floating point columns into *float64.
+   * 
+   * If a dest argument has type *[]byte, Scan saves in that argument a
+   * copy of the corresponding data. The copy is owned by the caller and
+   * can be modified and held indefinitely. The copy can be avoided by
+   * using an argument of type *RawBytes instead; see the documentation
+   * for RawBytes for restrictions on its use.
+   * 
+   * If an argument has type *interface{}, Scan copies the value
+   * provided by the underlying driver without conversion. When scanning
+   * from a source value of type []byte to *interface{}, a copy of the
+   * slice is made and the caller owns the result.
+   * 
+   * Source values of type time.Time may be scanned into values of type
+   * *time.Time, *interface{}, *string, or *[]byte. When converting to
+   * the latter two, time.RFC3339Nano is used.
+   * 
+   * Source values of type bool may be scanned into types *bool,
+   * *interface{}, *string, *[]byte, or *RawBytes.
+   * 
+   * For scanning into *bool, the source may be true, false, 1, 0, or
+   * string inputs parseable by strconv.ParseBool.
+   * 
+   * Scan can also convert a cursor returned from a query, such as
+   * "select cursor(select * from my_table) from dual", into a
+   * *Rows value that can itself be scanned from. The parent
+   * select query will close any cursor *Rows if the parent *Rows is closed.
+   * 
+   * If any of the first arguments implementing Scanner returns an error,
+   * that error will be wrapped in the returned error.
    */
-  set(key: string, value: any): void
+  scan(...dest: any[]): void
  }
- interface JsonMap {
+ interface Rows {
   /**
-   * Value implements the [driver.Valuer] interface.
+   * Close closes the Rows, preventing further enumeration. If Next is called
+   * and returns false and there are no further result sets,
+   * the Rows are closed automatically and it will suffice to check the
+   * result of Err. Close is idempotent and does not affect the result of Err.
    */
-  value(): any
+  close(): void
  }
- interface JsonMap {
+ /**
+  * A Result summarizes an executed SQL command.
+  */
+ interface Result {
+  [key:string]: any;
   /**
-   * Scan implements [sql.Scanner] interface to scan the provided value
-   * into the current `JsonMap` instance.
+   * LastInsertId returns the integer generated by the database
+   * in response to a command. Typically this will be from an
+   * "auto increment" column when inserting a new row. Not all
+   * databases support this feature, and the syntax of such
+   * statements varies.
    */
-  scan(value: any): void
+  lastInsertId(): number
+  /**
+   * RowsAffected returns the number of rows affected by an
+   * update, insert, or delete. Not every database or database
+   * driver may support this.
+   */
+  rowsAffected(): number
  }
 }
 
@@ -9172,508 +9669,6 @@ namespace http {
  }
 }
 
-namespace auth {
- /**
-  * AuthUser defines a standardized oauth2 user data structure.
-  */
- interface AuthUser {
-  id: string
-  name: string
-  username: string
-  email: string
-  avatarUrl: string
-  accessToken: string
-  refreshToken: string
-  expiry: types.DateTime
-  rawUser: _TygojaDict
- }
- /**
-  * Provider defines a common interface for an OAuth2 client.
-  */
- interface Provider {
-  [key:string]: any;
-  /**
-   * Context returns the context associated with the provider (if any).
-   */
-  context(): context.Context
-  /**
-   * SetContext assigns the specified context to the current provider.
-   */
-  setContext(ctx: context.Context): void
-  /**
-   * PKCE indicates whether the provider can use the PKCE flow.
-   */
-  pkce(): boolean
-  /**
-   * SetPKCE toggles the state whether the provider can use the PKCE flow or not.
-   */
-  setPKCE(enable: boolean): void
-  /**
-   * DisplayName usually returns provider name as it is officially written
-   * and it could be used directly in the UI.
-   */
-  displayName(): string
-  /**
-   * SetDisplayName sets the provider's display name.
-   */
-  setDisplayName(displayName: string): void
-  /**
-   * Scopes returns the provider access permissions that will be requested.
-   */
-  scopes(): Array<string>
-  /**
-   * SetScopes sets the provider access permissions that will be requested later.
-   */
-  setScopes(scopes: Array<string>): void
-  /**
-   * ClientId returns the provider client's app ID.
-   */
-  clientId(): string
-  /**
-   * SetClientId sets the provider client's ID.
-   */
-  setClientId(clientId: string): void
-  /**
-   * ClientSecret returns the provider client's app secret.
-   */
-  clientSecret(): string
-  /**
-   * SetClientSecret sets the provider client's app secret.
-   */
-  setClientSecret(secret: string): void
-  /**
-   * RedirectUrl returns the end address to redirect the user
-   * going through the OAuth flow.
-   */
-  redirectUrl(): string
-  /**
-   * SetRedirectUrl sets the provider's RedirectUrl.
-   */
-  setRedirectUrl(url: string): void
-  /**
-   * AuthUrl returns the provider's authorization service url.
-   */
-  authUrl(): string
-  /**
-   * SetAuthUrl sets the provider's AuthUrl.
-   */
-  setAuthUrl(url: string): void
-  /**
-   * TokenUrl returns the provider's token exchange service url.
-   */
-  tokenUrl(): string
-  /**
-   * SetTokenUrl sets the provider's TokenUrl.
-   */
-  setTokenUrl(url: string): void
-  /**
-   * UserApiUrl returns the provider's user info api url.
-   */
-  userApiUrl(): string
-  /**
-   * SetUserApiUrl sets the provider's UserApiUrl.
-   */
-  setUserApiUrl(url: string): void
-  /**
-   * Client returns an http client using the provided token.
-   */
-  client(token: oauth2.Token): (any)
-  /**
-   * BuildAuthUrl returns a URL to the provider's consent page
-   * that asks for permissions for the required scopes explicitly.
-   */
-  buildAuthUrl(state: string, ...opts: oauth2.AuthCodeOption[]): string
-  /**
-   * FetchToken converts an authorization code to token.
-   */
-  fetchToken(code: string, ...opts: oauth2.AuthCodeOption[]): (oauth2.Token)
-  /**
-   * FetchRawUserData requests and marshalizes into `result` the
-   * the OAuth user api response.
-   */
-  fetchRawUserData(token: oauth2.Token): string|Array<number>
-  /**
-   * FetchAuthUser is similar to FetchRawUserData, but normalizes and
-   * marshalizes the user api response into a standardized AuthUser struct.
-   */
-  fetchAuthUser(token: oauth2.Token): (AuthUser)
- }
-}
-
-/**
- * Package exec runs external commands. It wraps os.StartProcess to make it
- * easier to remap stdin and stdout, connect I/O with pipes, and do other
- * adjustments.
- * 
- * Unlike the "system" library call from C and other languages, the
- * os/exec package intentionally does not invoke the system shell and
- * does not expand any glob patterns or handle other expansions,
- * pipelines, or redirections typically done by shells. The package
- * behaves more like C's "exec" family of functions. To expand glob
- * patterns, either call the shell directly, taking care to escape any
- * dangerous input, or use the path/filepath package's Glob function.
- * To expand environment variables, use package os's ExpandEnv.
- * 
- * Note that the examples in this package assume a Unix system.
- * They may not run on Windows, and they do not run in the Go Playground
- * used by golang.org and godoc.org.
- * 
- * # Executables in the current directory
- * 
- * The functions Command and LookPath look for a program
- * in the directories listed in the current path, following the
- * conventions of the host operating system.
- * Operating systems have for decades included the current
- * directory in this search, sometimes implicitly and sometimes
- * configured explicitly that way by default.
- * Modern practice is that including the current directory
- * is usually unexpected and often leads to security problems.
- * 
- * To avoid those security problems, as of Go 1.19, this package will not resolve a program
- * using an implicit or explicit path entry relative to the current directory.
- * That is, if you run exec.LookPath("go"), it will not successfully return
- * ./go on Unix nor .\go.exe on Windows, no matter how the path is configured.
- * Instead, if the usual path algorithms would result in that answer,
- * these functions return an error err satisfying errors.Is(err, ErrDot).
- * 
- * For example, consider these two program snippets:
- * 
- * ```
- * 	path, err := exec.LookPath("prog")
- * 	if err != nil {
- * 		log.Fatal(err)
- * 	}
- * 	use(path)
- * ```
- * 
- * and
- * 
- * ```
- * 	cmd := exec.Command("prog")
- * 	if err := cmd.Run(); err != nil {
- * 		log.Fatal(err)
- * 	}
- * ```
- * 
- * These will not find and run ./prog or .\prog.exe,
- * no matter how the current path is configured.
- * 
- * Code that always wants to run a program from the current directory
- * can be rewritten to say "./prog" instead of "prog".
- * 
- * Code that insists on including results from relative path entries
- * can instead override the error using an errors.Is check:
- * 
- * ```
- * 	path, err := exec.LookPath("prog")
- * 	if errors.Is(err, exec.ErrDot) {
- * 		err = nil
- * 	}
- * 	if err != nil {
- * 		log.Fatal(err)
- * 	}
- * 	use(path)
- * ```
- * 
- * and
- * 
- * ```
- * 	cmd := exec.Command("prog")
- * 	if errors.Is(cmd.Err, exec.ErrDot) {
- * 		cmd.Err = nil
- * 	}
- * 	if err := cmd.Run(); err != nil {
- * 		log.Fatal(err)
- * 	}
- * ```
- * 
- * Setting the environment variable GODEBUG=execerrdot=0
- * disables generation of ErrDot entirely, temporarily restoring the pre-Go 1.19
- * behavior for programs that are unable to apply more targeted fixes.
- * A future version of Go may remove support for this variable.
- * 
- * Before adding such overrides, make sure you understand the
- * security implications of doing so.
- * See https://go.dev/blog/path-security for more information.
- */
-namespace exec {
- /**
-  * Cmd represents an external command being prepared or run.
-  * 
-  * A Cmd cannot be reused after calling its Run, Output or CombinedOutput
-  * methods.
-  */
- interface Cmd {
-  /**
-   * Path is the path of the command to run.
-   * 
-   * This is the only field that must be set to a non-zero
-   * value. If Path is relative, it is evaluated relative
-   * to Dir.
-   */
-  path: string
-  /**
-   * Args holds command line arguments, including the command as Args[0].
-   * If the Args field is empty or nil, Run uses {Path}.
-   * 
-   * In typical use, both Path and Args are set by calling Command.
-   */
-  args: Array<string>
-  /**
-   * Env specifies the environment of the process.
-   * Each entry is of the form "key=value".
-   * If Env is nil, the new process uses the current process's
-   * environment.
-   * If Env contains duplicate environment keys, only the last
-   * value in the slice for each duplicate key is used.
-   * As a special case on Windows, SYSTEMROOT is always added if
-   * missing and not explicitly set to the empty string.
-   */
-  env: Array<string>
-  /**
-   * Dir specifies the working directory of the command.
-   * If Dir is the empty string, Run runs the command in the
-   * calling process's current directory.
-   */
-  dir: string
-  /**
-   * Stdin specifies the process's standard input.
-   * 
-   * If Stdin is nil, the process reads from the null device (os.DevNull).
-   * 
-   * If Stdin is an *os.File, the process's standard input is connected
-   * directly to that file.
-   * 
-   * Otherwise, during the execution of the command a separate
-   * goroutine reads from Stdin and delivers that data to the command
-   * over a pipe. In this case, Wait does not complete until the goroutine
-   * stops copying, either because it has reached the end of Stdin
-   * (EOF or a read error), or because writing to the pipe returned an error,
-   * or because a nonzero WaitDelay was set and expired.
-   */
-  stdin: io.Reader
-  /**
-   * Stdout and Stderr specify the process's standard output and error.
-   * 
-   * If either is nil, Run connects the corresponding file descriptor
-   * to the null device (os.DevNull).
-   * 
-   * If either is an *os.File, the corresponding output from the process
-   * is connected directly to that file.
-   * 
-   * Otherwise, during the execution of the command a separate goroutine
-   * reads from the process over a pipe and delivers that data to the
-   * corresponding Writer. In this case, Wait does not complete until the
-   * goroutine reaches EOF or encounters an error or a nonzero WaitDelay
-   * expires.
-   * 
-   * If Stdout and Stderr are the same writer, and have a type that can
-   * be compared with ==, at most one goroutine at a time will call Write.
-   */
-  stdout: io.Writer
-  stderr: io.Writer
-  /**
-   * ExtraFiles specifies additional open files to be inherited by the
-   * new process. It does not include standard input, standard output, or
-   * standard error. If non-nil, entry i becomes file descriptor 3+i.
-   * 
-   * ExtraFiles is not supported on Windows.
-   */
-  extraFiles: Array<(os.File | undefined)>
-  /**
-   * SysProcAttr holds optional, operating system-specific attributes.
-   * Run passes it to os.StartProcess as the os.ProcAttr's Sys field.
-   */
-  sysProcAttr?: syscall.SysProcAttr
-  /**
-   * Process is the underlying process, once started.
-   */
-  process?: os.Process
-  /**
-   * ProcessState contains information about an exited process.
-   * If the process was started successfully, Wait or Run will
-   * populate its ProcessState when the command completes.
-   */
-  processState?: os.ProcessState
-  err: Error // LookPath error, if any.
-  /**
-   * If Cancel is non-nil, the command must have been created with
-   * CommandContext and Cancel will be called when the command's
-   * Context is done. By default, CommandContext sets Cancel to
-   * call the Kill method on the command's Process.
-   * 
-   * Typically a custom Cancel will send a signal to the command's
-   * Process, but it may instead take other actions to initiate cancellation,
-   * such as closing a stdin or stdout pipe or sending a shutdown request on a
-   * network socket.
-   * 
-   * If the command exits with a success status after Cancel is
-   * called, and Cancel does not return an error equivalent to
-   * os.ErrProcessDone, then Wait and similar methods will return a non-nil
-   * error: either an error wrapping the one returned by Cancel,
-   * or the error from the Context.
-   * (If the command exits with a non-success status, or Cancel
-   * returns an error that wraps os.ErrProcessDone, Wait and similar methods
-   * continue to return the command's usual exit status.)
-   * 
-   * If Cancel is set to nil, nothing will happen immediately when the command's
-   * Context is done, but a nonzero WaitDelay will still take effect. That may
-   * be useful, for example, to work around deadlocks in commands that do not
-   * support shutdown signals but are expected to always finish quickly.
-   * 
-   * Cancel will not be called if Start returns a non-nil error.
-   */
-  cancel: () => void
-  /**
-   * If WaitDelay is non-zero, it bounds the time spent waiting on two sources
-   * of unexpected delay in Wait: a child process that fails to exit after the
-   * associated Context is canceled, and a child process that exits but leaves
-   * its I/O pipes unclosed.
-   * 
-   * The WaitDelay timer starts when either the associated Context is done or a
-   * call to Wait observes that the child process has exited, whichever occurs
-   * first. When the delay has elapsed, the command shuts down the child process
-   * and/or its I/O pipes.
-   * 
-   * If the child process has failed to exit — perhaps because it ignored or
-   * failed to receive a shutdown signal from a Cancel function, or because no
-   * Cancel function was set — then it will be terminated using os.Process.Kill.
-   * 
-   * Then, if the I/O pipes communicating with the child process are still open,
-   * those pipes are closed in order to unblock any goroutines currently blocked
-   * on Read or Write calls.
-   * 
-   * If pipes are closed due to WaitDelay, no Cancel call has occurred,
-   * and the command has otherwise exited with a successful status, Wait and
-   * similar methods will return ErrWaitDelay instead of nil.
-   * 
-   * If WaitDelay is zero (the default), I/O pipes will be read until EOF,
-   * which might not occur until orphaned subprocesses of the command have
-   * also closed their descriptors for the pipes.
-   */
-  waitDelay: time.Duration
- }
- interface Cmd {
-  /**
-   * String returns a human-readable description of c.
-   * It is intended only for debugging.
-   * In particular, it is not suitable for use as input to a shell.
-   * The output of String may vary across Go releases.
-   */
-  string(): string
- }
- interface Cmd {
-  /**
-   * Run starts the specified command and waits for it to complete.
-   * 
-   * The returned error is nil if the command runs, has no problems
-   * copying stdin, stdout, and stderr, and exits with a zero exit
-   * status.
-   * 
-   * If the command starts but does not complete successfully, the error is of
-   * type *ExitError. Other error types may be returned for other situations.
-   * 
-   * If the calling goroutine has locked the operating system thread
-   * with runtime.LockOSThread and modified any inheritable OS-level
-   * thread state (for example, Linux or Plan 9 name spaces), the new
-   * process will inherit the caller's thread state.
-   */
-  run(): void
- }
- interface Cmd {
-  /**
-   * Start starts the specified command but does not wait for it to complete.
-   * 
-   * If Start returns successfully, the c.Process field will be set.
-   * 
-   * After a successful call to Start the Wait method must be called in
-   * order to release associated system resources.
-   */
-  start(): void
- }
- interface Cmd {
-  /**
-   * Wait waits for the command to exit and waits for any copying to
-   * stdin or copying from stdout or stderr to complete.
-   * 
-   * The command must have been started by Start.
-   * 
-   * The returned error is nil if the command runs, has no problems
-   * copying stdin, stdout, and stderr, and exits with a zero exit
-   * status.
-   * 
-   * If the command fails to run or doesn't complete successfully, the
-   * error is of type *ExitError. Other error types may be
-   * returned for I/O problems.
-   * 
-   * If any of c.Stdin, c.Stdout or c.Stderr are not an *os.File, Wait also waits
-   * for the respective I/O loop copying to or from the process to complete.
-   * 
-   * Wait releases any resources associated with the Cmd.
-   */
-  wait(): void
- }
- interface Cmd {
-  /**
-   * Output runs the command and returns its standard output.
-   * Any returned error will usually be of type *ExitError.
-   * If c.Stderr was nil, Output populates ExitError.Stderr.
-   */
-  output(): string|Array<number>
- }
- interface Cmd {
-  /**
-   * CombinedOutput runs the command and returns its combined standard
-   * output and standard error.
-   */
-  combinedOutput(): string|Array<number>
- }
- interface Cmd {
-  /**
-   * StdinPipe returns a pipe that will be connected to the command's
-   * standard input when the command starts.
-   * The pipe will be closed automatically after Wait sees the command exit.
-   * A caller need only call Close to force the pipe to close sooner.
-   * For example, if the command being run will not exit until standard input
-   * is closed, the caller must close the pipe.
-   */
-  stdinPipe(): io.WriteCloser
- }
- interface Cmd {
-  /**
-   * StdoutPipe returns a pipe that will be connected to the command's
-   * standard output when the command starts.
-   * 
-   * Wait will close the pipe after seeing the command exit, so most callers
-   * need not close the pipe themselves. It is thus incorrect to call Wait
-   * before all reads from the pipe have completed.
-   * For the same reason, it is incorrect to call Run when using StdoutPipe.
-   * See the example for idiomatic usage.
-   */
-  stdoutPipe(): io.ReadCloser
- }
- interface Cmd {
-  /**
-   * StderrPipe returns a pipe that will be connected to the command's
-   * standard error when the command starts.
-   * 
-   * Wait will close the pipe after seeing the command exit, so most callers
-   * need not close the pipe themselves. It is thus incorrect to call Wait
-   * before all reads from the pipe have completed.
-   * For the same reason, it is incorrect to use Run when using StderrPipe.
-   * See the StdoutPipe example for idiomatic usage.
-   */
-  stderrPipe(): io.ReadCloser
- }
- interface Cmd {
-  /**
-   * Environ returns a copy of the environment in which the command would be run
-   * as it is currently configured.
-   */
-  environ(): Array<string>
- }
-}
-
 /**
  * Package echo implements high performance, minimalist Go web framework.
  * 
@@ -10251,6 +10246,437 @@ namespace echo {
 }
 
 /**
+ * Package exec runs external commands. It wraps os.StartProcess to make it
+ * easier to remap stdin and stdout, connect I/O with pipes, and do other
+ * adjustments.
+ * 
+ * Unlike the "system" library call from C and other languages, the
+ * os/exec package intentionally does not invoke the system shell and
+ * does not expand any glob patterns or handle other expansions,
+ * pipelines, or redirections typically done by shells. The package
+ * behaves more like C's "exec" family of functions. To expand glob
+ * patterns, either call the shell directly, taking care to escape any
+ * dangerous input, or use the path/filepath package's Glob function.
+ * To expand environment variables, use package os's ExpandEnv.
+ * 
+ * Note that the examples in this package assume a Unix system.
+ * They may not run on Windows, and they do not run in the Go Playground
+ * used by golang.org and godoc.org.
+ * 
+ * # Executables in the current directory
+ * 
+ * The functions Command and LookPath look for a program
+ * in the directories listed in the current path, following the
+ * conventions of the host operating system.
+ * Operating systems have for decades included the current
+ * directory in this search, sometimes implicitly and sometimes
+ * configured explicitly that way by default.
+ * Modern practice is that including the current directory
+ * is usually unexpected and often leads to security problems.
+ * 
+ * To avoid those security problems, as of Go 1.19, this package will not resolve a program
+ * using an implicit or explicit path entry relative to the current directory.
+ * That is, if you run exec.LookPath("go"), it will not successfully return
+ * ./go on Unix nor .\go.exe on Windows, no matter how the path is configured.
+ * Instead, if the usual path algorithms would result in that answer,
+ * these functions return an error err satisfying errors.Is(err, ErrDot).
+ * 
+ * For example, consider these two program snippets:
+ * 
+ * ```
+ * 	path, err := exec.LookPath("prog")
+ * 	if err != nil {
+ * 		log.Fatal(err)
+ * 	}
+ * 	use(path)
+ * ```
+ * 
+ * and
+ * 
+ * ```
+ * 	cmd := exec.Command("prog")
+ * 	if err := cmd.Run(); err != nil {
+ * 		log.Fatal(err)
+ * 	}
+ * ```
+ * 
+ * These will not find and run ./prog or .\prog.exe,
+ * no matter how the current path is configured.
+ * 
+ * Code that always wants to run a program from the current directory
+ * can be rewritten to say "./prog" instead of "prog".
+ * 
+ * Code that insists on including results from relative path entries
+ * can instead override the error using an errors.Is check:
+ * 
+ * ```
+ * 	path, err := exec.LookPath("prog")
+ * 	if errors.Is(err, exec.ErrDot) {
+ * 		err = nil
+ * 	}
+ * 	if err != nil {
+ * 		log.Fatal(err)
+ * 	}
+ * 	use(path)
+ * ```
+ * 
+ * and
+ * 
+ * ```
+ * 	cmd := exec.Command("prog")
+ * 	if errors.Is(cmd.Err, exec.ErrDot) {
+ * 		cmd.Err = nil
+ * 	}
+ * 	if err := cmd.Run(); err != nil {
+ * 		log.Fatal(err)
+ * 	}
+ * ```
+ * 
+ * Setting the environment variable GODEBUG=execerrdot=0
+ * disables generation of ErrDot entirely, temporarily restoring the pre-Go 1.19
+ * behavior for programs that are unable to apply more targeted fixes.
+ * A future version of Go may remove support for this variable.
+ * 
+ * Before adding such overrides, make sure you understand the
+ * security implications of doing so.
+ * See https://go.dev/blog/path-security for more information.
+ */
+namespace exec {
+ /**
+  * Cmd represents an external command being prepared or run.
+  * 
+  * A Cmd cannot be reused after calling its Run, Output or CombinedOutput
+  * methods.
+  */
+ interface Cmd {
+  /**
+   * Path is the path of the command to run.
+   * 
+   * This is the only field that must be set to a non-zero
+   * value. If Path is relative, it is evaluated relative
+   * to Dir.
+   */
+  path: string
+  /**
+   * Args holds command line arguments, including the command as Args[0].
+   * If the Args field is empty or nil, Run uses {Path}.
+   * 
+   * In typical use, both Path and Args are set by calling Command.
+   */
+  args: Array<string>
+  /**
+   * Env specifies the environment of the process.
+   * Each entry is of the form "key=value".
+   * If Env is nil, the new process uses the current process's
+   * environment.
+   * If Env contains duplicate environment keys, only the last
+   * value in the slice for each duplicate key is used.
+   * As a special case on Windows, SYSTEMROOT is always added if
+   * missing and not explicitly set to the empty string.
+   */
+  env: Array<string>
+  /**
+   * Dir specifies the working directory of the command.
+   * If Dir is the empty string, Run runs the command in the
+   * calling process's current directory.
+   */
+  dir: string
+  /**
+   * Stdin specifies the process's standard input.
+   * 
+   * If Stdin is nil, the process reads from the null device (os.DevNull).
+   * 
+   * If Stdin is an *os.File, the process's standard input is connected
+   * directly to that file.
+   * 
+   * Otherwise, during the execution of the command a separate
+   * goroutine reads from Stdin and delivers that data to the command
+   * over a pipe. In this case, Wait does not complete until the goroutine
+   * stops copying, either because it has reached the end of Stdin
+   * (EOF or a read error), or because writing to the pipe returned an error,
+   * or because a nonzero WaitDelay was set and expired.
+   */
+  stdin: io.Reader
+  /**
+   * Stdout and Stderr specify the process's standard output and error.
+   * 
+   * If either is nil, Run connects the corresponding file descriptor
+   * to the null device (os.DevNull).
+   * 
+   * If either is an *os.File, the corresponding output from the process
+   * is connected directly to that file.
+   * 
+   * Otherwise, during the execution of the command a separate goroutine
+   * reads from the process over a pipe and delivers that data to the
+   * corresponding Writer. In this case, Wait does not complete until the
+   * goroutine reaches EOF or encounters an error or a nonzero WaitDelay
+   * expires.
+   * 
+   * If Stdout and Stderr are the same writer, and have a type that can
+   * be compared with ==, at most one goroutine at a time will call Write.
+   */
+  stdout: io.Writer
+  stderr: io.Writer
+  /**
+   * ExtraFiles specifies additional open files to be inherited by the
+   * new process. It does not include standard input, standard output, or
+   * standard error. If non-nil, entry i becomes file descriptor 3+i.
+   * 
+   * ExtraFiles is not supported on Windows.
+   */
+  extraFiles: Array<(os.File | undefined)>
+  /**
+   * SysProcAttr holds optional, operating system-specific attributes.
+   * Run passes it to os.StartProcess as the os.ProcAttr's Sys field.
+   */
+  sysProcAttr?: syscall.SysProcAttr
+  /**
+   * Process is the underlying process, once started.
+   */
+  process?: os.Process
+  /**
+   * ProcessState contains information about an exited process.
+   * If the process was started successfully, Wait or Run will
+   * populate its ProcessState when the command completes.
+   */
+  processState?: os.ProcessState
+  err: Error // LookPath error, if any.
+  /**
+   * If Cancel is non-nil, the command must have been created with
+   * CommandContext and Cancel will be called when the command's
+   * Context is done. By default, CommandContext sets Cancel to
+   * call the Kill method on the command's Process.
+   * 
+   * Typically a custom Cancel will send a signal to the command's
+   * Process, but it may instead take other actions to initiate cancellation,
+   * such as closing a stdin or stdout pipe or sending a shutdown request on a
+   * network socket.
+   * 
+   * If the command exits with a success status after Cancel is
+   * called, and Cancel does not return an error equivalent to
+   * os.ErrProcessDone, then Wait and similar methods will return a non-nil
+   * error: either an error wrapping the one returned by Cancel,
+   * or the error from the Context.
+   * (If the command exits with a non-success status, or Cancel
+   * returns an error that wraps os.ErrProcessDone, Wait and similar methods
+   * continue to return the command's usual exit status.)
+   * 
+   * If Cancel is set to nil, nothing will happen immediately when the command's
+   * Context is done, but a nonzero WaitDelay will still take effect. That may
+   * be useful, for example, to work around deadlocks in commands that do not
+   * support shutdown signals but are expected to always finish quickly.
+   * 
+   * Cancel will not be called if Start returns a non-nil error.
+   */
+  cancel: () => void
+  /**
+   * If WaitDelay is non-zero, it bounds the time spent waiting on two sources
+   * of unexpected delay in Wait: a child process that fails to exit after the
+   * associated Context is canceled, and a child process that exits but leaves
+   * its I/O pipes unclosed.
+   * 
+   * The WaitDelay timer starts when either the associated Context is done or a
+   * call to Wait observes that the child process has exited, whichever occurs
+   * first. When the delay has elapsed, the command shuts down the child process
+   * and/or its I/O pipes.
+   * 
+   * If the child process has failed to exit — perhaps because it ignored or
+   * failed to receive a shutdown signal from a Cancel function, or because no
+   * Cancel function was set — then it will be terminated using os.Process.Kill.
+   * 
+   * Then, if the I/O pipes communicating with the child process are still open,
+   * those pipes are closed in order to unblock any goroutines currently blocked
+   * on Read or Write calls.
+   * 
+   * If pipes are closed due to WaitDelay, no Cancel call has occurred,
+   * and the command has otherwise exited with a successful status, Wait and
+   * similar methods will return ErrWaitDelay instead of nil.
+   * 
+   * If WaitDelay is zero (the default), I/O pipes will be read until EOF,
+   * which might not occur until orphaned subprocesses of the command have
+   * also closed their descriptors for the pipes.
+   */
+  waitDelay: time.Duration
+ }
+ interface Cmd {
+  /**
+   * String returns a human-readable description of c.
+   * It is intended only for debugging.
+   * In particular, it is not suitable for use as input to a shell.
+   * The output of String may vary across Go releases.
+   */
+  string(): string
+ }
+ interface Cmd {
+  /**
+   * Run starts the specified command and waits for it to complete.
+   * 
+   * The returned error is nil if the command runs, has no problems
+   * copying stdin, stdout, and stderr, and exits with a zero exit
+   * status.
+   * 
+   * If the command starts but does not complete successfully, the error is of
+   * type *ExitError. Other error types may be returned for other situations.
+   * 
+   * If the calling goroutine has locked the operating system thread
+   * with runtime.LockOSThread and modified any inheritable OS-level
+   * thread state (for example, Linux or Plan 9 name spaces), the new
+   * process will inherit the caller's thread state.
+   */
+  run(): void
+ }
+ interface Cmd {
+  /**
+   * Start starts the specified command but does not wait for it to complete.
+   * 
+   * If Start returns successfully, the c.Process field will be set.
+   * 
+   * After a successful call to Start the Wait method must be called in
+   * order to release associated system resources.
+   */
+  start(): void
+ }
+ interface Cmd {
+  /**
+   * Wait waits for the command to exit and waits for any copying to
+   * stdin or copying from stdout or stderr to complete.
+   * 
+   * The command must have been started by Start.
+   * 
+   * The returned error is nil if the command runs, has no problems
+   * copying stdin, stdout, and stderr, and exits with a zero exit
+   * status.
+   * 
+   * If the command fails to run or doesn't complete successfully, the
+   * error is of type *ExitError. Other error types may be
+   * returned for I/O problems.
+   * 
+   * If any of c.Stdin, c.Stdout or c.Stderr are not an *os.File, Wait also waits
+   * for the respective I/O loop copying to or from the process to complete.
+   * 
+   * Wait releases any resources associated with the Cmd.
+   */
+  wait(): void
+ }
+ interface Cmd {
+  /**
+   * Output runs the command and returns its standard output.
+   * Any returned error will usually be of type *ExitError.
+   * If c.Stderr was nil, Output populates ExitError.Stderr.
+   */
+  output(): string|Array<number>
+ }
+ interface Cmd {
+  /**
+   * CombinedOutput runs the command and returns its combined standard
+   * output and standard error.
+   */
+  combinedOutput(): string|Array<number>
+ }
+ interface Cmd {
+  /**
+   * StdinPipe returns a pipe that will be connected to the command's
+   * standard input when the command starts.
+   * The pipe will be closed automatically after Wait sees the command exit.
+   * A caller need only call Close to force the pipe to close sooner.
+   * For example, if the command being run will not exit until standard input
+   * is closed, the caller must close the pipe.
+   */
+  stdinPipe(): io.WriteCloser
+ }
+ interface Cmd {
+  /**
+   * StdoutPipe returns a pipe that will be connected to the command's
+   * standard output when the command starts.
+   * 
+   * Wait will close the pipe after seeing the command exit, so most callers
+   * need not close the pipe themselves. It is thus incorrect to call Wait
+   * before all reads from the pipe have completed.
+   * For the same reason, it is incorrect to call Run when using StdoutPipe.
+   * See the example for idiomatic usage.
+   */
+  stdoutPipe(): io.ReadCloser
+ }
+ interface Cmd {
+  /**
+   * StderrPipe returns a pipe that will be connected to the command's
+   * standard error when the command starts.
+   * 
+   * Wait will close the pipe after seeing the command exit, so most callers
+   * need not close the pipe themselves. It is thus incorrect to call Wait
+   * before all reads from the pipe have completed.
+   * For the same reason, it is incorrect to use Run when using StderrPipe.
+   * See the StdoutPipe example for idiomatic usage.
+   */
+  stderrPipe(): io.ReadCloser
+ }
+ interface Cmd {
+  /**
+   * Environ returns a copy of the environment in which the command would be run
+   * as it is currently configured.
+   */
+  environ(): Array<string>
+ }
+}
+
+/**
+ * Package jwt is a Go implementation of JSON Web Tokens: http://self-issued.info/docs/draft-jones-json-web-token.html
+ * 
+ * See README.md for more info.
+ */
+namespace jwt {
+ /**
+  * MapClaims is a claims type that uses the map[string]interface{} for JSON decoding.
+  * This is the default claims type if you don't supply one
+  */
+ interface MapClaims extends _TygojaDict{}
+ interface MapClaims {
+  /**
+   * VerifyAudience Compares the aud claim against cmp.
+   * If required is false, this method will return true if the value matches or is unset
+   */
+  verifyAudience(cmp: string, req: boolean): boolean
+ }
+ interface MapClaims {
+  /**
+   * VerifyExpiresAt compares the exp claim against cmp (cmp <= exp).
+   * If req is false, it will return true, if exp is unset.
+   */
+  verifyExpiresAt(cmp: number, req: boolean): boolean
+ }
+ interface MapClaims {
+  /**
+   * VerifyIssuedAt compares the exp claim against cmp (cmp >= iat).
+   * If req is false, it will return true, if iat is unset.
+   */
+  verifyIssuedAt(cmp: number, req: boolean): boolean
+ }
+ interface MapClaims {
+  /**
+   * VerifyNotBefore compares the nbf claim against cmp (cmp >= nbf).
+   * If req is false, it will return true, if nbf is unset.
+   */
+  verifyNotBefore(cmp: number, req: boolean): boolean
+ }
+ interface MapClaims {
+  /**
+   * VerifyIssuer compares the iss claim against cmp.
+   * If required is false, this method will return true if the value matches or is unset
+   */
+  verifyIssuer(cmp: string, req: boolean): boolean
+ }
+ interface MapClaims {
+  /**
+   * Valid validates time based claims "exp, iat, nbf".
+   * There is no accounting for clock skew.
+   * As well, if any of the above claims are not in the token, it will still
+   * be considered a valid claim.
+   */
+  valid(): void
+ }
+}
+
+/**
  * Package blob provides an easy and portable way to interact with blobs
  * within a storage location. Subpackages contain driver implementations of
  * blob for supported services.
@@ -10482,728 +10908,73 @@ namespace blob {
 }
 
 /**
- * Package sql provides a generic interface around SQL (or SQL-like)
- * databases.
- * 
- * The sql package must be used in conjunction with a database driver.
- * See https://golang.org/s/sqldrivers for a list of drivers.
- * 
- * Drivers that do not support context cancellation will not return until
- * after the query is completed.
- * 
- * For usage examples, see the wiki page at
- * https://golang.org/s/sqlwiki.
+ * Package types implements some commonly used db serializable types
+ * like datetime, json, etc.
  */
-namespace sql {
+namespace types {
  /**
-  * TxOptions holds the transaction options to be used in DB.BeginTx.
+  * JsonArray defines a slice that is safe for json and db read/write.
   */
- interface TxOptions {
+ interface JsonArray<T> extends Array<T>{}
+ interface JsonArray<T> {
   /**
-   * Isolation is the transaction isolation level.
-   * If zero, the driver or database's default level is used.
+   * MarshalJSON implements the [json.Marshaler] interface.
    */
-  isolation: IsolationLevel
-  readOnly: boolean
+  marshalJSON(): string|Array<number>
  }
- /**
-  * DB is a database handle representing a pool of zero or more
-  * underlying connections. It's safe for concurrent use by multiple
-  * goroutines.
-  * 
-  * The sql package creates and frees connections automatically; it
-  * also maintains a free pool of idle connections. If the database has
-  * a concept of per-connection state, such state can be reliably observed
-  * within a transaction (Tx) or connection (Conn). Once DB.Begin is called, the
-  * returned Tx is bound to a single connection. Once Commit or
-  * Rollback is called on the transaction, that transaction's
-  * connection is returned to DB's idle connection pool. The pool size
-  * can be controlled with SetMaxIdleConns.
-  */
- interface DB {
- }
- interface DB {
+ interface JsonArray<T> {
   /**
-   * PingContext verifies a connection to the database is still alive,
-   * establishing a connection if necessary.
+   * Value implements the [driver.Valuer] interface.
    */
-  pingContext(ctx: context.Context): void
+  value(): any
  }
- interface DB {
+ interface JsonArray<T> {
   /**
-   * Ping verifies a connection to the database is still alive,
-   * establishing a connection if necessary.
-   * 
-   * Ping uses context.Background internally; to specify the context, use
-   * PingContext.
+   * Scan implements [sql.Scanner] interface to scan the provided value
+   * into the current JsonArray[T] instance.
    */
-  ping(): void
- }
- interface DB {
-  /**
-   * Close closes the database and prevents new queries from starting.
-   * Close then waits for all queries that have started processing on the server
-   * to finish.
-   * 
-   * It is rare to Close a DB, as the DB handle is meant to be
-   * long-lived and shared between many goroutines.
-   */
-  close(): void
- }
- interface DB {
-  /**
-   * SetMaxIdleConns sets the maximum number of connections in the idle
-   * connection pool.
-   * 
-   * If MaxOpenConns is greater than 0 but less than the new MaxIdleConns,
-   * then the new MaxIdleConns will be reduced to match the MaxOpenConns limit.
-   * 
-   * If n <= 0, no idle connections are retained.
-   * 
-   * The default max idle connections is currently 2. This may change in
-   * a future release.
-   */
-  setMaxIdleConns(n: number): void
- }
- interface DB {
-  /**
-   * SetMaxOpenConns sets the maximum number of open connections to the database.
-   * 
-   * If MaxIdleConns is greater than 0 and the new MaxOpenConns is less than
-   * MaxIdleConns, then MaxIdleConns will be reduced to match the new
-   * MaxOpenConns limit.
-   * 
-   * If n <= 0, then there is no limit on the number of open connections.
-   * The default is 0 (unlimited).
-   */
-  setMaxOpenConns(n: number): void
- }
- interface DB {
-  /**
-   * SetConnMaxLifetime sets the maximum amount of time a connection may be reused.
-   * 
-   * Expired connections may be closed lazily before reuse.
-   * 
-   * If d <= 0, connections are not closed due to a connection's age.
-   */
-  setConnMaxLifetime(d: time.Duration): void
- }
- interface DB {
-  /**
-   * SetConnMaxIdleTime sets the maximum amount of time a connection may be idle.
-   * 
-   * Expired connections may be closed lazily before reuse.
-   * 
-   * If d <= 0, connections are not closed due to a connection's idle time.
-   */
-  setConnMaxIdleTime(d: time.Duration): void
- }
- interface DB {
-  /**
-   * Stats returns database statistics.
-   */
-  stats(): DBStats
- }
- interface DB {
-  /**
-   * PrepareContext creates a prepared statement for later queries or executions.
-   * Multiple queries or executions may be run concurrently from the
-   * returned statement.
-   * The caller must call the statement's Close method
-   * when the statement is no longer needed.
-   * 
-   * The provided context is used for the preparation of the statement, not for the
-   * execution of the statement.
-   */
-  prepareContext(ctx: context.Context, query: string): (Stmt)
- }
- interface DB {
-  /**
-   * Prepare creates a prepared statement for later queries or executions.
-   * Multiple queries or executions may be run concurrently from the
-   * returned statement.
-   * The caller must call the statement's Close method
-   * when the statement is no longer needed.
-   * 
-   * Prepare uses context.Background internally; to specify the context, use
-   * PrepareContext.
-   */
-  prepare(query: string): (Stmt)
- }
- interface DB {
-  /**
-   * ExecContext executes a query without returning any rows.
-   * The args are for any placeholder parameters in the query.
-   */
-  execContext(ctx: context.Context, query: string, ...args: any[]): Result
- }
- interface DB {
-  /**
-   * Exec executes a query without returning any rows.
-   * The args are for any placeholder parameters in the query.
-   * 
-   * Exec uses context.Background internally; to specify the context, use
-   * ExecContext.
-   */
-  exec(query: string, ...args: any[]): Result
- }
- interface DB {
-  /**
-   * QueryContext executes a query that returns rows, typically a SELECT.
-   * The args are for any placeholder parameters in the query.
-   */
-  queryContext(ctx: context.Context, query: string, ...args: any[]): (Rows)
- }
- interface DB {
-  /**
-   * Query executes a query that returns rows, typically a SELECT.
-   * The args are for any placeholder parameters in the query.
-   * 
-   * Query uses context.Background internally; to specify the context, use
-   * QueryContext.
-   */
-  query(query: string, ...args: any[]): (Rows)
- }
- interface DB {
-  /**
-   * QueryRowContext executes a query that is expected to return at most one row.
-   * QueryRowContext always returns a non-nil value. Errors are deferred until
-   * Row's Scan method is called.
-   * If the query selects no rows, the *Row's Scan will return ErrNoRows.
-   * Otherwise, the *Row's Scan scans the first selected row and discards
-   * the rest.
-   */
-  queryRowContext(ctx: context.Context, query: string, ...args: any[]): (Row)
- }
- interface DB {
-  /**
-   * QueryRow executes a query that is expected to return at most one row.
-   * QueryRow always returns a non-nil value. Errors are deferred until
-   * Row's Scan method is called.
-   * If the query selects no rows, the *Row's Scan will return ErrNoRows.
-   * Otherwise, the *Row's Scan scans the first selected row and discards
-   * the rest.
-   * 
-   * QueryRow uses context.Background internally; to specify the context, use
-   * QueryRowContext.
-   */
-  queryRow(query: string, ...args: any[]): (Row)
- }
- interface DB {
-  /**
-   * BeginTx starts a transaction.
-   * 
-   * The provided context is used until the transaction is committed or rolled back.
-   * If the context is canceled, the sql package will roll back
-   * the transaction. Tx.Commit will return an error if the context provided to
-   * BeginTx is canceled.
-   * 
-   * The provided TxOptions is optional and may be nil if defaults should be used.
-   * If a non-default isolation level is used that the driver doesn't support,
-   * an error will be returned.
-   */
-  beginTx(ctx: context.Context, opts: TxOptions): (Tx)
- }
- interface DB {
-  /**
-   * Begin starts a transaction. The default isolation level is dependent on
-   * the driver.
-   * 
-   * Begin uses context.Background internally; to specify the context, use
-   * BeginTx.
-   */
-  begin(): (Tx)
- }
- interface DB {
-  /**
-   * Driver returns the database's underlying driver.
-   */
-  driver(): any
- }
- interface DB {
-  /**
-   * Conn returns a single connection by either opening a new connection
-   * or returning an existing connection from the connection pool. Conn will
-   * block until either a connection is returned or ctx is canceled.
-   * Queries run on the same Conn will be run in the same database session.
-   * 
-   * Every Conn must be returned to the database pool after use by
-   * calling Conn.Close.
-   */
-  conn(ctx: context.Context): (Conn)
+  scan(value: any): void
  }
  /**
-  * Tx is an in-progress database transaction.
-  * 
-  * A transaction must end with a call to Commit or Rollback.
-  * 
-  * After a call to Commit or Rollback, all operations on the
-  * transaction fail with ErrTxDone.
-  * 
-  * The statements prepared for a transaction by calling
-  * the transaction's Prepare or Stmt methods are closed
-  * by the call to Commit or Rollback.
+  * JsonMap defines a map that is safe for json and db read/write.
   */
- interface Tx {
- }
- interface Tx {
+ interface JsonMap extends _TygojaDict{}
+ interface JsonMap {
   /**
-   * Commit commits the transaction.
+   * MarshalJSON implements the [json.Marshaler] interface.
    */
-  commit(): void
+  marshalJSON(): string|Array<number>
  }
- interface Tx {
+ interface JsonMap {
   /**
-   * Rollback aborts the transaction.
+   * Get retrieves a single value from the current JsonMap.
+   * 
+   * This helper was added primarily to assist the goja integration since custom map types
+   * don't have direct access to the map keys (https://pkg.go.dev/github.com/dop251/goja#hdr-Maps_with_methods).
    */
-  rollback(): void
+  get(key: string): any
  }
- interface Tx {
+ interface JsonMap {
   /**
-   * PrepareContext creates a prepared statement for use within a transaction.
+   * Set sets a single value in the current JsonMap.
    * 
-   * The returned statement operates within the transaction and will be closed
-   * when the transaction has been committed or rolled back.
-   * 
-   * To use an existing prepared statement on this transaction, see Tx.Stmt.
-   * 
-   * The provided context will be used for the preparation of the context, not
-   * for the execution of the returned statement. The returned statement
-   * will run in the transaction context.
+   * This helper was added primarily to assist the goja integration since custom map types
+   * don't have direct access to the map keys (https://pkg.go.dev/github.com/dop251/goja#hdr-Maps_with_methods).
    */
-  prepareContext(ctx: context.Context, query: string): (Stmt)
+  set(key: string, value: any): void
  }
- interface Tx {
+ interface JsonMap {
   /**
-   * Prepare creates a prepared statement for use within a transaction.
-   * 
-   * The returned statement operates within the transaction and will be closed
-   * when the transaction has been committed or rolled back.
-   * 
-   * To use an existing prepared statement on this transaction, see Tx.Stmt.
-   * 
-   * Prepare uses context.Background internally; to specify the context, use
-   * PrepareContext.
+   * Value implements the [driver.Valuer] interface.
    */
-  prepare(query: string): (Stmt)
+  value(): any
  }
- interface Tx {
+ interface JsonMap {
   /**
-   * StmtContext returns a transaction-specific prepared statement from
-   * an existing statement.
-   * 
-   * Example:
-   * 
-   * ```
-   * 	updateMoney, err := db.Prepare("UPDATE balance SET money=money+? WHERE id=?")
-   * 	...
-   * 	tx, err := db.Begin()
-   * 	...
-   * 	res, err := tx.StmtContext(ctx, updateMoney).Exec(123.45, 98293203)
-   * ```
-   * 
-   * The provided context is used for the preparation of the statement, not for the
-   * execution of the statement.
-   * 
-   * The returned statement operates within the transaction and will be closed
-   * when the transaction has been committed or rolled back.
+   * Scan implements [sql.Scanner] interface to scan the provided value
+   * into the current `JsonMap` instance.
    */
-  stmtContext(ctx: context.Context, stmt: Stmt): (Stmt)
- }
- interface Tx {
-  /**
-   * Stmt returns a transaction-specific prepared statement from
-   * an existing statement.
-   * 
-   * Example:
-   * 
-   * ```
-   * 	updateMoney, err := db.Prepare("UPDATE balance SET money=money+? WHERE id=?")
-   * 	...
-   * 	tx, err := db.Begin()
-   * 	...
-   * 	res, err := tx.Stmt(updateMoney).Exec(123.45, 98293203)
-   * ```
-   * 
-   * The returned statement operates within the transaction and will be closed
-   * when the transaction has been committed or rolled back.
-   * 
-   * Stmt uses context.Background internally; to specify the context, use
-   * StmtContext.
-   */
-  stmt(stmt: Stmt): (Stmt)
- }
- interface Tx {
-  /**
-   * ExecContext executes a query that doesn't return rows.
-   * For example: an INSERT and UPDATE.
-   */
-  execContext(ctx: context.Context, query: string, ...args: any[]): Result
- }
- interface Tx {
-  /**
-   * Exec executes a query that doesn't return rows.
-   * For example: an INSERT and UPDATE.
-   * 
-   * Exec uses context.Background internally; to specify the context, use
-   * ExecContext.
-   */
-  exec(query: string, ...args: any[]): Result
- }
- interface Tx {
-  /**
-   * QueryContext executes a query that returns rows, typically a SELECT.
-   */
-  queryContext(ctx: context.Context, query: string, ...args: any[]): (Rows)
- }
- interface Tx {
-  /**
-   * Query executes a query that returns rows, typically a SELECT.
-   * 
-   * Query uses context.Background internally; to specify the context, use
-   * QueryContext.
-   */
-  query(query: string, ...args: any[]): (Rows)
- }
- interface Tx {
-  /**
-   * QueryRowContext executes a query that is expected to return at most one row.
-   * QueryRowContext always returns a non-nil value. Errors are deferred until
-   * Row's Scan method is called.
-   * If the query selects no rows, the *Row's Scan will return ErrNoRows.
-   * Otherwise, the *Row's Scan scans the first selected row and discards
-   * the rest.
-   */
-  queryRowContext(ctx: context.Context, query: string, ...args: any[]): (Row)
- }
- interface Tx {
-  /**
-   * QueryRow executes a query that is expected to return at most one row.
-   * QueryRow always returns a non-nil value. Errors are deferred until
-   * Row's Scan method is called.
-   * If the query selects no rows, the *Row's Scan will return ErrNoRows.
-   * Otherwise, the *Row's Scan scans the first selected row and discards
-   * the rest.
-   * 
-   * QueryRow uses context.Background internally; to specify the context, use
-   * QueryRowContext.
-   */
-  queryRow(query: string, ...args: any[]): (Row)
- }
- /**
-  * Stmt is a prepared statement.
-  * A Stmt is safe for concurrent use by multiple goroutines.
-  * 
-  * If a Stmt is prepared on a Tx or Conn, it will be bound to a single
-  * underlying connection forever. If the Tx or Conn closes, the Stmt will
-  * become unusable and all operations will return an error.
-  * If a Stmt is prepared on a DB, it will remain usable for the lifetime of the
-  * DB. When the Stmt needs to execute on a new underlying connection, it will
-  * prepare itself on the new connection automatically.
-  */
- interface Stmt {
- }
- interface Stmt {
-  /**
-   * ExecContext executes a prepared statement with the given arguments and
-   * returns a Result summarizing the effect of the statement.
-   */
-  execContext(ctx: context.Context, ...args: any[]): Result
- }
- interface Stmt {
-  /**
-   * Exec executes a prepared statement with the given arguments and
-   * returns a Result summarizing the effect of the statement.
-   * 
-   * Exec uses context.Background internally; to specify the context, use
-   * ExecContext.
-   */
-  exec(...args: any[]): Result
- }
- interface Stmt {
-  /**
-   * QueryContext executes a prepared query statement with the given arguments
-   * and returns the query results as a *Rows.
-   */
-  queryContext(ctx: context.Context, ...args: any[]): (Rows)
- }
- interface Stmt {
-  /**
-   * Query executes a prepared query statement with the given arguments
-   * and returns the query results as a *Rows.
-   * 
-   * Query uses context.Background internally; to specify the context, use
-   * QueryContext.
-   */
-  query(...args: any[]): (Rows)
- }
- interface Stmt {
-  /**
-   * QueryRowContext executes a prepared query statement with the given arguments.
-   * If an error occurs during the execution of the statement, that error will
-   * be returned by a call to Scan on the returned *Row, which is always non-nil.
-   * If the query selects no rows, the *Row's Scan will return ErrNoRows.
-   * Otherwise, the *Row's Scan scans the first selected row and discards
-   * the rest.
-   */
-  queryRowContext(ctx: context.Context, ...args: any[]): (Row)
- }
- interface Stmt {
-  /**
-   * QueryRow executes a prepared query statement with the given arguments.
-   * If an error occurs during the execution of the statement, that error will
-   * be returned by a call to Scan on the returned *Row, which is always non-nil.
-   * If the query selects no rows, the *Row's Scan will return ErrNoRows.
-   * Otherwise, the *Row's Scan scans the first selected row and discards
-   * the rest.
-   * 
-   * Example usage:
-   * 
-   * ```
-   * 	var name string
-   * 	err := nameByUseridStmt.QueryRow(id).Scan(&name)
-   * ```
-   * 
-   * QueryRow uses context.Background internally; to specify the context, use
-   * QueryRowContext.
-   */
-  queryRow(...args: any[]): (Row)
- }
- interface Stmt {
-  /**
-   * Close closes the statement.
-   */
-  close(): void
- }
- /**
-  * Rows is the result of a query. Its cursor starts before the first row
-  * of the result set. Use Next to advance from row to row.
-  */
- interface Rows {
- }
- interface Rows {
-  /**
-   * Next prepares the next result row for reading with the Scan method. It
-   * returns true on success, or false if there is no next result row or an error
-   * happened while preparing it. Err should be consulted to distinguish between
-   * the two cases.
-   * 
-   * Every call to Scan, even the first one, must be preceded by a call to Next.
-   */
-  next(): boolean
- }
- interface Rows {
-  /**
-   * NextResultSet prepares the next result set for reading. It reports whether
-   * there is further result sets, or false if there is no further result set
-   * or if there is an error advancing to it. The Err method should be consulted
-   * to distinguish between the two cases.
-   * 
-   * After calling NextResultSet, the Next method should always be called before
-   * scanning. If there are further result sets they may not have rows in the result
-   * set.
-   */
-  nextResultSet(): boolean
- }
- interface Rows {
-  /**
-   * Err returns the error, if any, that was encountered during iteration.
-   * Err may be called after an explicit or implicit Close.
-   */
-  err(): void
- }
- interface Rows {
-  /**
-   * Columns returns the column names.
-   * Columns returns an error if the rows are closed.
-   */
-  columns(): Array<string>
- }
- interface Rows {
-  /**
-   * ColumnTypes returns column information such as column type, length,
-   * and nullable. Some information may not be available from some drivers.
-   */
-  columnTypes(): Array<(ColumnType | undefined)>
- }
- interface Rows {
-  /**
-   * Scan copies the columns in the current row into the values pointed
-   * at by dest. The number of values in dest must be the same as the
-   * number of columns in Rows.
-   * 
-   * Scan converts columns read from the database into the following
-   * common Go types and special types provided by the sql package:
-   * 
-   * ```
-   * 	*string
-   * 	*[]byte
-   * 	*int, *int8, *int16, *int32, *int64
-   * 	*uint, *uint8, *uint16, *uint32, *uint64
-   * 	*bool
-   * 	*float32, *float64
-   * 	*interface{}
-   * 	*RawBytes
-   * 	*Rows (cursor value)
-   * 	any type implementing Scanner (see Scanner docs)
-   * ```
-   * 
-   * In the most simple case, if the type of the value from the source
-   * column is an integer, bool or string type T and dest is of type *T,
-   * Scan simply assigns the value through the pointer.
-   * 
-   * Scan also converts between string and numeric types, as long as no
-   * information would be lost. While Scan stringifies all numbers
-   * scanned from numeric database columns into *string, scans into
-   * numeric types are checked for overflow. For example, a float64 with
-   * value 300 or a string with value "300" can scan into a uint16, but
-   * not into a uint8, though float64(255) or "255" can scan into a
-   * uint8. One exception is that scans of some float64 numbers to
-   * strings may lose information when stringifying. In general, scan
-   * floating point columns into *float64.
-   * 
-   * If a dest argument has type *[]byte, Scan saves in that argument a
-   * copy of the corresponding data. The copy is owned by the caller and
-   * can be modified and held indefinitely. The copy can be avoided by
-   * using an argument of type *RawBytes instead; see the documentation
-   * for RawBytes for restrictions on its use.
-   * 
-   * If an argument has type *interface{}, Scan copies the value
-   * provided by the underlying driver without conversion. When scanning
-   * from a source value of type []byte to *interface{}, a copy of the
-   * slice is made and the caller owns the result.
-   * 
-   * Source values of type time.Time may be scanned into values of type
-   * *time.Time, *interface{}, *string, or *[]byte. When converting to
-   * the latter two, time.RFC3339Nano is used.
-   * 
-   * Source values of type bool may be scanned into types *bool,
-   * *interface{}, *string, *[]byte, or *RawBytes.
-   * 
-   * For scanning into *bool, the source may be true, false, 1, 0, or
-   * string inputs parseable by strconv.ParseBool.
-   * 
-   * Scan can also convert a cursor returned from a query, such as
-   * "select cursor(select * from my_table) from dual", into a
-   * *Rows value that can itself be scanned from. The parent
-   * select query will close any cursor *Rows if the parent *Rows is closed.
-   * 
-   * If any of the first arguments implementing Scanner returns an error,
-   * that error will be wrapped in the returned error.
-   */
-  scan(...dest: any[]): void
- }
- interface Rows {
-  /**
-   * Close closes the Rows, preventing further enumeration. If Next is called
-   * and returns false and there are no further result sets,
-   * the Rows are closed automatically and it will suffice to check the
-   * result of Err. Close is idempotent and does not affect the result of Err.
-   */
-  close(): void
- }
- /**
-  * A Result summarizes an executed SQL command.
-  */
- interface Result {
-  [key:string]: any;
-  /**
-   * LastInsertId returns the integer generated by the database
-   * in response to a command. Typically this will be from an
-   * "auto increment" column when inserting a new row. Not all
-   * databases support this feature, and the syntax of such
-   * statements varies.
-   */
-  lastInsertId(): number
-  /**
-   * RowsAffected returns the number of rows affected by an
-   * update, insert, or delete. Not every database or database
-   * driver may support this.
-   */
-  rowsAffected(): number
- }
-}
-
-namespace settings {
- // @ts-ignore
- import validation = ozzo_validation
- /**
-  * Settings defines common app configuration options.
-  */
- interface Settings {
-  meta: MetaConfig
-  logs: LogsConfig
-  smtp: SmtpConfig
-  s3: S3Config
-  backups: BackupsConfig
-  adminAuthToken: TokenConfig
-  adminPasswordResetToken: TokenConfig
-  adminFileToken: TokenConfig
-  recordAuthToken: TokenConfig
-  recordPasswordResetToken: TokenConfig
-  recordEmailChangeToken: TokenConfig
-  recordVerificationToken: TokenConfig
-  recordFileToken: TokenConfig
-  /**
-   * Deprecated: Will be removed in v0.9+
-   */
-  emailAuth: EmailAuthConfig
-  googleAuth: AuthProviderConfig
-  facebookAuth: AuthProviderConfig
-  githubAuth: AuthProviderConfig
-  gitlabAuth: AuthProviderConfig
-  discordAuth: AuthProviderConfig
-  twitterAuth: AuthProviderConfig
-  microsoftAuth: AuthProviderConfig
-  spotifyAuth: AuthProviderConfig
-  kakaoAuth: AuthProviderConfig
-  twitchAuth: AuthProviderConfig
-  stravaAuth: AuthProviderConfig
-  giteeAuth: AuthProviderConfig
-  livechatAuth: AuthProviderConfig
-  giteaAuth: AuthProviderConfig
-  oidcAuth: AuthProviderConfig
-  oidc2Auth: AuthProviderConfig
-  oidc3Auth: AuthProviderConfig
-  appleAuth: AuthProviderConfig
-  instagramAuth: AuthProviderConfig
-  vkAuth: AuthProviderConfig
-  yandexAuth: AuthProviderConfig
-  patreonAuth: AuthProviderConfig
-  mailcowAuth: AuthProviderConfig
-  bitbucketAuth: AuthProviderConfig
- }
- interface Settings {
-  /**
-   * Validate makes Settings validatable by implementing [validation.Validatable] interface.
-   */
-  validate(): void
- }
- interface Settings {
-  /**
-   * Merge merges `other` settings into the current one.
-   */
-  merge(other: Settings): void
- }
- interface Settings {
-  /**
-   * Clone creates a new deep copy of the current settings.
-   */
-  clone(): (Settings)
- }
- interface Settings {
-  /**
-   * RedactClone creates a new deep copy of the current settings,
-   * while replacing the secret values with `******`.
-   */
-  redactClone(): (Settings)
- }
- interface Settings {
-  /**
-   * NamedAuthProviderConfigs returns a map with all registered OAuth2
-   * provider configurations (indexed by their name identifier).
-   */
-  namedAuthProviderConfigs(): _TygojaDict
+  scan(value: any): void
  }
 }
 
@@ -11317,8 +11088,8 @@ namespace schema {
  * Package models implements all PocketBase DB models and DTOs.
  */
 namespace models {
- type _subzLkTo = BaseModel
- interface Admin extends _subzLkTo {
+ type _subwglTl = BaseModel
+ interface Admin extends _subwglTl {
   avatar: number
   email: string
   tokenKey: string
@@ -11353,8 +11124,8 @@ namespace models {
  }
  // @ts-ignore
  import validation = ozzo_validation
- type _subOkgYl = BaseModel
- interface Collection extends _subOkgYl {
+ type _subupPlN = BaseModel
+ interface Collection extends _subupPlN {
   name: string
   type: string
   system: boolean
@@ -11447,8 +11218,8 @@ namespace models {
    */
   setOptions(typedOptions: any): void
  }
- type _subBwOeu = BaseModel
- interface ExternalAuth extends _subBwOeu {
+ type _subwkJto = BaseModel
+ interface ExternalAuth extends _subwkJto {
   collectionId: string
   recordId: string
   provider: string
@@ -11457,8 +11228,8 @@ namespace models {
  interface ExternalAuth {
   tableName(): string
  }
- type _subbCISc = BaseModel
- interface Record extends _subbCISc {
+ type _subCVhtV = BaseModel
+ interface Record extends _subCVhtV {
  }
  interface Record {
   /**
@@ -11853,6 +11624,217 @@ namespace models {
    * HasModifierDataKeys loosely checks if the current struct has any modifier Data keys.
    */
   hasModifierDataKeys(): boolean
+ }
+}
+
+namespace auth {
+ /**
+  * AuthUser defines a standardized oauth2 user data structure.
+  */
+ interface AuthUser {
+  id: string
+  name: string
+  username: string
+  email: string
+  avatarUrl: string
+  accessToken: string
+  refreshToken: string
+  expiry: types.DateTime
+  rawUser: _TygojaDict
+ }
+ /**
+  * Provider defines a common interface for an OAuth2 client.
+  */
+ interface Provider {
+  [key:string]: any;
+  /**
+   * Context returns the context associated with the provider (if any).
+   */
+  context(): context.Context
+  /**
+   * SetContext assigns the specified context to the current provider.
+   */
+  setContext(ctx: context.Context): void
+  /**
+   * PKCE indicates whether the provider can use the PKCE flow.
+   */
+  pkce(): boolean
+  /**
+   * SetPKCE toggles the state whether the provider can use the PKCE flow or not.
+   */
+  setPKCE(enable: boolean): void
+  /**
+   * DisplayName usually returns provider name as it is officially written
+   * and it could be used directly in the UI.
+   */
+  displayName(): string
+  /**
+   * SetDisplayName sets the provider's display name.
+   */
+  setDisplayName(displayName: string): void
+  /**
+   * Scopes returns the provider access permissions that will be requested.
+   */
+  scopes(): Array<string>
+  /**
+   * SetScopes sets the provider access permissions that will be requested later.
+   */
+  setScopes(scopes: Array<string>): void
+  /**
+   * ClientId returns the provider client's app ID.
+   */
+  clientId(): string
+  /**
+   * SetClientId sets the provider client's ID.
+   */
+  setClientId(clientId: string): void
+  /**
+   * ClientSecret returns the provider client's app secret.
+   */
+  clientSecret(): string
+  /**
+   * SetClientSecret sets the provider client's app secret.
+   */
+  setClientSecret(secret: string): void
+  /**
+   * RedirectUrl returns the end address to redirect the user
+   * going through the OAuth flow.
+   */
+  redirectUrl(): string
+  /**
+   * SetRedirectUrl sets the provider's RedirectUrl.
+   */
+  setRedirectUrl(url: string): void
+  /**
+   * AuthUrl returns the provider's authorization service url.
+   */
+  authUrl(): string
+  /**
+   * SetAuthUrl sets the provider's AuthUrl.
+   */
+  setAuthUrl(url: string): void
+  /**
+   * TokenUrl returns the provider's token exchange service url.
+   */
+  tokenUrl(): string
+  /**
+   * SetTokenUrl sets the provider's TokenUrl.
+   */
+  setTokenUrl(url: string): void
+  /**
+   * UserApiUrl returns the provider's user info api url.
+   */
+  userApiUrl(): string
+  /**
+   * SetUserApiUrl sets the provider's UserApiUrl.
+   */
+  setUserApiUrl(url: string): void
+  /**
+   * Client returns an http client using the provided token.
+   */
+  client(token: oauth2.Token): (any)
+  /**
+   * BuildAuthUrl returns a URL to the provider's consent page
+   * that asks for permissions for the required scopes explicitly.
+   */
+  buildAuthUrl(state: string, ...opts: oauth2.AuthCodeOption[]): string
+  /**
+   * FetchToken converts an authorization code to token.
+   */
+  fetchToken(code: string, ...opts: oauth2.AuthCodeOption[]): (oauth2.Token)
+  /**
+   * FetchRawUserData requests and marshalizes into `result` the
+   * the OAuth user api response.
+   */
+  fetchRawUserData(token: oauth2.Token): string|Array<number>
+  /**
+   * FetchAuthUser is similar to FetchRawUserData, but normalizes and
+   * marshalizes the user api response into a standardized AuthUser struct.
+   */
+  fetchAuthUser(token: oauth2.Token): (AuthUser)
+ }
+}
+
+namespace settings {
+ // @ts-ignore
+ import validation = ozzo_validation
+ /**
+  * Settings defines common app configuration options.
+  */
+ interface Settings {
+  meta: MetaConfig
+  logs: LogsConfig
+  smtp: SmtpConfig
+  s3: S3Config
+  backups: BackupsConfig
+  adminAuthToken: TokenConfig
+  adminPasswordResetToken: TokenConfig
+  adminFileToken: TokenConfig
+  recordAuthToken: TokenConfig
+  recordPasswordResetToken: TokenConfig
+  recordEmailChangeToken: TokenConfig
+  recordVerificationToken: TokenConfig
+  recordFileToken: TokenConfig
+  /**
+   * Deprecated: Will be removed in v0.9+
+   */
+  emailAuth: EmailAuthConfig
+  googleAuth: AuthProviderConfig
+  facebookAuth: AuthProviderConfig
+  githubAuth: AuthProviderConfig
+  gitlabAuth: AuthProviderConfig
+  discordAuth: AuthProviderConfig
+  twitterAuth: AuthProviderConfig
+  microsoftAuth: AuthProviderConfig
+  spotifyAuth: AuthProviderConfig
+  kakaoAuth: AuthProviderConfig
+  twitchAuth: AuthProviderConfig
+  stravaAuth: AuthProviderConfig
+  giteeAuth: AuthProviderConfig
+  livechatAuth: AuthProviderConfig
+  giteaAuth: AuthProviderConfig
+  oidcAuth: AuthProviderConfig
+  oidc2Auth: AuthProviderConfig
+  oidc3Auth: AuthProviderConfig
+  appleAuth: AuthProviderConfig
+  instagramAuth: AuthProviderConfig
+  vkAuth: AuthProviderConfig
+  yandexAuth: AuthProviderConfig
+  patreonAuth: AuthProviderConfig
+  mailcowAuth: AuthProviderConfig
+  bitbucketAuth: AuthProviderConfig
+ }
+ interface Settings {
+  /**
+   * Validate makes Settings validatable by implementing [validation.Validatable] interface.
+   */
+  validate(): void
+ }
+ interface Settings {
+  /**
+   * Merge merges `other` settings into the current one.
+   */
+  merge(other: Settings): void
+ }
+ interface Settings {
+  /**
+   * Clone creates a new deep copy of the current settings.
+   */
+  clone(): (Settings)
+ }
+ interface Settings {
+  /**
+   * RedactClone creates a new deep copy of the current settings,
+   * while replacing the secret values with `******`.
+   */
+  redactClone(): (Settings)
+ }
+ interface Settings {
+  /**
+   * NamedAuthProviderConfigs returns a map with all registered OAuth2
+   * provider configurations (indexed by their name identifier).
+   */
+  namedAuthProviderConfigs(): _TygojaDict
  }
 }
 
@@ -12503,6 +12485,886 @@ namespace daos {
    * provided view collection file.
    */
   findRecordByViewFile(viewCollectionNameOrId: string, fileFieldName: string, filename: string): (models.Record)
+ }
+}
+
+/**
+ * Package core is the backbone of PocketBase.
+ * 
+ * It defines the main PocketBase App interface and its base implementation.
+ */
+namespace core {
+ /**
+  * App defines the main PocketBase app interface.
+  */
+ interface App {
+  [key:string]: any;
+  /**
+   * Deprecated:
+   * This method may get removed in the near future.
+   * It is recommended to access the app db instance from app.Dao().DB() or
+   * if you want more flexibility - app.Dao().ConcurrentDB() and app.Dao().NonconcurrentDB().
+   * 
+   * DB returns the default app database instance.
+   */
+  db(): (dbx.DB)
+  /**
+   * Dao returns the default app Dao instance.
+   * 
+   * This Dao could operate only on the tables and models
+   * associated with the default app database. For example,
+   * trying to access the request logs table will result in error.
+   */
+  dao(): (daos.Dao)
+  /**
+   * Deprecated:
+   * This method may get removed in the near future.
+   * It is recommended to access the logs db instance from app.LogsDao().DB() or
+   * if you want more flexibility - app.LogsDao().ConcurrentDB() and app.LogsDao().NonconcurrentDB().
+   * 
+   * LogsDB returns the app logs database instance.
+   */
+  logsDB(): (dbx.DB)
+  /**
+   * LogsDao returns the app logs Dao instance.
+   * 
+   * This Dao could operate only on the tables and models
+   * associated with the logs database. For example, trying to access
+   * the users table from LogsDao will result in error.
+   */
+  logsDao(): (daos.Dao)
+  /**
+   * Logger returns the active app logger.
+   */
+  logger(): (slog.Logger)
+  /**
+   * DataDir returns the app data directory path.
+   */
+  dataDir(): string
+  /**
+   * EncryptionEnv returns the name of the app secret env key
+   * (used for settings encryption).
+   */
+  encryptionEnv(): string
+  /**
+   * IsDev returns whether the app is in dev mode.
+   */
+  isDev(): boolean
+  /**
+   * Settings returns the loaded app settings.
+   */
+  settings(): (settings.Settings)
+  /**
+   * Deprecated: Use app.Store() instead.
+   */
+  cache(): (store.Store<any>)
+  /**
+   * Store returns the app runtime store.
+   */
+  store(): (store.Store<any>)
+  /**
+   * SubscriptionsBroker returns the app realtime subscriptions broker instance.
+   */
+  subscriptionsBroker(): (subscriptions.Broker)
+  /**
+   * NewMailClient creates and returns a configured app mail client.
+   */
+  newMailClient(): mailer.Mailer
+  /**
+   * NewFilesystem creates and returns a configured filesystem.System instance
+   * for managing regular app files (eg. collection uploads).
+   * 
+   * NB! Make sure to call Close() on the returned result
+   * after you are done working with it.
+   */
+  newFilesystem(): (filesystem.System)
+  /**
+   * NewBackupsFilesystem creates and returns a configured filesystem.System instance
+   * for managing app backups.
+   * 
+   * NB! Make sure to call Close() on the returned result
+   * after you are done working with it.
+   */
+  newBackupsFilesystem(): (filesystem.System)
+  /**
+   * RefreshSettings reinitializes and reloads the stored application settings.
+   */
+  refreshSettings(): void
+  /**
+   * IsBootstrapped checks if the application was initialized
+   * (aka. whether Bootstrap() was called).
+   */
+  isBootstrapped(): boolean
+  /**
+   * Bootstrap takes care for initializing the application
+   * (open db connections, load settings, etc.).
+   * 
+   * It will call ResetBootstrapState() if the application was already bootstrapped.
+   */
+  bootstrap(): void
+  /**
+   * ResetBootstrapState takes care for releasing initialized app resources
+   * (eg. closing db connections).
+   */
+  resetBootstrapState(): void
+  /**
+   * CreateBackup creates a new backup of the current app pb_data directory.
+   * 
+   * Backups can be stored on S3 if it is configured in app.Settings().Backups.
+   * 
+   * Please refer to the godoc of the specific CoreApp implementation
+   * for details on the backup procedures.
+   */
+  createBackup(ctx: context.Context, name: string): void
+  /**
+   * RestoreBackup restores the backup with the specified name and restarts
+   * the current running application process.
+   * 
+   * The safely perform the restore it is recommended to have free disk space
+   * for at least 2x the size of the restored pb_data backup.
+   * 
+   * Please refer to the godoc of the specific CoreApp implementation
+   * for details on the restore procedures.
+   * 
+   * NB! This feature is experimental and currently is expected to work only on UNIX based systems.
+   */
+  restoreBackup(ctx: context.Context, name: string): void
+  /**
+   * Restart restarts the current running application process.
+   * 
+   * Currently it is relying on execve so it is supported only on UNIX based systems.
+   */
+  restart(): void
+  /**
+   * OnBeforeBootstrap hook is triggered before initializing the main
+   * application resources (eg. before db open and initial settings load).
+   */
+  onBeforeBootstrap(): (hook.Hook<BootstrapEvent | undefined>)
+  /**
+   * OnAfterBootstrap hook is triggered after initializing the main
+   * application resources (eg. after db open and initial settings load).
+   */
+  onAfterBootstrap(): (hook.Hook<BootstrapEvent | undefined>)
+  /**
+   * OnBeforeServe hook is triggered before serving the internal router (echo),
+   * allowing you to adjust its options and attach new routes or middlewares.
+   */
+  onBeforeServe(): (hook.Hook<ServeEvent | undefined>)
+  /**
+   * OnBeforeApiError hook is triggered right before sending an error API
+   * response to the client, allowing you to further modify the error data
+   * or to return a completely different API response.
+   */
+  onBeforeApiError(): (hook.Hook<ApiErrorEvent | undefined>)
+  /**
+   * OnAfterApiError hook is triggered right after sending an error API
+   * response to the client.
+   * It could be used to log the final API error in external services.
+   */
+  onAfterApiError(): (hook.Hook<ApiErrorEvent | undefined>)
+  /**
+   * OnTerminate hook is triggered when the app is in the process
+   * of being terminated (eg. on SIGTERM signal).
+   */
+  onTerminate(): (hook.Hook<TerminateEvent | undefined>)
+  /**
+   * OnModelBeforeCreate hook is triggered before inserting a new
+   * model in the DB, allowing you to modify or validate the stored data.
+   * 
+   * If the optional "tags" list (table names and/or the Collection id for Record models)
+   * is specified, then all event handlers registered via the created hook
+   * will be triggered and called only if their event data origin matches the tags.
+   */
+  onModelBeforeCreate(...tags: string[]): (hook.TaggedHook<ModelEvent | undefined>)
+  /**
+   * OnModelAfterCreate hook is triggered after successfully
+   * inserting a new model in the DB.
+   * 
+   * If the optional "tags" list (table names and/or the Collection id for Record models)
+   * is specified, then all event handlers registered via the created hook
+   * will be triggered and called only if their event data origin matches the tags.
+   */
+  onModelAfterCreate(...tags: string[]): (hook.TaggedHook<ModelEvent | undefined>)
+  /**
+   * OnModelBeforeUpdate hook is triggered before updating existing
+   * model in the DB, allowing you to modify or validate the stored data.
+   * 
+   * If the optional "tags" list (table names and/or the Collection id for Record models)
+   * is specified, then all event handlers registered via the created hook
+   * will be triggered and called only if their event data origin matches the tags.
+   */
+  onModelBeforeUpdate(...tags: string[]): (hook.TaggedHook<ModelEvent | undefined>)
+  /**
+   * OnModelAfterUpdate hook is triggered after successfully updating
+   * existing model in the DB.
+   * 
+   * If the optional "tags" list (table names and/or the Collection id for Record models)
+   * is specified, then all event handlers registered via the created hook
+   * will be triggered and called only if their event data origin matches the tags.
+   */
+  onModelAfterUpdate(...tags: string[]): (hook.TaggedHook<ModelEvent | undefined>)
+  /**
+   * OnModelBeforeDelete hook is triggered before deleting an
+   * existing model from the DB.
+   * 
+   * If the optional "tags" list (table names and/or the Collection id for Record models)
+   * is specified, then all event handlers registered via the created hook
+   * will be triggered and called only if their event data origin matches the tags.
+   */
+  onModelBeforeDelete(...tags: string[]): (hook.TaggedHook<ModelEvent | undefined>)
+  /**
+   * OnModelAfterDelete hook is triggered after successfully deleting an
+   * existing model from the DB.
+   * 
+   * If the optional "tags" list (table names and/or the Collection id for Record models)
+   * is specified, then all event handlers registered via the created hook
+   * will be triggered and called only if their event data origin matches the tags.
+   */
+  onModelAfterDelete(...tags: string[]): (hook.TaggedHook<ModelEvent | undefined>)
+  /**
+   * OnMailerBeforeAdminResetPasswordSend hook is triggered right
+   * before sending a password reset email to an admin, allowing you
+   * to inspect and customize the email message that is being sent.
+   */
+  onMailerBeforeAdminResetPasswordSend(): (hook.Hook<MailerAdminEvent | undefined>)
+  /**
+   * OnMailerAfterAdminResetPasswordSend hook is triggered after
+   * admin password reset email was successfully sent.
+   */
+  onMailerAfterAdminResetPasswordSend(): (hook.Hook<MailerAdminEvent | undefined>)
+  /**
+   * OnMailerBeforeRecordResetPasswordSend hook is triggered right
+   * before sending a password reset email to an auth record, allowing
+   * you to inspect and customize the email message that is being sent.
+   * 
+   * If the optional "tags" list (Collection ids or names) is specified,
+   * then all event handlers registered via the created hook will be
+   * triggered and called only if their event data origin matches the tags.
+   */
+  onMailerBeforeRecordResetPasswordSend(...tags: string[]): (hook.TaggedHook<MailerRecordEvent | undefined>)
+  /**
+   * OnMailerAfterRecordResetPasswordSend hook is triggered after
+   * an auth record password reset email was successfully sent.
+   * 
+   * If the optional "tags" list (Collection ids or names) is specified,
+   * then all event handlers registered via the created hook will be
+   * triggered and called only if their event data origin matches the tags.
+   */
+  onMailerAfterRecordResetPasswordSend(...tags: string[]): (hook.TaggedHook<MailerRecordEvent | undefined>)
+  /**
+   * OnMailerBeforeRecordVerificationSend hook is triggered right
+   * before sending a verification email to an auth record, allowing
+   * you to inspect and customize the email message that is being sent.
+   * 
+   * If the optional "tags" list (Collection ids or names) is specified,
+   * then all event handlers registered via the created hook will be
+   * triggered and called only if their event data origin matches the tags.
+   */
+  onMailerBeforeRecordVerificationSend(...tags: string[]): (hook.TaggedHook<MailerRecordEvent | undefined>)
+  /**
+   * OnMailerAfterRecordVerificationSend hook is triggered after a
+   * verification email was successfully sent to an auth record.
+   * 
+   * If the optional "tags" list (Collection ids or names) is specified,
+   * then all event handlers registered via the created hook will be
+   * triggered and called only if their event data origin matches the tags.
+   */
+  onMailerAfterRecordVerificationSend(...tags: string[]): (hook.TaggedHook<MailerRecordEvent | undefined>)
+  /**
+   * OnMailerBeforeRecordChangeEmailSend hook is triggered right before
+   * sending a confirmation new address email to an auth record, allowing
+   * you to inspect and customize the email message that is being sent.
+   * 
+   * If the optional "tags" list (Collection ids or names) is specified,
+   * then all event handlers registered via the created hook will be
+   * triggered and called only if their event data origin matches the tags.
+   */
+  onMailerBeforeRecordChangeEmailSend(...tags: string[]): (hook.TaggedHook<MailerRecordEvent | undefined>)
+  /**
+   * OnMailerAfterRecordChangeEmailSend hook is triggered after a
+   * verification email was successfully sent to an auth record.
+   * 
+   * If the optional "tags" list (Collection ids or names) is specified,
+   * then all event handlers registered via the created hook will be
+   * triggered and called only if their event data origin matches the tags.
+   */
+  onMailerAfterRecordChangeEmailSend(...tags: string[]): (hook.TaggedHook<MailerRecordEvent | undefined>)
+  /**
+   * OnRealtimeConnectRequest hook is triggered right before establishing
+   * the SSE client connection.
+   */
+  onRealtimeConnectRequest(): (hook.Hook<RealtimeConnectEvent | undefined>)
+  /**
+   * OnRealtimeDisconnectRequest hook is triggered on disconnected/interrupted
+   * SSE client connection.
+   */
+  onRealtimeDisconnectRequest(): (hook.Hook<RealtimeDisconnectEvent | undefined>)
+  /**
+   * OnRealtimeBeforeMessageSend hook is triggered right before sending
+   * an SSE message to a client.
+   * 
+   * Returning [hook.StopPropagation] will prevent sending the message.
+   * Returning any other non-nil error will close the realtime connection.
+   */
+  onRealtimeBeforeMessageSend(): (hook.Hook<RealtimeMessageEvent | undefined>)
+  /**
+   * OnRealtimeAfterMessageSend hook is triggered right after sending
+   * an SSE message to a client.
+   */
+  onRealtimeAfterMessageSend(): (hook.Hook<RealtimeMessageEvent | undefined>)
+  /**
+   * OnRealtimeBeforeSubscribeRequest hook is triggered before changing
+   * the client subscriptions, allowing you to further validate and
+   * modify the submitted change.
+   */
+  onRealtimeBeforeSubscribeRequest(): (hook.Hook<RealtimeSubscribeEvent | undefined>)
+  /**
+   * OnRealtimeAfterSubscribeRequest hook is triggered after the client
+   * subscriptions were successfully changed.
+   */
+  onRealtimeAfterSubscribeRequest(): (hook.Hook<RealtimeSubscribeEvent | undefined>)
+  /**
+   * OnSettingsListRequest hook is triggered on each successful
+   * API Settings list request.
+   * 
+   * Could be used to validate or modify the response before
+   * returning it to the client.
+   */
+  onSettingsListRequest(): (hook.Hook<SettingsListEvent | undefined>)
+  /**
+   * OnSettingsBeforeUpdateRequest hook is triggered before each API
+   * Settings update request (after request data load and before settings persistence).
+   * 
+   * Could be used to additionally validate the request data or
+   * implement completely different persistence behavior.
+   */
+  onSettingsBeforeUpdateRequest(): (hook.Hook<SettingsUpdateEvent | undefined>)
+  /**
+   * OnSettingsAfterUpdateRequest hook is triggered after each
+   * successful API Settings update request.
+   */
+  onSettingsAfterUpdateRequest(): (hook.Hook<SettingsUpdateEvent | undefined>)
+  /**
+   * OnFileDownloadRequest hook is triggered before each API File download request.
+   * 
+   * Could be used to validate or modify the file response before
+   * returning it to the client.
+   */
+  onFileDownloadRequest(...tags: string[]): (hook.TaggedHook<FileDownloadEvent | undefined>)
+  /**
+   * OnFileBeforeTokenRequest hook is triggered before each file
+   * token API request.
+   * 
+   * If no token or model was submitted, e.Model and e.Token will be empty,
+   * allowing you to implement your own custom model file auth implementation.
+   * 
+   * If the optional "tags" list (Collection ids or names) is specified,
+   * then all event handlers registered via the created hook will be
+   * triggered and called only if their event data origin matches the tags.
+   */
+  onFileBeforeTokenRequest(...tags: string[]): (hook.TaggedHook<FileTokenEvent | undefined>)
+  /**
+   * OnFileAfterTokenRequest hook is triggered after each
+   * successful file token API request.
+   * 
+   * If the optional "tags" list (Collection ids or names) is specified,
+   * then all event handlers registered via the created hook will be
+   * triggered and called only if their event data origin matches the tags.
+   */
+  onFileAfterTokenRequest(...tags: string[]): (hook.TaggedHook<FileTokenEvent | undefined>)
+  /**
+   * OnAdminsListRequest hook is triggered on each API Admins list request.
+   * 
+   * Could be used to validate or modify the response before returning it to the client.
+   */
+  onAdminsListRequest(): (hook.Hook<AdminsListEvent | undefined>)
+  /**
+   * OnAdminViewRequest hook is triggered on each API Admin view request.
+   * 
+   * Could be used to validate or modify the response before returning it to the client.
+   */
+  onAdminViewRequest(): (hook.Hook<AdminViewEvent | undefined>)
+  /**
+   * OnAdminBeforeCreateRequest hook is triggered before each API
+   * Admin create request (after request data load and before model persistence).
+   * 
+   * Could be used to additionally validate the request data or implement
+   * completely different persistence behavior.
+   */
+  onAdminBeforeCreateRequest(): (hook.Hook<AdminCreateEvent | undefined>)
+  /**
+   * OnAdminAfterCreateRequest hook is triggered after each
+   * successful API Admin create request.
+   */
+  onAdminAfterCreateRequest(): (hook.Hook<AdminCreateEvent | undefined>)
+  /**
+   * OnAdminBeforeUpdateRequest hook is triggered before each API
+   * Admin update request (after request data load and before model persistence).
+   * 
+   * Could be used to additionally validate the request data or implement
+   * completely different persistence behavior.
+   */
+  onAdminBeforeUpdateRequest(): (hook.Hook<AdminUpdateEvent | undefined>)
+  /**
+   * OnAdminAfterUpdateRequest hook is triggered after each
+   * successful API Admin update request.
+   */
+  onAdminAfterUpdateRequest(): (hook.Hook<AdminUpdateEvent | undefined>)
+  /**
+   * OnAdminBeforeDeleteRequest hook is triggered before each API
+   * Admin delete request (after model load and before actual deletion).
+   * 
+   * Could be used to additionally validate the request data or implement
+   * completely different delete behavior.
+   */
+  onAdminBeforeDeleteRequest(): (hook.Hook<AdminDeleteEvent | undefined>)
+  /**
+   * OnAdminAfterDeleteRequest hook is triggered after each
+   * successful API Admin delete request.
+   */
+  onAdminAfterDeleteRequest(): (hook.Hook<AdminDeleteEvent | undefined>)
+  /**
+   * OnAdminAuthRequest hook is triggered on each successful API Admin
+   * authentication request (sign-in, token refresh, etc.).
+   * 
+   * Could be used to additionally validate or modify the
+   * authenticated admin data and token.
+   */
+  onAdminAuthRequest(): (hook.Hook<AdminAuthEvent | undefined>)
+  /**
+   * OnAdminBeforeAuthWithPasswordRequest hook is triggered before each Admin
+   * auth with password API request (after request data load and before password validation).
+   * 
+   * Could be used to implement for example a custom password validation
+   * or to locate a different Admin identity (by assigning [AdminAuthWithPasswordEvent.Admin]).
+   */
+  onAdminBeforeAuthWithPasswordRequest(): (hook.Hook<AdminAuthWithPasswordEvent | undefined>)
+  /**
+   * OnAdminAfterAuthWithPasswordRequest hook is triggered after each
+   * successful Admin auth with password API request.
+   */
+  onAdminAfterAuthWithPasswordRequest(): (hook.Hook<AdminAuthWithPasswordEvent | undefined>)
+  /**
+   * OnAdminBeforeAuthRefreshRequest hook is triggered before each Admin
+   * auth refresh API request (right before generating a new auth token).
+   * 
+   * Could be used to additionally validate the request data or implement
+   * completely different auth refresh behavior.
+   */
+  onAdminBeforeAuthRefreshRequest(): (hook.Hook<AdminAuthRefreshEvent | undefined>)
+  /**
+   * OnAdminAfterAuthRefreshRequest hook is triggered after each
+   * successful auth refresh API request (right after generating a new auth token).
+   */
+  onAdminAfterAuthRefreshRequest(): (hook.Hook<AdminAuthRefreshEvent | undefined>)
+  /**
+   * OnAdminBeforeRequestPasswordResetRequest hook is triggered before each Admin
+   * request password reset API request (after request data load and before sending the reset email).
+   * 
+   * Could be used to additionally validate the request data or implement
+   * completely different password reset behavior.
+   */
+  onAdminBeforeRequestPasswordResetRequest(): (hook.Hook<AdminRequestPasswordResetEvent | undefined>)
+  /**
+   * OnAdminAfterRequestPasswordResetRequest hook is triggered after each
+   * successful request password reset API request.
+   */
+  onAdminAfterRequestPasswordResetRequest(): (hook.Hook<AdminRequestPasswordResetEvent | undefined>)
+  /**
+   * OnAdminBeforeConfirmPasswordResetRequest hook is triggered before each Admin
+   * confirm password reset API request (after request data load and before persistence).
+   * 
+   * Could be used to additionally validate the request data or implement
+   * completely different persistence behavior.
+   */
+  onAdminBeforeConfirmPasswordResetRequest(): (hook.Hook<AdminConfirmPasswordResetEvent | undefined>)
+  /**
+   * OnAdminAfterConfirmPasswordResetRequest hook is triggered after each
+   * successful confirm password reset API request.
+   */
+  onAdminAfterConfirmPasswordResetRequest(): (hook.Hook<AdminConfirmPasswordResetEvent | undefined>)
+  /**
+   * OnRecordAuthRequest hook is triggered on each successful API
+   * record authentication request (sign-in, token refresh, etc.).
+   * 
+   * Could be used to additionally validate or modify the authenticated
+   * record data and token.
+   * 
+   * If the optional "tags" list (Collection ids or names) is specified,
+   * then all event handlers registered via the created hook will be
+   * triggered and called only if their event data origin matches the tags.
+   */
+  onRecordAuthRequest(...tags: string[]): (hook.TaggedHook<RecordAuthEvent | undefined>)
+  /**
+   * OnRecordBeforeAuthWithPasswordRequest hook is triggered before each Record
+   * auth with password API request (after request data load and before password validation).
+   * 
+   * Could be used to implement for example a custom password validation
+   * or to locate a different Record model (by reassigning [RecordAuthWithPasswordEvent.Record]).
+   * 
+   * If the optional "tags" list (Collection ids or names) is specified,
+   * then all event handlers registered via the created hook will be
+   * triggered and called only if their event data origin matches the tags.
+   */
+  onRecordBeforeAuthWithPasswordRequest(...tags: string[]): (hook.TaggedHook<RecordAuthWithPasswordEvent | undefined>)
+  /**
+   * OnRecordAfterAuthWithPasswordRequest hook is triggered after each
+   * successful Record auth with password API request.
+   * 
+   * If the optional "tags" list (Collection ids or names) is specified,
+   * then all event handlers registered via the created hook will be
+   * triggered and called only if their event data origin matches the tags.
+   */
+  onRecordAfterAuthWithPasswordRequest(...tags: string[]): (hook.TaggedHook<RecordAuthWithPasswordEvent | undefined>)
+  /**
+   * OnRecordBeforeAuthWithOAuth2Request hook is triggered before each Record
+   * OAuth2 sign-in/sign-up API request (after token exchange and before external provider linking).
+   * 
+   * If the [RecordAuthWithOAuth2Event.Record] is not set, then the OAuth2
+   * request will try to create a new auth Record.
+   * 
+   * To assign or link a different existing record model you can
+   * change the [RecordAuthWithOAuth2Event.Record] field.
+   * 
+   * If the optional "tags" list (Collection ids or names) is specified,
+   * then all event handlers registered via the created hook will be
+   * triggered and called only if their event data origin matches the tags.
+   */
+  onRecordBeforeAuthWithOAuth2Request(...tags: string[]): (hook.TaggedHook<RecordAuthWithOAuth2Event | undefined>)
+  /**
+   * OnRecordAfterAuthWithOAuth2Request hook is triggered after each
+   * successful Record OAuth2 API request.
+   * 
+   * If the optional "tags" list (Collection ids or names) is specified,
+   * then all event handlers registered via the created hook will be
+   * triggered and called only if their event data origin matches the tags.
+   */
+  onRecordAfterAuthWithOAuth2Request(...tags: string[]): (hook.TaggedHook<RecordAuthWithOAuth2Event | undefined>)
+  /**
+   * OnRecordBeforeAuthRefreshRequest hook is triggered before each Record
+   * auth refresh API request (right before generating a new auth token).
+   * 
+   * Could be used to additionally validate the request data or implement
+   * completely different auth refresh behavior.
+   * 
+   * If the optional "tags" list (Collection ids or names) is specified,
+   * then all event handlers registered via the created hook will be
+   * triggered and called only if their event data origin matches the tags.
+   */
+  onRecordBeforeAuthRefreshRequest(...tags: string[]): (hook.TaggedHook<RecordAuthRefreshEvent | undefined>)
+  /**
+   * OnRecordAfterAuthRefreshRequest hook is triggered after each
+   * successful auth refresh API request (right after generating a new auth token).
+   * 
+   * If the optional "tags" list (Collection ids or names) is specified,
+   * then all event handlers registered via the created hook will be
+   * triggered and called only if their event data origin matches the tags.
+   */
+  onRecordAfterAuthRefreshRequest(...tags: string[]): (hook.TaggedHook<RecordAuthRefreshEvent | undefined>)
+  /**
+   * OnRecordListExternalAuthsRequest hook is triggered on each API record external auths list request.
+   * 
+   * Could be used to validate or modify the response before returning it to the client.
+   * 
+   * If the optional "tags" list (Collection ids or names) is specified,
+   * then all event handlers registered via the created hook will be
+   * triggered and called only if their event data origin matches the tags.
+   */
+  onRecordListExternalAuthsRequest(...tags: string[]): (hook.TaggedHook<RecordListExternalAuthsEvent | undefined>)
+  /**
+   * OnRecordBeforeUnlinkExternalAuthRequest hook is triggered before each API record
+   * external auth unlink request (after models load and before the actual relation deletion).
+   * 
+   * Could be used to additionally validate the request data or implement
+   * completely different delete behavior.
+   * 
+   * If the optional "tags" list (Collection ids or names) is specified,
+   * then all event handlers registered via the created hook will be
+   * triggered and called only if their event data origin matches the tags.
+   */
+  onRecordBeforeUnlinkExternalAuthRequest(...tags: string[]): (hook.TaggedHook<RecordUnlinkExternalAuthEvent | undefined>)
+  /**
+   * OnRecordAfterUnlinkExternalAuthRequest hook is triggered after each
+   * successful API record external auth unlink request.
+   * 
+   * If the optional "tags" list (Collection ids or names) is specified,
+   * then all event handlers registered via the created hook will be
+   * triggered and called only if their event data origin matches the tags.
+   */
+  onRecordAfterUnlinkExternalAuthRequest(...tags: string[]): (hook.TaggedHook<RecordUnlinkExternalAuthEvent | undefined>)
+  /**
+   * OnRecordBeforeRequestPasswordResetRequest hook is triggered before each Record
+   * request password reset API request (after request data load and before sending the reset email).
+   * 
+   * Could be used to additionally validate the request data or implement
+   * completely different password reset behavior.
+   * 
+   * If the optional "tags" list (Collection ids or names) is specified,
+   * then all event handlers registered via the created hook will be
+   * triggered and called only if their event data origin matches the tags.
+   */
+  onRecordBeforeRequestPasswordResetRequest(...tags: string[]): (hook.TaggedHook<RecordRequestPasswordResetEvent | undefined>)
+  /**
+   * OnRecordAfterRequestPasswordResetRequest hook is triggered after each
+   * successful request password reset API request.
+   * 
+   * If the optional "tags" list (Collection ids or names) is specified,
+   * then all event handlers registered via the created hook will be
+   * triggered and called only if their event data origin matches the tags.
+   */
+  onRecordAfterRequestPasswordResetRequest(...tags: string[]): (hook.TaggedHook<RecordRequestPasswordResetEvent | undefined>)
+  /**
+   * OnRecordBeforeConfirmPasswordResetRequest hook is triggered before each Record
+   * confirm password reset API request (after request data load and before persistence).
+   * 
+   * Could be used to additionally validate the request data or implement
+   * completely different persistence behavior.
+   * 
+   * If the optional "tags" list (Collection ids or names) is specified,
+   * then all event handlers registered via the created hook will be
+   * triggered and called only if their event data origin matches the tags.
+   */
+  onRecordBeforeConfirmPasswordResetRequest(...tags: string[]): (hook.TaggedHook<RecordConfirmPasswordResetEvent | undefined>)
+  /**
+   * OnRecordAfterConfirmPasswordResetRequest hook is triggered after each
+   * successful confirm password reset API request.
+   * 
+   * If the optional "tags" list (Collection ids or names) is specified,
+   * then all event handlers registered via the created hook will be
+   * triggered and called only if their event data origin matches the tags.
+   */
+  onRecordAfterConfirmPasswordResetRequest(...tags: string[]): (hook.TaggedHook<RecordConfirmPasswordResetEvent | undefined>)
+  /**
+   * OnRecordBeforeRequestVerificationRequest hook is triggered before each Record
+   * request verification API request (after request data load and before sending the verification email).
+   * 
+   * Could be used to additionally validate the loaded request data or implement
+   * completely different verification behavior.
+   * 
+   * If the optional "tags" list (Collection ids or names) is specified,
+   * then all event handlers registered via the created hook will be
+   * triggered and called only if their event data origin matches the tags.
+   */
+  onRecordBeforeRequestVerificationRequest(...tags: string[]): (hook.TaggedHook<RecordRequestVerificationEvent | undefined>)
+  /**
+   * OnRecordAfterRequestVerificationRequest hook is triggered after each
+   * successful request verification API request.
+   * 
+   * If the optional "tags" list (Collection ids or names) is specified,
+   * then all event handlers registered via the created hook will be
+   * triggered and called only if their event data origin matches the tags.
+   */
+  onRecordAfterRequestVerificationRequest(...tags: string[]): (hook.TaggedHook<RecordRequestVerificationEvent | undefined>)
+  /**
+   * OnRecordBeforeConfirmVerificationRequest hook is triggered before each Record
+   * confirm verification API request (after request data load and before persistence).
+   * 
+   * Could be used to additionally validate the request data or implement
+   * completely different persistence behavior.
+   * 
+   * If the optional "tags" list (Collection ids or names) is specified,
+   * then all event handlers registered via the created hook will be
+   * triggered and called only if their event data origin matches the tags.
+   */
+  onRecordBeforeConfirmVerificationRequest(...tags: string[]): (hook.TaggedHook<RecordConfirmVerificationEvent | undefined>)
+  /**
+   * OnRecordAfterConfirmVerificationRequest hook is triggered after each
+   * successful confirm verification API request.
+   * 
+   * If the optional "tags" list (Collection ids or names) is specified,
+   * then all event handlers registered via the created hook will be
+   * triggered and called only if their event data origin matches the tags.
+   */
+  onRecordAfterConfirmVerificationRequest(...tags: string[]): (hook.TaggedHook<RecordConfirmVerificationEvent | undefined>)
+  /**
+   * OnRecordBeforeRequestEmailChangeRequest hook is triggered before each Record request email change API request
+   * (after request data load and before sending the email link to confirm the change).
+   * 
+   * Could be used to additionally validate the request data or implement
+   * completely different request email change behavior.
+   * 
+   * If the optional "tags" list (Collection ids or names) is specified,
+   * then all event handlers registered via the created hook will be
+   * triggered and called only if their event data origin matches the tags.
+   */
+  onRecordBeforeRequestEmailChangeRequest(...tags: string[]): (hook.TaggedHook<RecordRequestEmailChangeEvent | undefined>)
+  /**
+   * OnRecordAfterRequestEmailChangeRequest hook is triggered after each
+   * successful request email change API request.
+   * 
+   * If the optional "tags" list (Collection ids or names) is specified,
+   * then all event handlers registered via the created hook will be
+   * triggered and called only if their event data origin matches the tags.
+   */
+  onRecordAfterRequestEmailChangeRequest(...tags: string[]): (hook.TaggedHook<RecordRequestEmailChangeEvent | undefined>)
+  /**
+   * OnRecordBeforeConfirmEmailChangeRequest hook is triggered before each Record
+   * confirm email change API request (after request data load and before persistence).
+   * 
+   * Could be used to additionally validate the request data or implement
+   * completely different persistence behavior.
+   * 
+   * If the optional "tags" list (Collection ids or names) is specified,
+   * then all event handlers registered via the created hook will be
+   * triggered and called only if their event data origin matches the tags.
+   */
+  onRecordBeforeConfirmEmailChangeRequest(...tags: string[]): (hook.TaggedHook<RecordConfirmEmailChangeEvent | undefined>)
+  /**
+   * OnRecordAfterConfirmEmailChangeRequest hook is triggered after each
+   * successful confirm email change API request.
+   * 
+   * If the optional "tags" list (Collection ids or names) is specified,
+   * then all event handlers registered via the created hook will be
+   * triggered and called only if their event data origin matches the tags.
+   */
+  onRecordAfterConfirmEmailChangeRequest(...tags: string[]): (hook.TaggedHook<RecordConfirmEmailChangeEvent | undefined>)
+  /**
+   * OnRecordsListRequest hook is triggered on each API Records list request.
+   * 
+   * Could be used to validate or modify the response before returning it to the client.
+   * 
+   * If the optional "tags" list (Collection ids or names) is specified,
+   * then all event handlers registered via the created hook will be
+   * triggered and called only if their event data origin matches the tags.
+   */
+  onRecordsListRequest(...tags: string[]): (hook.TaggedHook<RecordsListEvent | undefined>)
+  /**
+   * OnRecordViewRequest hook is triggered on each API Record view request.
+   * 
+   * Could be used to validate or modify the response before returning it to the client.
+   * 
+   * If the optional "tags" list (Collection ids or names) is specified,
+   * then all event handlers registered via the created hook will be
+   * triggered and called only if their event data origin matches the tags.
+   */
+  onRecordViewRequest(...tags: string[]): (hook.TaggedHook<RecordViewEvent | undefined>)
+  /**
+   * OnRecordBeforeCreateRequest hook is triggered before each API Record
+   * create request (after request data load and before model persistence).
+   * 
+   * Could be used to additionally validate the request data or implement
+   * completely different persistence behavior.
+   * 
+   * If the optional "tags" list (Collection ids or names) is specified,
+   * then all event handlers registered via the created hook will be
+   * triggered and called only if their event data origin matches the tags.
+   */
+  onRecordBeforeCreateRequest(...tags: string[]): (hook.TaggedHook<RecordCreateEvent | undefined>)
+  /**
+   * OnRecordAfterCreateRequest hook is triggered after each
+   * successful API Record create request.
+   * 
+   * If the optional "tags" list (Collection ids or names) is specified,
+   * then all event handlers registered via the created hook will be
+   * triggered and called only if their event data origin matches the tags.
+   */
+  onRecordAfterCreateRequest(...tags: string[]): (hook.TaggedHook<RecordCreateEvent | undefined>)
+  /**
+   * OnRecordBeforeUpdateRequest hook is triggered before each API Record
+   * update request (after request data load and before model persistence).
+   * 
+   * Could be used to additionally validate the request data or implement
+   * completely different persistence behavior.
+   * 
+   * If the optional "tags" list (Collection ids or names) is specified,
+   * then all event handlers registered via the created hook will be
+   * triggered and called only if their event data origin matches the tags.
+   */
+  onRecordBeforeUpdateRequest(...tags: string[]): (hook.TaggedHook<RecordUpdateEvent | undefined>)
+  /**
+   * OnRecordAfterUpdateRequest hook is triggered after each
+   * successful API Record update request.
+   * 
+   * If the optional "tags" list (Collection ids or names) is specified,
+   * then all event handlers registered via the created hook will be
+   * triggered and called only if their event data origin matches the tags.
+   */
+  onRecordAfterUpdateRequest(...tags: string[]): (hook.TaggedHook<RecordUpdateEvent | undefined>)
+  /**
+   * OnRecordBeforeDeleteRequest hook is triggered before each API Record
+   * delete request (after model load and before actual deletion).
+   * 
+   * Could be used to additionally validate the request data or implement
+   * completely different delete behavior.
+   * 
+   * If the optional "tags" list (Collection ids or names) is specified,
+   * then all event handlers registered via the created hook will be
+   * triggered and called only if their event data origin matches the tags.
+   */
+  onRecordBeforeDeleteRequest(...tags: string[]): (hook.TaggedHook<RecordDeleteEvent | undefined>)
+  /**
+   * OnRecordAfterDeleteRequest hook is triggered after each
+   * successful API Record delete request.
+   * 
+   * If the optional "tags" list (Collection ids or names) is specified,
+   * then all event handlers registered via the created hook will be
+   * triggered and called only if their event data origin matches the tags.
+   */
+  onRecordAfterDeleteRequest(...tags: string[]): (hook.TaggedHook<RecordDeleteEvent | undefined>)
+  /**
+   * OnCollectionsListRequest hook is triggered on each API Collections list request.
+   * 
+   * Could be used to validate or modify the response before returning it to the client.
+   */
+  onCollectionsListRequest(): (hook.Hook<CollectionsListEvent | undefined>)
+  /**
+   * OnCollectionViewRequest hook is triggered on each API Collection view request.
+   * 
+   * Could be used to validate or modify the response before returning it to the client.
+   */
+  onCollectionViewRequest(): (hook.Hook<CollectionViewEvent | undefined>)
+  /**
+   * OnCollectionBeforeCreateRequest hook is triggered before each API Collection
+   * create request (after request data load and before model persistence).
+   * 
+   * Could be used to additionally validate the request data or implement
+   * completely different persistence behavior.
+   */
+  onCollectionBeforeCreateRequest(): (hook.Hook<CollectionCreateEvent | undefined>)
+  /**
+   * OnCollectionAfterCreateRequest hook is triggered after each
+   * successful API Collection create request.
+   */
+  onCollectionAfterCreateRequest(): (hook.Hook<CollectionCreateEvent | undefined>)
+  /**
+   * OnCollectionBeforeUpdateRequest hook is triggered before each API Collection
+   * update request (after request data load and before model persistence).
+   * 
+   * Could be used to additionally validate the request data or implement
+   * completely different persistence behavior.
+   */
+  onCollectionBeforeUpdateRequest(): (hook.Hook<CollectionUpdateEvent | undefined>)
+  /**
+   * OnCollectionAfterUpdateRequest hook is triggered after each
+   * successful API Collection update request.
+   */
+  onCollectionAfterUpdateRequest(): (hook.Hook<CollectionUpdateEvent | undefined>)
+  /**
+   * OnCollectionBeforeDeleteRequest hook is triggered before each API
+   * Collection delete request (after model load and before actual deletion).
+   * 
+   * Could be used to additionally validate the request data or implement
+   * completely different delete behavior.
+   */
+  onCollectionBeforeDeleteRequest(): (hook.Hook<CollectionDeleteEvent | undefined>)
+  /**
+   * OnCollectionAfterDeleteRequest hook is triggered after each
+   * successful API Collection delete request.
+   */
+  onCollectionAfterDeleteRequest(): (hook.Hook<CollectionDeleteEvent | undefined>)
+  /**
+   * OnCollectionsBeforeImportRequest hook is triggered before each API
+   * collections import request (after request data load and before the actual import).
+   * 
+   * Could be used to additionally validate the imported collections or
+   * to implement completely different import behavior.
+   */
+  onCollectionsBeforeImportRequest(): (hook.Hook<CollectionsImportEvent | undefined>)
+  /**
+   * OnCollectionsAfterImportRequest hook is triggered after each
+   * successful API collections import request.
+   */
+  onCollectionsAfterImportRequest(): (hook.Hook<CollectionsImportEvent | undefined>)
  }
 }
 
@@ -13602,886 +14464,6 @@ namespace migrate {
 }
 
 /**
- * Package core is the backbone of PocketBase.
- * 
- * It defines the main PocketBase App interface and its base implementation.
- */
-namespace core {
- /**
-  * App defines the main PocketBase app interface.
-  */
- interface App {
-  [key:string]: any;
-  /**
-   * Deprecated:
-   * This method may get removed in the near future.
-   * It is recommended to access the app db instance from app.Dao().DB() or
-   * if you want more flexibility - app.Dao().ConcurrentDB() and app.Dao().NonconcurrentDB().
-   * 
-   * DB returns the default app database instance.
-   */
-  db(): (dbx.DB)
-  /**
-   * Dao returns the default app Dao instance.
-   * 
-   * This Dao could operate only on the tables and models
-   * associated with the default app database. For example,
-   * trying to access the request logs table will result in error.
-   */
-  dao(): (daos.Dao)
-  /**
-   * Deprecated:
-   * This method may get removed in the near future.
-   * It is recommended to access the logs db instance from app.LogsDao().DB() or
-   * if you want more flexibility - app.LogsDao().ConcurrentDB() and app.LogsDao().NonconcurrentDB().
-   * 
-   * LogsDB returns the app logs database instance.
-   */
-  logsDB(): (dbx.DB)
-  /**
-   * LogsDao returns the app logs Dao instance.
-   * 
-   * This Dao could operate only on the tables and models
-   * associated with the logs database. For example, trying to access
-   * the users table from LogsDao will result in error.
-   */
-  logsDao(): (daos.Dao)
-  /**
-   * Logger returns the active app logger.
-   */
-  logger(): (slog.Logger)
-  /**
-   * DataDir returns the app data directory path.
-   */
-  dataDir(): string
-  /**
-   * EncryptionEnv returns the name of the app secret env key
-   * (used for settings encryption).
-   */
-  encryptionEnv(): string
-  /**
-   * IsDev returns whether the app is in dev mode.
-   */
-  isDev(): boolean
-  /**
-   * Settings returns the loaded app settings.
-   */
-  settings(): (settings.Settings)
-  /**
-   * Deprecated: Use app.Store() instead.
-   */
-  cache(): (store.Store<any>)
-  /**
-   * Store returns the app runtime store.
-   */
-  store(): (store.Store<any>)
-  /**
-   * SubscriptionsBroker returns the app realtime subscriptions broker instance.
-   */
-  subscriptionsBroker(): (subscriptions.Broker)
-  /**
-   * NewMailClient creates and returns a configured app mail client.
-   */
-  newMailClient(): mailer.Mailer
-  /**
-   * NewFilesystem creates and returns a configured filesystem.System instance
-   * for managing regular app files (eg. collection uploads).
-   * 
-   * NB! Make sure to call Close() on the returned result
-   * after you are done working with it.
-   */
-  newFilesystem(): (filesystem.System)
-  /**
-   * NewBackupsFilesystem creates and returns a configured filesystem.System instance
-   * for managing app backups.
-   * 
-   * NB! Make sure to call Close() on the returned result
-   * after you are done working with it.
-   */
-  newBackupsFilesystem(): (filesystem.System)
-  /**
-   * RefreshSettings reinitializes and reloads the stored application settings.
-   */
-  refreshSettings(): void
-  /**
-   * IsBootstrapped checks if the application was initialized
-   * (aka. whether Bootstrap() was called).
-   */
-  isBootstrapped(): boolean
-  /**
-   * Bootstrap takes care for initializing the application
-   * (open db connections, load settings, etc.).
-   * 
-   * It will call ResetBootstrapState() if the application was already bootstrapped.
-   */
-  bootstrap(): void
-  /**
-   * ResetBootstrapState takes care for releasing initialized app resources
-   * (eg. closing db connections).
-   */
-  resetBootstrapState(): void
-  /**
-   * CreateBackup creates a new backup of the current app pb_data directory.
-   * 
-   * Backups can be stored on S3 if it is configured in app.Settings().Backups.
-   * 
-   * Please refer to the godoc of the specific CoreApp implementation
-   * for details on the backup procedures.
-   */
-  createBackup(ctx: context.Context, name: string): void
-  /**
-   * RestoreBackup restores the backup with the specified name and restarts
-   * the current running application process.
-   * 
-   * The safely perform the restore it is recommended to have free disk space
-   * for at least 2x the size of the restored pb_data backup.
-   * 
-   * Please refer to the godoc of the specific CoreApp implementation
-   * for details on the restore procedures.
-   * 
-   * NB! This feature is experimental and currently is expected to work only on UNIX based systems.
-   */
-  restoreBackup(ctx: context.Context, name: string): void
-  /**
-   * Restart restarts the current running application process.
-   * 
-   * Currently it is relying on execve so it is supported only on UNIX based systems.
-   */
-  restart(): void
-  /**
-   * OnBeforeBootstrap hook is triggered before initializing the main
-   * application resources (eg. before db open and initial settings load).
-   */
-  onBeforeBootstrap(): (hook.Hook<BootstrapEvent | undefined>)
-  /**
-   * OnAfterBootstrap hook is triggered after initializing the main
-   * application resources (eg. after db open and initial settings load).
-   */
-  onAfterBootstrap(): (hook.Hook<BootstrapEvent | undefined>)
-  /**
-   * OnBeforeServe hook is triggered before serving the internal router (echo),
-   * allowing you to adjust its options and attach new routes or middlewares.
-   */
-  onBeforeServe(): (hook.Hook<ServeEvent | undefined>)
-  /**
-   * OnBeforeApiError hook is triggered right before sending an error API
-   * response to the client, allowing you to further modify the error data
-   * or to return a completely different API response.
-   */
-  onBeforeApiError(): (hook.Hook<ApiErrorEvent | undefined>)
-  /**
-   * OnAfterApiError hook is triggered right after sending an error API
-   * response to the client.
-   * It could be used to log the final API error in external services.
-   */
-  onAfterApiError(): (hook.Hook<ApiErrorEvent | undefined>)
-  /**
-   * OnTerminate hook is triggered when the app is in the process
-   * of being terminated (eg. on SIGTERM signal).
-   */
-  onTerminate(): (hook.Hook<TerminateEvent | undefined>)
-  /**
-   * OnModelBeforeCreate hook is triggered before inserting a new
-   * model in the DB, allowing you to modify or validate the stored data.
-   * 
-   * If the optional "tags" list (table names and/or the Collection id for Record models)
-   * is specified, then all event handlers registered via the created hook
-   * will be triggered and called only if their event data origin matches the tags.
-   */
-  onModelBeforeCreate(...tags: string[]): (hook.TaggedHook<ModelEvent | undefined>)
-  /**
-   * OnModelAfterCreate hook is triggered after successfully
-   * inserting a new model in the DB.
-   * 
-   * If the optional "tags" list (table names and/or the Collection id for Record models)
-   * is specified, then all event handlers registered via the created hook
-   * will be triggered and called only if their event data origin matches the tags.
-   */
-  onModelAfterCreate(...tags: string[]): (hook.TaggedHook<ModelEvent | undefined>)
-  /**
-   * OnModelBeforeUpdate hook is triggered before updating existing
-   * model in the DB, allowing you to modify or validate the stored data.
-   * 
-   * If the optional "tags" list (table names and/or the Collection id for Record models)
-   * is specified, then all event handlers registered via the created hook
-   * will be triggered and called only if their event data origin matches the tags.
-   */
-  onModelBeforeUpdate(...tags: string[]): (hook.TaggedHook<ModelEvent | undefined>)
-  /**
-   * OnModelAfterUpdate hook is triggered after successfully updating
-   * existing model in the DB.
-   * 
-   * If the optional "tags" list (table names and/or the Collection id for Record models)
-   * is specified, then all event handlers registered via the created hook
-   * will be triggered and called only if their event data origin matches the tags.
-   */
-  onModelAfterUpdate(...tags: string[]): (hook.TaggedHook<ModelEvent | undefined>)
-  /**
-   * OnModelBeforeDelete hook is triggered before deleting an
-   * existing model from the DB.
-   * 
-   * If the optional "tags" list (table names and/or the Collection id for Record models)
-   * is specified, then all event handlers registered via the created hook
-   * will be triggered and called only if their event data origin matches the tags.
-   */
-  onModelBeforeDelete(...tags: string[]): (hook.TaggedHook<ModelEvent | undefined>)
-  /**
-   * OnModelAfterDelete hook is triggered after successfully deleting an
-   * existing model from the DB.
-   * 
-   * If the optional "tags" list (table names and/or the Collection id for Record models)
-   * is specified, then all event handlers registered via the created hook
-   * will be triggered and called only if their event data origin matches the tags.
-   */
-  onModelAfterDelete(...tags: string[]): (hook.TaggedHook<ModelEvent | undefined>)
-  /**
-   * OnMailerBeforeAdminResetPasswordSend hook is triggered right
-   * before sending a password reset email to an admin, allowing you
-   * to inspect and customize the email message that is being sent.
-   */
-  onMailerBeforeAdminResetPasswordSend(): (hook.Hook<MailerAdminEvent | undefined>)
-  /**
-   * OnMailerAfterAdminResetPasswordSend hook is triggered after
-   * admin password reset email was successfully sent.
-   */
-  onMailerAfterAdminResetPasswordSend(): (hook.Hook<MailerAdminEvent | undefined>)
-  /**
-   * OnMailerBeforeRecordResetPasswordSend hook is triggered right
-   * before sending a password reset email to an auth record, allowing
-   * you to inspect and customize the email message that is being sent.
-   * 
-   * If the optional "tags" list (Collection ids or names) is specified,
-   * then all event handlers registered via the created hook will be
-   * triggered and called only if their event data origin matches the tags.
-   */
-  onMailerBeforeRecordResetPasswordSend(...tags: string[]): (hook.TaggedHook<MailerRecordEvent | undefined>)
-  /**
-   * OnMailerAfterRecordResetPasswordSend hook is triggered after
-   * an auth record password reset email was successfully sent.
-   * 
-   * If the optional "tags" list (Collection ids or names) is specified,
-   * then all event handlers registered via the created hook will be
-   * triggered and called only if their event data origin matches the tags.
-   */
-  onMailerAfterRecordResetPasswordSend(...tags: string[]): (hook.TaggedHook<MailerRecordEvent | undefined>)
-  /**
-   * OnMailerBeforeRecordVerificationSend hook is triggered right
-   * before sending a verification email to an auth record, allowing
-   * you to inspect and customize the email message that is being sent.
-   * 
-   * If the optional "tags" list (Collection ids or names) is specified,
-   * then all event handlers registered via the created hook will be
-   * triggered and called only if their event data origin matches the tags.
-   */
-  onMailerBeforeRecordVerificationSend(...tags: string[]): (hook.TaggedHook<MailerRecordEvent | undefined>)
-  /**
-   * OnMailerAfterRecordVerificationSend hook is triggered after a
-   * verification email was successfully sent to an auth record.
-   * 
-   * If the optional "tags" list (Collection ids or names) is specified,
-   * then all event handlers registered via the created hook will be
-   * triggered and called only if their event data origin matches the tags.
-   */
-  onMailerAfterRecordVerificationSend(...tags: string[]): (hook.TaggedHook<MailerRecordEvent | undefined>)
-  /**
-   * OnMailerBeforeRecordChangeEmailSend hook is triggered right before
-   * sending a confirmation new address email to an auth record, allowing
-   * you to inspect and customize the email message that is being sent.
-   * 
-   * If the optional "tags" list (Collection ids or names) is specified,
-   * then all event handlers registered via the created hook will be
-   * triggered and called only if their event data origin matches the tags.
-   */
-  onMailerBeforeRecordChangeEmailSend(...tags: string[]): (hook.TaggedHook<MailerRecordEvent | undefined>)
-  /**
-   * OnMailerAfterRecordChangeEmailSend hook is triggered after a
-   * verification email was successfully sent to an auth record.
-   * 
-   * If the optional "tags" list (Collection ids or names) is specified,
-   * then all event handlers registered via the created hook will be
-   * triggered and called only if their event data origin matches the tags.
-   */
-  onMailerAfterRecordChangeEmailSend(...tags: string[]): (hook.TaggedHook<MailerRecordEvent | undefined>)
-  /**
-   * OnRealtimeConnectRequest hook is triggered right before establishing
-   * the SSE client connection.
-   */
-  onRealtimeConnectRequest(): (hook.Hook<RealtimeConnectEvent | undefined>)
-  /**
-   * OnRealtimeDisconnectRequest hook is triggered on disconnected/interrupted
-   * SSE client connection.
-   */
-  onRealtimeDisconnectRequest(): (hook.Hook<RealtimeDisconnectEvent | undefined>)
-  /**
-   * OnRealtimeBeforeMessageSend hook is triggered right before sending
-   * an SSE message to a client.
-   * 
-   * Returning [hook.StopPropagation] will prevent sending the message.
-   * Returning any other non-nil error will close the realtime connection.
-   */
-  onRealtimeBeforeMessageSend(): (hook.Hook<RealtimeMessageEvent | undefined>)
-  /**
-   * OnRealtimeAfterMessageSend hook is triggered right after sending
-   * an SSE message to a client.
-   */
-  onRealtimeAfterMessageSend(): (hook.Hook<RealtimeMessageEvent | undefined>)
-  /**
-   * OnRealtimeBeforeSubscribeRequest hook is triggered before changing
-   * the client subscriptions, allowing you to further validate and
-   * modify the submitted change.
-   */
-  onRealtimeBeforeSubscribeRequest(): (hook.Hook<RealtimeSubscribeEvent | undefined>)
-  /**
-   * OnRealtimeAfterSubscribeRequest hook is triggered after the client
-   * subscriptions were successfully changed.
-   */
-  onRealtimeAfterSubscribeRequest(): (hook.Hook<RealtimeSubscribeEvent | undefined>)
-  /**
-   * OnSettingsListRequest hook is triggered on each successful
-   * API Settings list request.
-   * 
-   * Could be used to validate or modify the response before
-   * returning it to the client.
-   */
-  onSettingsListRequest(): (hook.Hook<SettingsListEvent | undefined>)
-  /**
-   * OnSettingsBeforeUpdateRequest hook is triggered before each API
-   * Settings update request (after request data load and before settings persistence).
-   * 
-   * Could be used to additionally validate the request data or
-   * implement completely different persistence behavior.
-   */
-  onSettingsBeforeUpdateRequest(): (hook.Hook<SettingsUpdateEvent | undefined>)
-  /**
-   * OnSettingsAfterUpdateRequest hook is triggered after each
-   * successful API Settings update request.
-   */
-  onSettingsAfterUpdateRequest(): (hook.Hook<SettingsUpdateEvent | undefined>)
-  /**
-   * OnFileDownloadRequest hook is triggered before each API File download request.
-   * 
-   * Could be used to validate or modify the file response before
-   * returning it to the client.
-   */
-  onFileDownloadRequest(...tags: string[]): (hook.TaggedHook<FileDownloadEvent | undefined>)
-  /**
-   * OnFileBeforeTokenRequest hook is triggered before each file
-   * token API request.
-   * 
-   * If no token or model was submitted, e.Model and e.Token will be empty,
-   * allowing you to implement your own custom model file auth implementation.
-   * 
-   * If the optional "tags" list (Collection ids or names) is specified,
-   * then all event handlers registered via the created hook will be
-   * triggered and called only if their event data origin matches the tags.
-   */
-  onFileBeforeTokenRequest(...tags: string[]): (hook.TaggedHook<FileTokenEvent | undefined>)
-  /**
-   * OnFileAfterTokenRequest hook is triggered after each
-   * successful file token API request.
-   * 
-   * If the optional "tags" list (Collection ids or names) is specified,
-   * then all event handlers registered via the created hook will be
-   * triggered and called only if their event data origin matches the tags.
-   */
-  onFileAfterTokenRequest(...tags: string[]): (hook.TaggedHook<FileTokenEvent | undefined>)
-  /**
-   * OnAdminsListRequest hook is triggered on each API Admins list request.
-   * 
-   * Could be used to validate or modify the response before returning it to the client.
-   */
-  onAdminsListRequest(): (hook.Hook<AdminsListEvent | undefined>)
-  /**
-   * OnAdminViewRequest hook is triggered on each API Admin view request.
-   * 
-   * Could be used to validate or modify the response before returning it to the client.
-   */
-  onAdminViewRequest(): (hook.Hook<AdminViewEvent | undefined>)
-  /**
-   * OnAdminBeforeCreateRequest hook is triggered before each API
-   * Admin create request (after request data load and before model persistence).
-   * 
-   * Could be used to additionally validate the request data or implement
-   * completely different persistence behavior.
-   */
-  onAdminBeforeCreateRequest(): (hook.Hook<AdminCreateEvent | undefined>)
-  /**
-   * OnAdminAfterCreateRequest hook is triggered after each
-   * successful API Admin create request.
-   */
-  onAdminAfterCreateRequest(): (hook.Hook<AdminCreateEvent | undefined>)
-  /**
-   * OnAdminBeforeUpdateRequest hook is triggered before each API
-   * Admin update request (after request data load and before model persistence).
-   * 
-   * Could be used to additionally validate the request data or implement
-   * completely different persistence behavior.
-   */
-  onAdminBeforeUpdateRequest(): (hook.Hook<AdminUpdateEvent | undefined>)
-  /**
-   * OnAdminAfterUpdateRequest hook is triggered after each
-   * successful API Admin update request.
-   */
-  onAdminAfterUpdateRequest(): (hook.Hook<AdminUpdateEvent | undefined>)
-  /**
-   * OnAdminBeforeDeleteRequest hook is triggered before each API
-   * Admin delete request (after model load and before actual deletion).
-   * 
-   * Could be used to additionally validate the request data or implement
-   * completely different delete behavior.
-   */
-  onAdminBeforeDeleteRequest(): (hook.Hook<AdminDeleteEvent | undefined>)
-  /**
-   * OnAdminAfterDeleteRequest hook is triggered after each
-   * successful API Admin delete request.
-   */
-  onAdminAfterDeleteRequest(): (hook.Hook<AdminDeleteEvent | undefined>)
-  /**
-   * OnAdminAuthRequest hook is triggered on each successful API Admin
-   * authentication request (sign-in, token refresh, etc.).
-   * 
-   * Could be used to additionally validate or modify the
-   * authenticated admin data and token.
-   */
-  onAdminAuthRequest(): (hook.Hook<AdminAuthEvent | undefined>)
-  /**
-   * OnAdminBeforeAuthWithPasswordRequest hook is triggered before each Admin
-   * auth with password API request (after request data load and before password validation).
-   * 
-   * Could be used to implement for example a custom password validation
-   * or to locate a different Admin identity (by assigning [AdminAuthWithPasswordEvent.Admin]).
-   */
-  onAdminBeforeAuthWithPasswordRequest(): (hook.Hook<AdminAuthWithPasswordEvent | undefined>)
-  /**
-   * OnAdminAfterAuthWithPasswordRequest hook is triggered after each
-   * successful Admin auth with password API request.
-   */
-  onAdminAfterAuthWithPasswordRequest(): (hook.Hook<AdminAuthWithPasswordEvent | undefined>)
-  /**
-   * OnAdminBeforeAuthRefreshRequest hook is triggered before each Admin
-   * auth refresh API request (right before generating a new auth token).
-   * 
-   * Could be used to additionally validate the request data or implement
-   * completely different auth refresh behavior.
-   */
-  onAdminBeforeAuthRefreshRequest(): (hook.Hook<AdminAuthRefreshEvent | undefined>)
-  /**
-   * OnAdminAfterAuthRefreshRequest hook is triggered after each
-   * successful auth refresh API request (right after generating a new auth token).
-   */
-  onAdminAfterAuthRefreshRequest(): (hook.Hook<AdminAuthRefreshEvent | undefined>)
-  /**
-   * OnAdminBeforeRequestPasswordResetRequest hook is triggered before each Admin
-   * request password reset API request (after request data load and before sending the reset email).
-   * 
-   * Could be used to additionally validate the request data or implement
-   * completely different password reset behavior.
-   */
-  onAdminBeforeRequestPasswordResetRequest(): (hook.Hook<AdminRequestPasswordResetEvent | undefined>)
-  /**
-   * OnAdminAfterRequestPasswordResetRequest hook is triggered after each
-   * successful request password reset API request.
-   */
-  onAdminAfterRequestPasswordResetRequest(): (hook.Hook<AdminRequestPasswordResetEvent | undefined>)
-  /**
-   * OnAdminBeforeConfirmPasswordResetRequest hook is triggered before each Admin
-   * confirm password reset API request (after request data load and before persistence).
-   * 
-   * Could be used to additionally validate the request data or implement
-   * completely different persistence behavior.
-   */
-  onAdminBeforeConfirmPasswordResetRequest(): (hook.Hook<AdminConfirmPasswordResetEvent | undefined>)
-  /**
-   * OnAdminAfterConfirmPasswordResetRequest hook is triggered after each
-   * successful confirm password reset API request.
-   */
-  onAdminAfterConfirmPasswordResetRequest(): (hook.Hook<AdminConfirmPasswordResetEvent | undefined>)
-  /**
-   * OnRecordAuthRequest hook is triggered on each successful API
-   * record authentication request (sign-in, token refresh, etc.).
-   * 
-   * Could be used to additionally validate or modify the authenticated
-   * record data and token.
-   * 
-   * If the optional "tags" list (Collection ids or names) is specified,
-   * then all event handlers registered via the created hook will be
-   * triggered and called only if their event data origin matches the tags.
-   */
-  onRecordAuthRequest(...tags: string[]): (hook.TaggedHook<RecordAuthEvent | undefined>)
-  /**
-   * OnRecordBeforeAuthWithPasswordRequest hook is triggered before each Record
-   * auth with password API request (after request data load and before password validation).
-   * 
-   * Could be used to implement for example a custom password validation
-   * or to locate a different Record model (by reassigning [RecordAuthWithPasswordEvent.Record]).
-   * 
-   * If the optional "tags" list (Collection ids or names) is specified,
-   * then all event handlers registered via the created hook will be
-   * triggered and called only if their event data origin matches the tags.
-   */
-  onRecordBeforeAuthWithPasswordRequest(...tags: string[]): (hook.TaggedHook<RecordAuthWithPasswordEvent | undefined>)
-  /**
-   * OnRecordAfterAuthWithPasswordRequest hook is triggered after each
-   * successful Record auth with password API request.
-   * 
-   * If the optional "tags" list (Collection ids or names) is specified,
-   * then all event handlers registered via the created hook will be
-   * triggered and called only if their event data origin matches the tags.
-   */
-  onRecordAfterAuthWithPasswordRequest(...tags: string[]): (hook.TaggedHook<RecordAuthWithPasswordEvent | undefined>)
-  /**
-   * OnRecordBeforeAuthWithOAuth2Request hook is triggered before each Record
-   * OAuth2 sign-in/sign-up API request (after token exchange and before external provider linking).
-   * 
-   * If the [RecordAuthWithOAuth2Event.Record] is not set, then the OAuth2
-   * request will try to create a new auth Record.
-   * 
-   * To assign or link a different existing record model you can
-   * change the [RecordAuthWithOAuth2Event.Record] field.
-   * 
-   * If the optional "tags" list (Collection ids or names) is specified,
-   * then all event handlers registered via the created hook will be
-   * triggered and called only if their event data origin matches the tags.
-   */
-  onRecordBeforeAuthWithOAuth2Request(...tags: string[]): (hook.TaggedHook<RecordAuthWithOAuth2Event | undefined>)
-  /**
-   * OnRecordAfterAuthWithOAuth2Request hook is triggered after each
-   * successful Record OAuth2 API request.
-   * 
-   * If the optional "tags" list (Collection ids or names) is specified,
-   * then all event handlers registered via the created hook will be
-   * triggered and called only if their event data origin matches the tags.
-   */
-  onRecordAfterAuthWithOAuth2Request(...tags: string[]): (hook.TaggedHook<RecordAuthWithOAuth2Event | undefined>)
-  /**
-   * OnRecordBeforeAuthRefreshRequest hook is triggered before each Record
-   * auth refresh API request (right before generating a new auth token).
-   * 
-   * Could be used to additionally validate the request data or implement
-   * completely different auth refresh behavior.
-   * 
-   * If the optional "tags" list (Collection ids or names) is specified,
-   * then all event handlers registered via the created hook will be
-   * triggered and called only if their event data origin matches the tags.
-   */
-  onRecordBeforeAuthRefreshRequest(...tags: string[]): (hook.TaggedHook<RecordAuthRefreshEvent | undefined>)
-  /**
-   * OnRecordAfterAuthRefreshRequest hook is triggered after each
-   * successful auth refresh API request (right after generating a new auth token).
-   * 
-   * If the optional "tags" list (Collection ids or names) is specified,
-   * then all event handlers registered via the created hook will be
-   * triggered and called only if their event data origin matches the tags.
-   */
-  onRecordAfterAuthRefreshRequest(...tags: string[]): (hook.TaggedHook<RecordAuthRefreshEvent | undefined>)
-  /**
-   * OnRecordListExternalAuthsRequest hook is triggered on each API record external auths list request.
-   * 
-   * Could be used to validate or modify the response before returning it to the client.
-   * 
-   * If the optional "tags" list (Collection ids or names) is specified,
-   * then all event handlers registered via the created hook will be
-   * triggered and called only if their event data origin matches the tags.
-   */
-  onRecordListExternalAuthsRequest(...tags: string[]): (hook.TaggedHook<RecordListExternalAuthsEvent | undefined>)
-  /**
-   * OnRecordBeforeUnlinkExternalAuthRequest hook is triggered before each API record
-   * external auth unlink request (after models load and before the actual relation deletion).
-   * 
-   * Could be used to additionally validate the request data or implement
-   * completely different delete behavior.
-   * 
-   * If the optional "tags" list (Collection ids or names) is specified,
-   * then all event handlers registered via the created hook will be
-   * triggered and called only if their event data origin matches the tags.
-   */
-  onRecordBeforeUnlinkExternalAuthRequest(...tags: string[]): (hook.TaggedHook<RecordUnlinkExternalAuthEvent | undefined>)
-  /**
-   * OnRecordAfterUnlinkExternalAuthRequest hook is triggered after each
-   * successful API record external auth unlink request.
-   * 
-   * If the optional "tags" list (Collection ids or names) is specified,
-   * then all event handlers registered via the created hook will be
-   * triggered and called only if their event data origin matches the tags.
-   */
-  onRecordAfterUnlinkExternalAuthRequest(...tags: string[]): (hook.TaggedHook<RecordUnlinkExternalAuthEvent | undefined>)
-  /**
-   * OnRecordBeforeRequestPasswordResetRequest hook is triggered before each Record
-   * request password reset API request (after request data load and before sending the reset email).
-   * 
-   * Could be used to additionally validate the request data or implement
-   * completely different password reset behavior.
-   * 
-   * If the optional "tags" list (Collection ids or names) is specified,
-   * then all event handlers registered via the created hook will be
-   * triggered and called only if their event data origin matches the tags.
-   */
-  onRecordBeforeRequestPasswordResetRequest(...tags: string[]): (hook.TaggedHook<RecordRequestPasswordResetEvent | undefined>)
-  /**
-   * OnRecordAfterRequestPasswordResetRequest hook is triggered after each
-   * successful request password reset API request.
-   * 
-   * If the optional "tags" list (Collection ids or names) is specified,
-   * then all event handlers registered via the created hook will be
-   * triggered and called only if their event data origin matches the tags.
-   */
-  onRecordAfterRequestPasswordResetRequest(...tags: string[]): (hook.TaggedHook<RecordRequestPasswordResetEvent | undefined>)
-  /**
-   * OnRecordBeforeConfirmPasswordResetRequest hook is triggered before each Record
-   * confirm password reset API request (after request data load and before persistence).
-   * 
-   * Could be used to additionally validate the request data or implement
-   * completely different persistence behavior.
-   * 
-   * If the optional "tags" list (Collection ids or names) is specified,
-   * then all event handlers registered via the created hook will be
-   * triggered and called only if their event data origin matches the tags.
-   */
-  onRecordBeforeConfirmPasswordResetRequest(...tags: string[]): (hook.TaggedHook<RecordConfirmPasswordResetEvent | undefined>)
-  /**
-   * OnRecordAfterConfirmPasswordResetRequest hook is triggered after each
-   * successful confirm password reset API request.
-   * 
-   * If the optional "tags" list (Collection ids or names) is specified,
-   * then all event handlers registered via the created hook will be
-   * triggered and called only if their event data origin matches the tags.
-   */
-  onRecordAfterConfirmPasswordResetRequest(...tags: string[]): (hook.TaggedHook<RecordConfirmPasswordResetEvent | undefined>)
-  /**
-   * OnRecordBeforeRequestVerificationRequest hook is triggered before each Record
-   * request verification API request (after request data load and before sending the verification email).
-   * 
-   * Could be used to additionally validate the loaded request data or implement
-   * completely different verification behavior.
-   * 
-   * If the optional "tags" list (Collection ids or names) is specified,
-   * then all event handlers registered via the created hook will be
-   * triggered and called only if their event data origin matches the tags.
-   */
-  onRecordBeforeRequestVerificationRequest(...tags: string[]): (hook.TaggedHook<RecordRequestVerificationEvent | undefined>)
-  /**
-   * OnRecordAfterRequestVerificationRequest hook is triggered after each
-   * successful request verification API request.
-   * 
-   * If the optional "tags" list (Collection ids or names) is specified,
-   * then all event handlers registered via the created hook will be
-   * triggered and called only if their event data origin matches the tags.
-   */
-  onRecordAfterRequestVerificationRequest(...tags: string[]): (hook.TaggedHook<RecordRequestVerificationEvent | undefined>)
-  /**
-   * OnRecordBeforeConfirmVerificationRequest hook is triggered before each Record
-   * confirm verification API request (after request data load and before persistence).
-   * 
-   * Could be used to additionally validate the request data or implement
-   * completely different persistence behavior.
-   * 
-   * If the optional "tags" list (Collection ids or names) is specified,
-   * then all event handlers registered via the created hook will be
-   * triggered and called only if their event data origin matches the tags.
-   */
-  onRecordBeforeConfirmVerificationRequest(...tags: string[]): (hook.TaggedHook<RecordConfirmVerificationEvent | undefined>)
-  /**
-   * OnRecordAfterConfirmVerificationRequest hook is triggered after each
-   * successful confirm verification API request.
-   * 
-   * If the optional "tags" list (Collection ids or names) is specified,
-   * then all event handlers registered via the created hook will be
-   * triggered and called only if their event data origin matches the tags.
-   */
-  onRecordAfterConfirmVerificationRequest(...tags: string[]): (hook.TaggedHook<RecordConfirmVerificationEvent | undefined>)
-  /**
-   * OnRecordBeforeRequestEmailChangeRequest hook is triggered before each Record request email change API request
-   * (after request data load and before sending the email link to confirm the change).
-   * 
-   * Could be used to additionally validate the request data or implement
-   * completely different request email change behavior.
-   * 
-   * If the optional "tags" list (Collection ids or names) is specified,
-   * then all event handlers registered via the created hook will be
-   * triggered and called only if their event data origin matches the tags.
-   */
-  onRecordBeforeRequestEmailChangeRequest(...tags: string[]): (hook.TaggedHook<RecordRequestEmailChangeEvent | undefined>)
-  /**
-   * OnRecordAfterRequestEmailChangeRequest hook is triggered after each
-   * successful request email change API request.
-   * 
-   * If the optional "tags" list (Collection ids or names) is specified,
-   * then all event handlers registered via the created hook will be
-   * triggered and called only if their event data origin matches the tags.
-   */
-  onRecordAfterRequestEmailChangeRequest(...tags: string[]): (hook.TaggedHook<RecordRequestEmailChangeEvent | undefined>)
-  /**
-   * OnRecordBeforeConfirmEmailChangeRequest hook is triggered before each Record
-   * confirm email change API request (after request data load and before persistence).
-   * 
-   * Could be used to additionally validate the request data or implement
-   * completely different persistence behavior.
-   * 
-   * If the optional "tags" list (Collection ids or names) is specified,
-   * then all event handlers registered via the created hook will be
-   * triggered and called only if their event data origin matches the tags.
-   */
-  onRecordBeforeConfirmEmailChangeRequest(...tags: string[]): (hook.TaggedHook<RecordConfirmEmailChangeEvent | undefined>)
-  /**
-   * OnRecordAfterConfirmEmailChangeRequest hook is triggered after each
-   * successful confirm email change API request.
-   * 
-   * If the optional "tags" list (Collection ids or names) is specified,
-   * then all event handlers registered via the created hook will be
-   * triggered and called only if their event data origin matches the tags.
-   */
-  onRecordAfterConfirmEmailChangeRequest(...tags: string[]): (hook.TaggedHook<RecordConfirmEmailChangeEvent | undefined>)
-  /**
-   * OnRecordsListRequest hook is triggered on each API Records list request.
-   * 
-   * Could be used to validate or modify the response before returning it to the client.
-   * 
-   * If the optional "tags" list (Collection ids or names) is specified,
-   * then all event handlers registered via the created hook will be
-   * triggered and called only if their event data origin matches the tags.
-   */
-  onRecordsListRequest(...tags: string[]): (hook.TaggedHook<RecordsListEvent | undefined>)
-  /**
-   * OnRecordViewRequest hook is triggered on each API Record view request.
-   * 
-   * Could be used to validate or modify the response before returning it to the client.
-   * 
-   * If the optional "tags" list (Collection ids or names) is specified,
-   * then all event handlers registered via the created hook will be
-   * triggered and called only if their event data origin matches the tags.
-   */
-  onRecordViewRequest(...tags: string[]): (hook.TaggedHook<RecordViewEvent | undefined>)
-  /**
-   * OnRecordBeforeCreateRequest hook is triggered before each API Record
-   * create request (after request data load and before model persistence).
-   * 
-   * Could be used to additionally validate the request data or implement
-   * completely different persistence behavior.
-   * 
-   * If the optional "tags" list (Collection ids or names) is specified,
-   * then all event handlers registered via the created hook will be
-   * triggered and called only if their event data origin matches the tags.
-   */
-  onRecordBeforeCreateRequest(...tags: string[]): (hook.TaggedHook<RecordCreateEvent | undefined>)
-  /**
-   * OnRecordAfterCreateRequest hook is triggered after each
-   * successful API Record create request.
-   * 
-   * If the optional "tags" list (Collection ids or names) is specified,
-   * then all event handlers registered via the created hook will be
-   * triggered and called only if their event data origin matches the tags.
-   */
-  onRecordAfterCreateRequest(...tags: string[]): (hook.TaggedHook<RecordCreateEvent | undefined>)
-  /**
-   * OnRecordBeforeUpdateRequest hook is triggered before each API Record
-   * update request (after request data load and before model persistence).
-   * 
-   * Could be used to additionally validate the request data or implement
-   * completely different persistence behavior.
-   * 
-   * If the optional "tags" list (Collection ids or names) is specified,
-   * then all event handlers registered via the created hook will be
-   * triggered and called only if their event data origin matches the tags.
-   */
-  onRecordBeforeUpdateRequest(...tags: string[]): (hook.TaggedHook<RecordUpdateEvent | undefined>)
-  /**
-   * OnRecordAfterUpdateRequest hook is triggered after each
-   * successful API Record update request.
-   * 
-   * If the optional "tags" list (Collection ids or names) is specified,
-   * then all event handlers registered via the created hook will be
-   * triggered and called only if their event data origin matches the tags.
-   */
-  onRecordAfterUpdateRequest(...tags: string[]): (hook.TaggedHook<RecordUpdateEvent | undefined>)
-  /**
-   * OnRecordBeforeDeleteRequest hook is triggered before each API Record
-   * delete request (after model load and before actual deletion).
-   * 
-   * Could be used to additionally validate the request data or implement
-   * completely different delete behavior.
-   * 
-   * If the optional "tags" list (Collection ids or names) is specified,
-   * then all event handlers registered via the created hook will be
-   * triggered and called only if their event data origin matches the tags.
-   */
-  onRecordBeforeDeleteRequest(...tags: string[]): (hook.TaggedHook<RecordDeleteEvent | undefined>)
-  /**
-   * OnRecordAfterDeleteRequest hook is triggered after each
-   * successful API Record delete request.
-   * 
-   * If the optional "tags" list (Collection ids or names) is specified,
-   * then all event handlers registered via the created hook will be
-   * triggered and called only if their event data origin matches the tags.
-   */
-  onRecordAfterDeleteRequest(...tags: string[]): (hook.TaggedHook<RecordDeleteEvent | undefined>)
-  /**
-   * OnCollectionsListRequest hook is triggered on each API Collections list request.
-   * 
-   * Could be used to validate or modify the response before returning it to the client.
-   */
-  onCollectionsListRequest(): (hook.Hook<CollectionsListEvent | undefined>)
-  /**
-   * OnCollectionViewRequest hook is triggered on each API Collection view request.
-   * 
-   * Could be used to validate or modify the response before returning it to the client.
-   */
-  onCollectionViewRequest(): (hook.Hook<CollectionViewEvent | undefined>)
-  /**
-   * OnCollectionBeforeCreateRequest hook is triggered before each API Collection
-   * create request (after request data load and before model persistence).
-   * 
-   * Could be used to additionally validate the request data or implement
-   * completely different persistence behavior.
-   */
-  onCollectionBeforeCreateRequest(): (hook.Hook<CollectionCreateEvent | undefined>)
-  /**
-   * OnCollectionAfterCreateRequest hook is triggered after each
-   * successful API Collection create request.
-   */
-  onCollectionAfterCreateRequest(): (hook.Hook<CollectionCreateEvent | undefined>)
-  /**
-   * OnCollectionBeforeUpdateRequest hook is triggered before each API Collection
-   * update request (after request data load and before model persistence).
-   * 
-   * Could be used to additionally validate the request data or implement
-   * completely different persistence behavior.
-   */
-  onCollectionBeforeUpdateRequest(): (hook.Hook<CollectionUpdateEvent | undefined>)
-  /**
-   * OnCollectionAfterUpdateRequest hook is triggered after each
-   * successful API Collection update request.
-   */
-  onCollectionAfterUpdateRequest(): (hook.Hook<CollectionUpdateEvent | undefined>)
-  /**
-   * OnCollectionBeforeDeleteRequest hook is triggered before each API
-   * Collection delete request (after model load and before actual deletion).
-   * 
-   * Could be used to additionally validate the request data or implement
-   * completely different delete behavior.
-   */
-  onCollectionBeforeDeleteRequest(): (hook.Hook<CollectionDeleteEvent | undefined>)
-  /**
-   * OnCollectionAfterDeleteRequest hook is triggered after each
-   * successful API Collection delete request.
-   */
-  onCollectionAfterDeleteRequest(): (hook.Hook<CollectionDeleteEvent | undefined>)
-  /**
-   * OnCollectionsBeforeImportRequest hook is triggered before each API
-   * collections import request (after request data load and before the actual import).
-   * 
-   * Could be used to additionally validate the imported collections or
-   * to implement completely different import behavior.
-   */
-  onCollectionsBeforeImportRequest(): (hook.Hook<CollectionsImportEvent | undefined>)
-  /**
-   * OnCollectionsAfterImportRequest hook is triggered after each
-   * successful API collections import request.
-   */
-  onCollectionsAfterImportRequest(): (hook.Hook<CollectionsImportEvent | undefined>)
- }
-}
-
-/**
  * Package io provides basic interfaces to I/O primitives.
  * Its primary job is to wrap existing implementations of such primitives,
  * such as those in package os, into shared public interfaces that
@@ -15009,74 +14991,98 @@ namespace textproto {
  }
 }
 
-namespace store {
+/**
+ * Package multipart implements MIME multipart parsing, as defined in RFC
+ * 2046.
+ * 
+ * The implementation is sufficient for HTTP (RFC 2388) and the multipart
+ * bodies generated by popular browsers.
+ * 
+ * # Limits
+ * 
+ * To protect against malicious inputs, this package sets limits on the size
+ * of the MIME data it processes.
+ * 
+ * Reader.NextPart and Reader.NextRawPart limit the number of headers in a
+ * part to 10000 and Reader.ReadForm limits the total number of headers in all
+ * FileHeaders to 10000.
+ * These limits may be adjusted with the GODEBUG=multipartmaxheaders=<values>
+ * setting.
+ * 
+ * Reader.ReadForm further limits the number of parts in a form to 1000.
+ * This limit may be adjusted with the GODEBUG=multipartmaxparts=<value>
+ * setting.
+ */
+/**
+ * Copyright 2023 The Go Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style
+ * license that can be found in the LICENSE file.
+ */
+namespace multipart {
+ interface Reader {
+  /**
+   * ReadForm parses an entire multipart message whose parts have
+   * a Content-Disposition of "form-data".
+   * It stores up to maxMemory bytes + 10MB (reserved for non-file parts)
+   * in memory. File parts which can't be stored in memory will be stored on
+   * disk in temporary files.
+   * It returns ErrMessageTooLarge if all non-file parts can't be stored in
+   * memory.
+   */
+  readForm(maxMemory: number): (Form)
+ }
  /**
-  * Store defines a concurrent safe in memory key-value data store.
+  * Form is a parsed multipart form.
+  * Its File parts are stored either in memory or on disk,
+  * and are accessible via the *FileHeader's Open method.
+  * Its Value parts are stored as strings.
+  * Both are keyed by field name.
   */
- interface Store<T> {
+ interface Form {
+  value: _TygojaDict
+  file: _TygojaDict
  }
- interface Store<T> {
+ interface Form {
   /**
-   * Reset clears the store and replaces the store data with a
-   * shallow copy of the provided newData.
-   */
-  reset(newData: _TygojaDict): void
- }
- interface Store<T> {
-  /**
-   * Length returns the current number of elements in the store.
-   */
-  length(): number
- }
- interface Store<T> {
-  /**
-   * RemoveAll removes all the existing store entries.
+   * RemoveAll removes any temporary files associated with a Form.
    */
   removeAll(): void
  }
- interface Store<T> {
+ /**
+  * File is an interface to access the file part of a multipart message.
+  * Its contents may be either stored in memory or on disk.
+  * If stored on disk, the File's underlying concrete type will be an *os.File.
+  */
+ interface File {
+  [key:string]: any;
+ }
+ /**
+  * Reader is an iterator over parts in a MIME multipart body.
+  * Reader's underlying parser consumes its input as needed. Seeking
+  * isn't supported.
+  */
+ interface Reader {
+ }
+ interface Reader {
   /**
-   * Remove removes a single entry from the store.
+   * NextPart returns the next part in the multipart or an error.
+   * When there are no more parts, the error io.EOF is returned.
    * 
-   * Remove does nothing if key doesn't exist in the store.
+   * As a special case, if the "Content-Transfer-Encoding" header
+   * has a value of "quoted-printable", that header is instead
+   * hidden and the body is transparently decoded during Read calls.
    */
-  remove(key: string): void
+  nextPart(): (Part)
  }
- interface Store<T> {
+ interface Reader {
   /**
-   * Has checks if element with the specified key exist or not.
-   */
-  has(key: string): boolean
- }
- interface Store<T> {
-  /**
-   * Get returns a single element value from the store.
+   * NextRawPart returns the next part in the multipart or an error.
+   * When there are no more parts, the error io.EOF is returned.
    * 
-   * If key is not set, the zero T value is returned.
+   * Unlike NextPart, it does not have special handling for
+   * "Content-Transfer-Encoding: quoted-printable".
    */
-  get(key: string): T
- }
- interface Store<T> {
-  /**
-   * GetAll returns a shallow copy of the current store data.
-   */
-  getAll(): _TygojaDict
- }
- interface Store<T> {
-  /**
-   * Set sets (or overwrite if already exist) a new value for key.
-   */
-  set(key: string, value: T): void
- }
- interface Store<T> {
-  /**
-   * SetIfLessThanLimit sets (or overwrite if already exist) a new value for key.
-   * 
-   * This method is similar to Set() but **it will skip adding new elements**
-   * to the store if the store length has reached the specified limit.
-   * false is returned if maxAllowedElements limit is reached.
-   */
-  setIfLessThanLimit(key: string, value: T, maxAllowedElements: number): boolean
+  nextRawPart(): (Part)
  }
 }
 
@@ -15312,313 +15318,132 @@ namespace url {
 }
 
 /**
- * Package sql provides a generic interface around SQL (or SQL-like)
- * databases.
- * 
- * The sql package must be used in conjunction with a database driver.
- * See https://golang.org/s/sqldrivers for a list of drivers.
- * 
- * Drivers that do not support context cancellation will not return until
- * after the query is completed.
- * 
- * For usage examples, see the wiki page at
- * https://golang.org/s/sqlwiki.
+ * Package types implements some commonly used db serializable types
+ * like datetime, json, etc.
  */
-namespace sql {
+namespace types {
  /**
-  * IsolationLevel is the transaction isolation level used in TxOptions.
+  * DateTime represents a [time.Time] instance in UTC that is wrapped
+  * and serialized using the app default date layout.
   */
- interface IsolationLevel extends Number{}
- interface IsolationLevel {
+ interface DateTime {
+ }
+ interface DateTime {
   /**
-   * String returns the name of the transaction isolation level.
+   * Time returns the internal [time.Time] instance.
+   */
+  time(): time.Time
+ }
+ interface DateTime {
+  /**
+   * IsZero checks whether the current DateTime instance has zero time value.
+   */
+  isZero(): boolean
+ }
+ interface DateTime {
+  /**
+   * String serializes the current DateTime instance into a formatted
+   * UTC date string.
+   * 
+   * The zero value is serialized to an empty string.
    */
   string(): string
  }
- /**
-  * DBStats contains database statistics.
-  */
- interface DBStats {
-  maxOpenConnections: number // Maximum number of open connections to the database.
+ interface DateTime {
   /**
-   * Pool Status
+   * MarshalJSON implements the [json.Marshaler] interface.
    */
-  openConnections: number // The number of established connections both in use and idle.
-  inUse: number // The number of connections currently in use.
-  idle: number // The number of idle connections.
+  marshalJSON(): string|Array<number>
+ }
+ interface DateTime {
   /**
-   * Counters
+   * UnmarshalJSON implements the [json.Unmarshaler] interface.
    */
-  waitCount: number // The total number of connections waited for.
-  waitDuration: time.Duration // The total time blocked waiting for a new connection.
-  maxIdleClosed: number // The total number of connections closed due to SetMaxIdleConns.
-  maxIdleTimeClosed: number // The total number of connections closed due to SetConnMaxIdleTime.
-  maxLifetimeClosed: number // The total number of connections closed due to SetConnMaxLifetime.
+  unmarshalJSON(b: string|Array<number>): void
  }
- /**
-  * Conn represents a single database connection rather than a pool of database
-  * connections. Prefer running queries from DB unless there is a specific
-  * need for a continuous single database connection.
-  * 
-  * A Conn must call Close to return the connection to the database pool
-  * and may do so concurrently with a running query.
-  * 
-  * After a call to Close, all operations on the
-  * connection fail with ErrConnDone.
-  */
- interface Conn {
- }
- interface Conn {
+ interface DateTime {
   /**
-   * PingContext verifies the connection to the database is still alive.
+   * Value implements the [driver.Valuer] interface.
    */
-  pingContext(ctx: context.Context): void
+  value(): any
  }
- interface Conn {
+ interface DateTime {
   /**
-   * ExecContext executes a query without returning any rows.
-   * The args are for any placeholder parameters in the query.
+   * Scan implements [sql.Scanner] interface to scan the provided value
+   * into the current DateTime instance.
    */
-  execContext(ctx: context.Context, query: string, ...args: any[]): Result
- }
- interface Conn {
-  /**
-   * QueryContext executes a query that returns rows, typically a SELECT.
-   * The args are for any placeholder parameters in the query.
-   */
-  queryContext(ctx: context.Context, query: string, ...args: any[]): (Rows)
- }
- interface Conn {
-  /**
-   * QueryRowContext executes a query that is expected to return at most one row.
-   * QueryRowContext always returns a non-nil value. Errors are deferred until
-   * Row's Scan method is called.
-   * If the query selects no rows, the *Row's Scan will return ErrNoRows.
-   * Otherwise, the *Row's Scan scans the first selected row and discards
-   * the rest.
-   */
-  queryRowContext(ctx: context.Context, query: string, ...args: any[]): (Row)
- }
- interface Conn {
-  /**
-   * PrepareContext creates a prepared statement for later queries or executions.
-   * Multiple queries or executions may be run concurrently from the
-   * returned statement.
-   * The caller must call the statement's Close method
-   * when the statement is no longer needed.
-   * 
-   * The provided context is used for the preparation of the statement, not for the
-   * execution of the statement.
-   */
-  prepareContext(ctx: context.Context, query: string): (Stmt)
- }
- interface Conn {
-  /**
-   * Raw executes f exposing the underlying driver connection for the
-   * duration of f. The driverConn must not be used outside of f.
-   * 
-   * Once f returns and err is not driver.ErrBadConn, the Conn will continue to be usable
-   * until Conn.Close is called.
-   */
-  raw(f: (driverConn: any) => void): void
- }
- interface Conn {
-  /**
-   * BeginTx starts a transaction.
-   * 
-   * The provided context is used until the transaction is committed or rolled back.
-   * If the context is canceled, the sql package will roll back
-   * the transaction. Tx.Commit will return an error if the context provided to
-   * BeginTx is canceled.
-   * 
-   * The provided TxOptions is optional and may be nil if defaults should be used.
-   * If a non-default isolation level is used that the driver doesn't support,
-   * an error will be returned.
-   */
-  beginTx(ctx: context.Context, opts: TxOptions): (Tx)
- }
- interface Conn {
-  /**
-   * Close returns the connection to the connection pool.
-   * All operations after a Close will return with ErrConnDone.
-   * Close is safe to call concurrently with other operations and will
-   * block until all other operations finish. It may be useful to first
-   * cancel any used context and then call close directly after.
-   */
-  close(): void
- }
- /**
-  * ColumnType contains the name and type of a column.
-  */
- interface ColumnType {
- }
- interface ColumnType {
-  /**
-   * Name returns the name or alias of the column.
-   */
-  name(): string
- }
- interface ColumnType {
-  /**
-   * Length returns the column type length for variable length column types such
-   * as text and binary field types. If the type length is unbounded the value will
-   * be math.MaxInt64 (any database limits will still apply).
-   * If the column type is not variable length, such as an int, or if not supported
-   * by the driver ok is false.
-   */
-  length(): [number, boolean]
- }
- interface ColumnType {
-  /**
-   * DecimalSize returns the scale and precision of a decimal type.
-   * If not applicable or if not supported ok is false.
-   */
-  decimalSize(): [number, boolean]
- }
- interface ColumnType {
-  /**
-   * ScanType returns a Go type suitable for scanning into using Rows.Scan.
-   * If a driver does not support this property ScanType will return
-   * the type of an empty interface.
-   */
-  scanType(): any
- }
- interface ColumnType {
-  /**
-   * Nullable reports whether the column may be null.
-   * If a driver does not support this property ok will be false.
-   */
-  nullable(): boolean
- }
- interface ColumnType {
-  /**
-   * DatabaseTypeName returns the database system name of the column type. If an empty
-   * string is returned, then the driver type name is not supported.
-   * Consult your driver documentation for a list of driver data types. Length specifiers
-   * are not included.
-   * Common type names include "VARCHAR", "TEXT", "NVARCHAR", "DECIMAL", "BOOL",
-   * "INT", and "BIGINT".
-   */
-  databaseTypeName(): string
- }
- /**
-  * Row is the result of calling QueryRow to select a single row.
-  */
- interface Row {
- }
- interface Row {
-  /**
-   * Scan copies the columns from the matched row into the values
-   * pointed at by dest. See the documentation on Rows.Scan for details.
-   * If more than one row matches the query,
-   * Scan uses the first row and discards the rest. If no row matches
-   * the query, Scan returns ErrNoRows.
-   */
-  scan(...dest: any[]): void
- }
- interface Row {
-  /**
-   * Err provides a way for wrapping packages to check for
-   * query errors without calling Scan.
-   * Err returns the error, if any, that was encountered while running the query.
-   * If this error is not nil, this error will also be returned from Scan.
-   */
-  err(): void
+  scan(value: any): void
  }
 }
 
-/**
- * Package multipart implements MIME multipart parsing, as defined in RFC
- * 2046.
- * 
- * The implementation is sufficient for HTTP (RFC 2388) and the multipart
- * bodies generated by popular browsers.
- * 
- * # Limits
- * 
- * To protect against malicious inputs, this package sets limits on the size
- * of the MIME data it processes.
- * 
- * Reader.NextPart and Reader.NextRawPart limit the number of headers in a
- * part to 10000 and Reader.ReadForm limits the total number of headers in all
- * FileHeaders to 10000.
- * These limits may be adjusted with the GODEBUG=multipartmaxheaders=<values>
- * setting.
- * 
- * Reader.ReadForm further limits the number of parts in a form to 1000.
- * This limit may be adjusted with the GODEBUG=multipartmaxparts=<value>
- * setting.
- */
-/**
- * Copyright 2023 The Go Authors. All rights reserved.
- * Use of this source code is governed by a BSD-style
- * license that can be found in the LICENSE file.
- */
-namespace multipart {
- interface Reader {
-  /**
-   * ReadForm parses an entire multipart message whose parts have
-   * a Content-Disposition of "form-data".
-   * It stores up to maxMemory bytes + 10MB (reserved for non-file parts)
-   * in memory. File parts which can't be stored in memory will be stored on
-   * disk in temporary files.
-   * It returns ErrMessageTooLarge if all non-file parts can't be stored in
-   * memory.
-   */
-  readForm(maxMemory: number): (Form)
- }
+namespace store {
  /**
-  * Form is a parsed multipart form.
-  * Its File parts are stored either in memory or on disk,
-  * and are accessible via the *FileHeader's Open method.
-  * Its Value parts are stored as strings.
-  * Both are keyed by field name.
+  * Store defines a concurrent safe in memory key-value data store.
   */
- interface Form {
-  value: _TygojaDict
-  file: _TygojaDict
+ interface Store<T> {
  }
- interface Form {
+ interface Store<T> {
   /**
-   * RemoveAll removes any temporary files associated with a Form.
+   * Reset clears the store and replaces the store data with a
+   * shallow copy of the provided newData.
+   */
+  reset(newData: _TygojaDict): void
+ }
+ interface Store<T> {
+  /**
+   * Length returns the current number of elements in the store.
+   */
+  length(): number
+ }
+ interface Store<T> {
+  /**
+   * RemoveAll removes all the existing store entries.
    */
   removeAll(): void
  }
- /**
-  * File is an interface to access the file part of a multipart message.
-  * Its contents may be either stored in memory or on disk.
-  * If stored on disk, the File's underlying concrete type will be an *os.File.
-  */
- interface File {
-  [key:string]: any;
- }
- /**
-  * Reader is an iterator over parts in a MIME multipart body.
-  * Reader's underlying parser consumes its input as needed. Seeking
-  * isn't supported.
-  */
- interface Reader {
- }
- interface Reader {
+ interface Store<T> {
   /**
-   * NextPart returns the next part in the multipart or an error.
-   * When there are no more parts, the error io.EOF is returned.
+   * Remove removes a single entry from the store.
    * 
-   * As a special case, if the "Content-Transfer-Encoding" header
-   * has a value of "quoted-printable", that header is instead
-   * hidden and the body is transparently decoded during Read calls.
+   * Remove does nothing if key doesn't exist in the store.
    */
-  nextPart(): (Part)
+  remove(key: string): void
  }
- interface Reader {
+ interface Store<T> {
   /**
-   * NextRawPart returns the next part in the multipart or an error.
-   * When there are no more parts, the error io.EOF is returned.
-   * 
-   * Unlike NextPart, it does not have special handling for
-   * "Content-Transfer-Encoding: quoted-printable".
+   * Has checks if element with the specified key exist or not.
    */
-  nextRawPart(): (Part)
+  has(key: string): boolean
+ }
+ interface Store<T> {
+  /**
+   * Get returns a single element value from the store.
+   * 
+   * If key is not set, the zero T value is returned.
+   */
+  get(key: string): T
+ }
+ interface Store<T> {
+  /**
+   * GetAll returns a shallow copy of the current store data.
+   */
+  getAll(): _TygojaDict
+ }
+ interface Store<T> {
+  /**
+   * Set sets (or overwrite if already exist) a new value for key.
+   */
+  set(key: string, value: T): void
+ }
+ interface Store<T> {
+  /**
+   * SetIfLessThanLimit sets (or overwrite if already exist) a new value for key.
+   * 
+   * This method is similar to Set() but **it will skip adding new elements**
+   * to the store if the store length has reached the specified limit.
+   * false is returned if maxAllowedElements limit is reached.
+   */
+  setIfLessThanLimit(key: string, value: T, maxAllowedElements: number): boolean
  }
 }
 
@@ -16051,61 +15876,321 @@ namespace http {
 }
 
 /**
- * Package types implements some commonly used db serializable types
- * like datetime, json, etc.
+ * Package oauth2 provides support for making
+ * OAuth2 authorized and authenticated HTTP requests,
+ * as specified in RFC 6749.
+ * It can additionally grant authorization with Bearer JWT.
  */
-namespace types {
+/**
+ * Copyright 2023 The Go Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style
+ * license that can be found in the LICENSE file.
+ */
+namespace oauth2 {
  /**
-  * DateTime represents a [time.Time] instance in UTC that is wrapped
-  * and serialized using the app default date layout.
+  * An AuthCodeOption is passed to Config.AuthCodeURL.
   */
- interface DateTime {
+ interface AuthCodeOption {
+  [key:string]: any;
  }
- interface DateTime {
+ /**
+  * Token represents the credentials used to authorize
+  * the requests to access protected resources on the OAuth 2.0
+  * provider's backend.
+  * 
+  * Most users of this package should not access fields of Token
+  * directly. They're exported mostly for use by related packages
+  * implementing derivative OAuth2 flows.
+  */
+ interface Token {
   /**
-   * Time returns the internal [time.Time] instance.
+   * AccessToken is the token that authorizes and authenticates
+   * the requests.
    */
-  time(): time.Time
- }
- interface DateTime {
+  accessToken: string
   /**
-   * IsZero checks whether the current DateTime instance has zero time value.
+   * TokenType is the type of token.
+   * The Type method returns either this or "Bearer", the default.
    */
-  isZero(): boolean
- }
- interface DateTime {
+  tokenType: string
   /**
-   * String serializes the current DateTime instance into a formatted
-   * UTC date string.
+   * RefreshToken is a token that's used by the application
+   * (as opposed to the user) to refresh the access token
+   * if it expires.
+   */
+  refreshToken: string
+  /**
+   * Expiry is the optional expiration time of the access token.
    * 
-   * The zero value is serialized to an empty string.
+   * If zero, TokenSource implementations will reuse the same
+   * token forever and RefreshToken or equivalent
+   * mechanisms for that TokenSource will not be used.
+   */
+  expiry: time.Time
+ }
+ interface Token {
+  /**
+   * Type returns t.TokenType if non-empty, else "Bearer".
+   */
+  type(): string
+ }
+ interface Token {
+  /**
+   * SetAuthHeader sets the Authorization header to r using the access
+   * token in t.
+   * 
+   * This method is unnecessary when using Transport or an HTTP Client
+   * returned by this package.
+   */
+  setAuthHeader(r: http.Request): void
+ }
+ interface Token {
+  /**
+   * WithExtra returns a new Token that's a clone of t, but using the
+   * provided raw extra map. This is only intended for use by packages
+   * implementing derivative OAuth2 flows.
+   */
+  withExtra(extra: {
+   }): (Token)
+ }
+ interface Token {
+  /**
+   * Extra returns an extra field.
+   * Extra fields are key-value pairs returned by the server as a
+   * part of the token retrieval response.
+   */
+  extra(key: string): {
+ }
+ }
+ interface Token {
+  /**
+   * Valid reports whether t is non-nil, has an AccessToken, and is not expired.
+   */
+  valid(): boolean
+ }
+}
+
+/**
+ * Package sql provides a generic interface around SQL (or SQL-like)
+ * databases.
+ * 
+ * The sql package must be used in conjunction with a database driver.
+ * See https://golang.org/s/sqldrivers for a list of drivers.
+ * 
+ * Drivers that do not support context cancellation will not return until
+ * after the query is completed.
+ * 
+ * For usage examples, see the wiki page at
+ * https://golang.org/s/sqlwiki.
+ */
+namespace sql {
+ /**
+  * IsolationLevel is the transaction isolation level used in TxOptions.
+  */
+ interface IsolationLevel extends Number{}
+ interface IsolationLevel {
+  /**
+   * String returns the name of the transaction isolation level.
    */
   string(): string
  }
- interface DateTime {
+ /**
+  * DBStats contains database statistics.
+  */
+ interface DBStats {
+  maxOpenConnections: number // Maximum number of open connections to the database.
   /**
-   * MarshalJSON implements the [json.Marshaler] interface.
+   * Pool Status
    */
-  marshalJSON(): string|Array<number>
+  openConnections: number // The number of established connections both in use and idle.
+  inUse: number // The number of connections currently in use.
+  idle: number // The number of idle connections.
+  /**
+   * Counters
+   */
+  waitCount: number // The total number of connections waited for.
+  waitDuration: time.Duration // The total time blocked waiting for a new connection.
+  maxIdleClosed: number // The total number of connections closed due to SetMaxIdleConns.
+  maxIdleTimeClosed: number // The total number of connections closed due to SetConnMaxIdleTime.
+  maxLifetimeClosed: number // The total number of connections closed due to SetConnMaxLifetime.
  }
- interface DateTime {
-  /**
-   * UnmarshalJSON implements the [json.Unmarshaler] interface.
-   */
-  unmarshalJSON(b: string|Array<number>): void
+ /**
+  * Conn represents a single database connection rather than a pool of database
+  * connections. Prefer running queries from DB unless there is a specific
+  * need for a continuous single database connection.
+  * 
+  * A Conn must call Close to return the connection to the database pool
+  * and may do so concurrently with a running query.
+  * 
+  * After a call to Close, all operations on the
+  * connection fail with ErrConnDone.
+  */
+ interface Conn {
  }
- interface DateTime {
+ interface Conn {
   /**
-   * Value implements the [driver.Valuer] interface.
+   * PingContext verifies the connection to the database is still alive.
    */
-  value(): any
+  pingContext(ctx: context.Context): void
  }
- interface DateTime {
+ interface Conn {
   /**
-   * Scan implements [sql.Scanner] interface to scan the provided value
-   * into the current DateTime instance.
+   * ExecContext executes a query without returning any rows.
+   * The args are for any placeholder parameters in the query.
    */
-  scan(value: any): void
+  execContext(ctx: context.Context, query: string, ...args: any[]): Result
+ }
+ interface Conn {
+  /**
+   * QueryContext executes a query that returns rows, typically a SELECT.
+   * The args are for any placeholder parameters in the query.
+   */
+  queryContext(ctx: context.Context, query: string, ...args: any[]): (Rows)
+ }
+ interface Conn {
+  /**
+   * QueryRowContext executes a query that is expected to return at most one row.
+   * QueryRowContext always returns a non-nil value. Errors are deferred until
+   * Row's Scan method is called.
+   * If the query selects no rows, the *Row's Scan will return ErrNoRows.
+   * Otherwise, the *Row's Scan scans the first selected row and discards
+   * the rest.
+   */
+  queryRowContext(ctx: context.Context, query: string, ...args: any[]): (Row)
+ }
+ interface Conn {
+  /**
+   * PrepareContext creates a prepared statement for later queries or executions.
+   * Multiple queries or executions may be run concurrently from the
+   * returned statement.
+   * The caller must call the statement's Close method
+   * when the statement is no longer needed.
+   * 
+   * The provided context is used for the preparation of the statement, not for the
+   * execution of the statement.
+   */
+  prepareContext(ctx: context.Context, query: string): (Stmt)
+ }
+ interface Conn {
+  /**
+   * Raw executes f exposing the underlying driver connection for the
+   * duration of f. The driverConn must not be used outside of f.
+   * 
+   * Once f returns and err is not driver.ErrBadConn, the Conn will continue to be usable
+   * until Conn.Close is called.
+   */
+  raw(f: (driverConn: any) => void): void
+ }
+ interface Conn {
+  /**
+   * BeginTx starts a transaction.
+   * 
+   * The provided context is used until the transaction is committed or rolled back.
+   * If the context is canceled, the sql package will roll back
+   * the transaction. Tx.Commit will return an error if the context provided to
+   * BeginTx is canceled.
+   * 
+   * The provided TxOptions is optional and may be nil if defaults should be used.
+   * If a non-default isolation level is used that the driver doesn't support,
+   * an error will be returned.
+   */
+  beginTx(ctx: context.Context, opts: TxOptions): (Tx)
+ }
+ interface Conn {
+  /**
+   * Close returns the connection to the connection pool.
+   * All operations after a Close will return with ErrConnDone.
+   * Close is safe to call concurrently with other operations and will
+   * block until all other operations finish. It may be useful to first
+   * cancel any used context and then call close directly after.
+   */
+  close(): void
+ }
+ /**
+  * ColumnType contains the name and type of a column.
+  */
+ interface ColumnType {
+ }
+ interface ColumnType {
+  /**
+   * Name returns the name or alias of the column.
+   */
+  name(): string
+ }
+ interface ColumnType {
+  /**
+   * Length returns the column type length for variable length column types such
+   * as text and binary field types. If the type length is unbounded the value will
+   * be math.MaxInt64 (any database limits will still apply).
+   * If the column type is not variable length, such as an int, or if not supported
+   * by the driver ok is false.
+   */
+  length(): [number, boolean]
+ }
+ interface ColumnType {
+  /**
+   * DecimalSize returns the scale and precision of a decimal type.
+   * If not applicable or if not supported ok is false.
+   */
+  decimalSize(): [number, boolean]
+ }
+ interface ColumnType {
+  /**
+   * ScanType returns a Go type suitable for scanning into using Rows.Scan.
+   * If a driver does not support this property ScanType will return
+   * the type of an empty interface.
+   */
+  scanType(): any
+ }
+ interface ColumnType {
+  /**
+   * Nullable reports whether the column may be null.
+   * If a driver does not support this property ok will be false.
+   */
+  nullable(): boolean
+ }
+ interface ColumnType {
+  /**
+   * DatabaseTypeName returns the database system name of the column type. If an empty
+   * string is returned, then the driver type name is not supported.
+   * Consult your driver documentation for a list of driver data types. Length specifiers
+   * are not included.
+   * Common type names include "VARCHAR", "TEXT", "NVARCHAR", "DECIMAL", "BOOL",
+   * "INT", and "BIGINT".
+   */
+  databaseTypeName(): string
+ }
+ /**
+  * Row is the result of calling QueryRow to select a single row.
+  */
+ interface Row {
+ }
+ interface Row {
+  /**
+   * Scan copies the columns from the matched row into the values
+   * pointed at by dest. See the documentation on Rows.Scan for details.
+   * If more than one row matches the query,
+   * Scan uses the first row and discards the rest. If no row matches
+   * the query, Scan returns ErrNoRows.
+   */
+  scan(...dest: any[]): void
+ }
+ interface Row {
+  /**
+   * Err provides a way for wrapping packages to check for
+   * query errors without calling Scan.
+   * Err returns the error, if any, that was encountered while running the query.
+   * If this error is not nil, this error will also be returned from Scan.
+   */
+  err(): void
+ }
+}
+
+namespace migrate {
+ interface Migration {
+  file: string
+  up: (db: dbx.Builder) => void
+  down: (db: dbx.Builder) => void
  }
 }
 
@@ -16189,6 +16274,92 @@ namespace schema {
    * by "merging" baseValue with the modifierValue based on the specified modifier (+ or -).
    */
   prepareValueWithModifier(baseValue: any, modifier: string, modifierValue: any): any
+ }
+}
+
+/**
+ * Package cobra is a commander providing a simple interface to create powerful modern CLI interfaces.
+ * In addition to providing an interface, Cobra simultaneously provides a controller to organize your application code.
+ */
+namespace cobra {
+ interface PositionalArgs {(cmd: Command, args: Array<string>): void }
+ // @ts-ignore
+ import flag = pflag
+ /**
+  * FParseErrWhitelist configures Flag parse errors to be ignored
+  */
+ interface FParseErrWhitelist extends _TygojaAny{}
+ /**
+  * Group Structure to manage groups for commands
+  */
+ interface Group {
+  id: string
+  title: string
+ }
+ /**
+  * ShellCompDirective is a bit map representing the different behaviors the shell
+  * can be instructed to have once completions have been provided.
+  */
+ interface ShellCompDirective extends Number{}
+ /**
+  * CompletionOptions are the options to control shell completion
+  */
+ interface CompletionOptions {
+  /**
+   * DisableDefaultCmd prevents Cobra from creating a default 'completion' command
+   */
+  disableDefaultCmd: boolean
+  /**
+   * DisableNoDescFlag prevents Cobra from creating the '--no-descriptions' flag
+   * for shells that support completion descriptions
+   */
+  disableNoDescFlag: boolean
+  /**
+   * DisableDescriptions turns off all completion descriptions for shells
+   * that support them
+   */
+  disableDescriptions: boolean
+  /**
+   * HiddenDefaultCmd makes the default 'completion' command hidden
+   */
+  hiddenDefaultCmd: boolean
+ }
+}
+
+namespace subscriptions {
+ /**
+  * Broker defines a struct for managing subscriptions clients.
+  */
+ interface Broker {
+ }
+ interface Broker {
+  /**
+   * Clients returns a shallow copy of all registered clients indexed
+   * with their connection id.
+   */
+  clients(): _TygojaDict
+ }
+ interface Broker {
+  /**
+   * ClientById finds a registered client by its id.
+   * 
+   * Returns non-nil error when client with clientId is not registered.
+   */
+  clientById(clientId: string): Client
+ }
+ interface Broker {
+  /**
+   * Register adds a new client to the broker instance.
+   */
+  register(client: Client): void
+ }
+ interface Broker {
+  /**
+   * Unregister removes a single client by its id.
+   * 
+   * If client with clientId doesn't exist, this method does nothing.
+   */
+  unregister(clientId: string): void
  }
 }
 
@@ -16344,8 +16515,8 @@ namespace models {
    */
   validate(): void
  }
- type _subysAQe = BaseModel
- interface Log extends _subysAQe {
+ type _subDVACo = BaseModel
+ interface Log extends _subDVACo {
   data: types.JsonMap
   message: string
   level: number
@@ -16353,8 +16524,8 @@ namespace models {
  interface Log {
   tableName(): string
  }
- type _subiUgUR = BaseModel
- interface Param extends _subiUgUR {
+ type _subJWaAW = BaseModel
+ interface Param extends _subJWaAW {
   key: string
   value: types.JsonRaw
  }
@@ -16372,6 +16543,19 @@ namespace models {
   type: string
   notNull: boolean
   defaultValue: types.JsonRaw
+ }
+}
+
+namespace mailer {
+ /**
+  * Mailer defines a base mail client interface.
+  */
+ interface Mailer {
+  [key:string]: any;
+  /**
+   * Send sends an email with the provided Message.
+   */
+  send(message: Message): void
  }
 }
 
@@ -16831,114 +17015,6 @@ namespace echo {
  }
 }
 
-/**
- * Package oauth2 provides support for making
- * OAuth2 authorized and authenticated HTTP requests,
- * as specified in RFC 6749.
- * It can additionally grant authorization with Bearer JWT.
- */
-/**
- * Copyright 2023 The Go Authors. All rights reserved.
- * Use of this source code is governed by a BSD-style
- * license that can be found in the LICENSE file.
- */
-namespace oauth2 {
- /**
-  * An AuthCodeOption is passed to Config.AuthCodeURL.
-  */
- interface AuthCodeOption {
-  [key:string]: any;
- }
- /**
-  * Token represents the credentials used to authorize
-  * the requests to access protected resources on the OAuth 2.0
-  * provider's backend.
-  * 
-  * Most users of this package should not access fields of Token
-  * directly. They're exported mostly for use by related packages
-  * implementing derivative OAuth2 flows.
-  */
- interface Token {
-  /**
-   * AccessToken is the token that authorizes and authenticates
-   * the requests.
-   */
-  accessToken: string
-  /**
-   * TokenType is the type of token.
-   * The Type method returns either this or "Bearer", the default.
-   */
-  tokenType: string
-  /**
-   * RefreshToken is a token that's used by the application
-   * (as opposed to the user) to refresh the access token
-   * if it expires.
-   */
-  refreshToken: string
-  /**
-   * Expiry is the optional expiration time of the access token.
-   * 
-   * If zero, TokenSource implementations will reuse the same
-   * token forever and RefreshToken or equivalent
-   * mechanisms for that TokenSource will not be used.
-   */
-  expiry: time.Time
- }
- interface Token {
-  /**
-   * Type returns t.TokenType if non-empty, else "Bearer".
-   */
-  type(): string
- }
- interface Token {
-  /**
-   * SetAuthHeader sets the Authorization header to r using the access
-   * token in t.
-   * 
-   * This method is unnecessary when using Transport or an HTTP Client
-   * returned by this package.
-   */
-  setAuthHeader(r: http.Request): void
- }
- interface Token {
-  /**
-   * WithExtra returns a new Token that's a clone of t, but using the
-   * provided raw extra map. This is only intended for use by packages
-   * implementing derivative OAuth2 flows.
-   */
-  withExtra(extra: {
-   }): (Token)
- }
- interface Token {
-  /**
-   * Extra returns an extra field.
-   * Extra fields are key-value pairs returned by the server as a
-   * part of the token retrieval response.
-   */
-  extra(key: string): {
- }
- }
- interface Token {
-  /**
-   * Valid reports whether t is non-nil, has an AccessToken, and is not expired.
-   */
-  valid(): boolean
- }
-}
-
-namespace mailer {
- /**
-  * Mailer defines a base mail client interface.
-  */
- interface Mailer {
-  [key:string]: any;
-  /**
-   * Send sends an email with the provided Message.
-   */
-  send(message: Message): void
- }
-}
-
 namespace settings {
  // @ts-ignore
  import validation = ozzo_validation
@@ -17105,87 +17181,6 @@ namespace daos {
  interface ExpandFetchFunc {(relCollection: models.Collection, relIds: Array<string>): Array<(models.Record | undefined)> }
  // @ts-ignore
  import validation = ozzo_validation
-}
-
-namespace hook {
- /**
-  * Hook defines a concurrent safe structure for handling event hooks
-  * (aka. callbacks propagation).
-  */
- interface Hook<T> {
- }
- interface Hook<T> {
-  /**
-   * PreAdd registers a new handler to the hook by prepending it to the existing queue.
-   * 
-   * Returns an autogenerated hook id that could be used later to remove the hook with Hook.Remove(id).
-   */
-  preAdd(fn: Handler<T>): string
- }
- interface Hook<T> {
-  /**
-   * Add registers a new handler to the hook by appending it to the existing queue.
-   * 
-   * Returns an autogenerated hook id that could be used later to remove the hook with Hook.Remove(id).
-   */
-  add(fn: Handler<T>): string
- }
- interface Hook<T> {
-  /**
-   * Remove removes a single hook handler by its id.
-   */
-  remove(id: string): void
- }
- interface Hook<T> {
-  /**
-   * RemoveAll removes all registered handlers.
-   */
-  removeAll(): void
- }
- interface Hook<T> {
-  /**
-   * Trigger executes all registered hook handlers one by one
-   * with the specified `data` as an argument.
-   * 
-   * Optionally, this method allows also to register additional one off
-   * handlers that will be temporary appended to the handlers queue.
-   * 
-   * The execution stops when:
-   * - hook.StopPropagation is returned in one of the handlers
-   * - any non-nil error is returned in one of the handlers
-   */
-  trigger(data: T, ...oneOffHandlers: Handler<T>[]): void
- }
- /**
-  * TaggedHook defines a proxy hook which register handlers that are triggered only
-  * if the TaggedHook.tags are empty or includes at least one of the event data tag(s).
-  */
- type _submCBAW<T> = mainHook<T>
- interface TaggedHook<T> extends _submCBAW<T> {
- }
- interface TaggedHook<T> {
-  /**
-   * CanTriggerOn checks if the current TaggedHook can be triggered with
-   * the provided event data tags.
-   */
-  canTriggerOn(tags: Array<string>): boolean
- }
- interface TaggedHook<T> {
-  /**
-   * PreAdd registers a new handler to the hook by prepending it to the existing queue.
-   * 
-   * The fn handler will be called only if the event data tags satisfy h.CanTriggerOn.
-   */
-  preAdd(fn: Handler<T>): string
- }
- interface TaggedHook<T> {
-  /**
-   * Add registers a new handler to the hook by appending it to the existing queue.
-   * 
-   * The fn handler will be called only if the event data tags satisfy h.CanTriggerOn.
-   */
-  add(fn: Handler<T>): string
- }
 }
 
 /**
@@ -17676,40 +17671,84 @@ namespace slog {
  }
 }
 
-namespace subscriptions {
+namespace hook {
  /**
-  * Broker defines a struct for managing subscriptions clients.
+  * Hook defines a concurrent safe structure for handling event hooks
+  * (aka. callbacks propagation).
   */
- interface Broker {
+ interface Hook<T> {
  }
- interface Broker {
+ interface Hook<T> {
   /**
-   * Clients returns a shallow copy of all registered clients indexed
-   * with their connection id.
-   */
-  clients(): _TygojaDict
- }
- interface Broker {
-  /**
-   * ClientById finds a registered client by its id.
+   * PreAdd registers a new handler to the hook by prepending it to the existing queue.
    * 
-   * Returns non-nil error when client with clientId is not registered.
+   * Returns an autogenerated hook id that could be used later to remove the hook with Hook.Remove(id).
    */
-  clientById(clientId: string): Client
+  preAdd(fn: Handler<T>): string
  }
- interface Broker {
+ interface Hook<T> {
   /**
-   * Register adds a new client to the broker instance.
-   */
-  register(client: Client): void
- }
- interface Broker {
-  /**
-   * Unregister removes a single client by its id.
+   * Add registers a new handler to the hook by appending it to the existing queue.
    * 
-   * If client with clientId doesn't exist, this method does nothing.
+   * Returns an autogenerated hook id that could be used later to remove the hook with Hook.Remove(id).
    */
-  unregister(clientId: string): void
+  add(fn: Handler<T>): string
+ }
+ interface Hook<T> {
+  /**
+   * Remove removes a single hook handler by its id.
+   */
+  remove(id: string): void
+ }
+ interface Hook<T> {
+  /**
+   * RemoveAll removes all registered handlers.
+   */
+  removeAll(): void
+ }
+ interface Hook<T> {
+  /**
+   * Trigger executes all registered hook handlers one by one
+   * with the specified `data` as an argument.
+   * 
+   * Optionally, this method allows also to register additional one off
+   * handlers that will be temporary appended to the handlers queue.
+   * 
+   * The execution stops when:
+   * - hook.StopPropagation is returned in one of the handlers
+   * - any non-nil error is returned in one of the handlers
+   */
+  trigger(data: T, ...oneOffHandlers: Handler<T>[]): void
+ }
+ /**
+  * TaggedHook defines a proxy hook which register handlers that are triggered only
+  * if the TaggedHook.tags are empty or includes at least one of the event data tag(s).
+  */
+ type _subdbWik<T> = mainHook<T>
+ interface TaggedHook<T> extends _subdbWik<T> {
+ }
+ interface TaggedHook<T> {
+  /**
+   * CanTriggerOn checks if the current TaggedHook can be triggered with
+   * the provided event data tags.
+   */
+  canTriggerOn(tags: Array<string>): boolean
+ }
+ interface TaggedHook<T> {
+  /**
+   * PreAdd registers a new handler to the hook by prepending it to the existing queue.
+   * 
+   * The fn handler will be called only if the event data tags satisfy h.CanTriggerOn.
+   */
+  preAdd(fn: Handler<T>): string
+ }
+ interface TaggedHook<T> {
+  /**
+   * Add registers a new handler to the hook by appending it to the existing queue.
+   * 
+   * The fn handler will be called only if the event data tags satisfy h.CanTriggerOn.
+   */
+  add(fn: Handler<T>): string
  }
 }
 
@@ -17736,12 +17775,12 @@ namespace core {
   httpContext: echo.Context
   error: Error
  }
- type _subQrhMh = BaseModelEvent
- interface ModelEvent extends _subQrhMh {
+ type _subHyCrX = BaseModelEvent
+ interface ModelEvent extends _subHyCrX {
   dao?: daos.Dao
  }
- type _subavaCn = BaseCollectionEvent
- interface MailerRecordEvent extends _subavaCn {
+ type _subyYnrv = BaseCollectionEvent
+ interface MailerRecordEvent extends _subyYnrv {
   mailClient: mailer.Mailer
   message?: mailer.Message
   record?: models.Record
@@ -17781,50 +17820,50 @@ namespace core {
   oldSettings?: settings.Settings
   newSettings?: settings.Settings
  }
- type _subywGRX = BaseCollectionEvent
- interface RecordsListEvent extends _subywGRX {
+ type _subPsAsY = BaseCollectionEvent
+ interface RecordsListEvent extends _subPsAsY {
   httpContext: echo.Context
   records: Array<(models.Record | undefined)>
   result?: search.Result
  }
- type _submBGkN = BaseCollectionEvent
- interface RecordViewEvent extends _submBGkN {
+ type _subLZcNq = BaseCollectionEvent
+ interface RecordViewEvent extends _subLZcNq {
   httpContext: echo.Context
   record?: models.Record
  }
- type _subEouaH = BaseCollectionEvent
- interface RecordCreateEvent extends _subEouaH {
-  httpContext: echo.Context
-  record?: models.Record
-  uploadedFiles: _TygojaDict
- }
- type _sublUTuy = BaseCollectionEvent
- interface RecordUpdateEvent extends _sublUTuy {
+ type _subfbjiw = BaseCollectionEvent
+ interface RecordCreateEvent extends _subfbjiw {
   httpContext: echo.Context
   record?: models.Record
   uploadedFiles: _TygojaDict
  }
- type _subzgEeC = BaseCollectionEvent
- interface RecordDeleteEvent extends _subzgEeC {
+ type _subEbbBi = BaseCollectionEvent
+ interface RecordUpdateEvent extends _subEbbBi {
+  httpContext: echo.Context
+  record?: models.Record
+  uploadedFiles: _TygojaDict
+ }
+ type _subeDIgr = BaseCollectionEvent
+ interface RecordDeleteEvent extends _subeDIgr {
   httpContext: echo.Context
   record?: models.Record
  }
- type _subYlouM = BaseCollectionEvent
- interface RecordAuthEvent extends _subYlouM {
+ type _subXxpey = BaseCollectionEvent
+ interface RecordAuthEvent extends _subXxpey {
   httpContext: echo.Context
   record?: models.Record
   token: string
   meta: any
  }
- type _subkqYJk = BaseCollectionEvent
- interface RecordAuthWithPasswordEvent extends _subkqYJk {
+ type _subCjdSp = BaseCollectionEvent
+ interface RecordAuthWithPasswordEvent extends _subCjdSp {
   httpContext: echo.Context
   record?: models.Record
   identity: string
   password: string
  }
- type _subhfgUR = BaseCollectionEvent
- interface RecordAuthWithOAuth2Event extends _subhfgUR {
+ type _subrAHAU = BaseCollectionEvent
+ interface RecordAuthWithOAuth2Event extends _subrAHAU {
   httpContext: echo.Context
   providerName: string
   providerClient: auth.Provider
@@ -17832,49 +17871,49 @@ namespace core {
   oAuth2User?: auth.AuthUser
   isNewRecord: boolean
  }
- type _subsQkkK = BaseCollectionEvent
- interface RecordAuthRefreshEvent extends _subsQkkK {
+ type _subdeqYU = BaseCollectionEvent
+ interface RecordAuthRefreshEvent extends _subdeqYU {
   httpContext: echo.Context
   record?: models.Record
  }
- type _subtdyhg = BaseCollectionEvent
- interface RecordRequestPasswordResetEvent extends _subtdyhg {
+ type _subOLjiK = BaseCollectionEvent
+ interface RecordRequestPasswordResetEvent extends _subOLjiK {
   httpContext: echo.Context
   record?: models.Record
  }
- type _subCzzbu = BaseCollectionEvent
- interface RecordConfirmPasswordResetEvent extends _subCzzbu {
+ type _subOzWwu = BaseCollectionEvent
+ interface RecordConfirmPasswordResetEvent extends _subOzWwu {
   httpContext: echo.Context
   record?: models.Record
  }
- type _subHhLvj = BaseCollectionEvent
- interface RecordRequestVerificationEvent extends _subHhLvj {
+ type _subHktmj = BaseCollectionEvent
+ interface RecordRequestVerificationEvent extends _subHktmj {
   httpContext: echo.Context
   record?: models.Record
  }
- type _subeFYsw = BaseCollectionEvent
- interface RecordConfirmVerificationEvent extends _subeFYsw {
+ type _subjNfWo = BaseCollectionEvent
+ interface RecordConfirmVerificationEvent extends _subjNfWo {
   httpContext: echo.Context
   record?: models.Record
  }
- type _subUyBXi = BaseCollectionEvent
- interface RecordRequestEmailChangeEvent extends _subUyBXi {
+ type _subonSwf = BaseCollectionEvent
+ interface RecordRequestEmailChangeEvent extends _subonSwf {
   httpContext: echo.Context
   record?: models.Record
  }
- type _subUxjGd = BaseCollectionEvent
- interface RecordConfirmEmailChangeEvent extends _subUxjGd {
+ type _subLiGaK = BaseCollectionEvent
+ interface RecordConfirmEmailChangeEvent extends _subLiGaK {
   httpContext: echo.Context
   record?: models.Record
  }
- type _subKCwuo = BaseCollectionEvent
- interface RecordListExternalAuthsEvent extends _subKCwuo {
+ type _subWEnKa = BaseCollectionEvent
+ interface RecordListExternalAuthsEvent extends _subWEnKa {
   httpContext: echo.Context
   record?: models.Record
   externalAuths: Array<(models.ExternalAuth | undefined)>
  }
- type _subPPZsU = BaseCollectionEvent
- interface RecordUnlinkExternalAuthEvent extends _subPPZsU {
+ type _subxnyGL = BaseCollectionEvent
+ interface RecordUnlinkExternalAuthEvent extends _subxnyGL {
   httpContext: echo.Context
   record?: models.Record
   externalAuth?: models.ExternalAuth
@@ -17928,33 +17967,33 @@ namespace core {
   collections: Array<(models.Collection | undefined)>
   result?: search.Result
  }
- type _subZhCDD = BaseCollectionEvent
- interface CollectionViewEvent extends _subZhCDD {
+ type _subuOubC = BaseCollectionEvent
+ interface CollectionViewEvent extends _subuOubC {
   httpContext: echo.Context
  }
- type _subgPSDi = BaseCollectionEvent
- interface CollectionCreateEvent extends _subgPSDi {
+ type _subqIwie = BaseCollectionEvent
+ interface CollectionCreateEvent extends _subqIwie {
   httpContext: echo.Context
  }
- type _subYZMTX = BaseCollectionEvent
- interface CollectionUpdateEvent extends _subYZMTX {
+ type _subtNxiM = BaseCollectionEvent
+ interface CollectionUpdateEvent extends _subtNxiM {
   httpContext: echo.Context
  }
- type _subVDeMd = BaseCollectionEvent
- interface CollectionDeleteEvent extends _subVDeMd {
+ type _subUYqPP = BaseCollectionEvent
+ interface CollectionDeleteEvent extends _subUYqPP {
   httpContext: echo.Context
  }
  interface CollectionsImportEvent {
   httpContext: echo.Context
   collections: Array<(models.Collection | undefined)>
  }
- type _subibhqM = BaseModelEvent
- interface FileTokenEvent extends _subibhqM {
+ type _subKshZF = BaseModelEvent
+ interface FileTokenEvent extends _subKshZF {
   httpContext: echo.Context
   token: string
  }
- type _subrQnDD = BaseCollectionEvent
- interface FileDownloadEvent extends _subrQnDD {
+ type _subFfYxR = BaseCollectionEvent
+ interface FileDownloadEvent extends _subFfYxR {
   httpContext: echo.Context
   record?: models.Record
   fileField?: schema.SchemaField
@@ -17963,60 +18002,36 @@ namespace core {
  }
 }
 
-namespace migrate {
- interface Migration {
-  file: string
-  up: (db: dbx.Builder) => void
-  down: (db: dbx.Builder) => void
- }
-}
-
 /**
- * Package cobra is a commander providing a simple interface to create powerful modern CLI interfaces.
- * In addition to providing an interface, Cobra simultaneously provides a controller to organize your application code.
+ * Package url parses URLs and implements query escaping.
  */
-namespace cobra {
- interface PositionalArgs {(cmd: Command, args: Array<string>): void }
- // @ts-ignore
- import flag = pflag
+namespace url {
  /**
-  * FParseErrWhitelist configures Flag parse errors to be ignored
+  * The Userinfo type is an immutable encapsulation of username and
+  * password details for a URL. An existing Userinfo value is guaranteed
+  * to have a username set (potentially empty, as allowed by RFC 2396),
+  * and optionally a password.
   */
- interface FParseErrWhitelist extends _TygojaAny{}
- /**
-  * Group Structure to manage groups for commands
-  */
- interface Group {
-  id: string
-  title: string
+ interface Userinfo {
  }
- /**
-  * ShellCompDirective is a bit map representing the different behaviors the shell
-  * can be instructed to have once completions have been provided.
-  */
- interface ShellCompDirective extends Number{}
- /**
-  * CompletionOptions are the options to control shell completion
-  */
- interface CompletionOptions {
+ interface Userinfo {
   /**
-   * DisableDefaultCmd prevents Cobra from creating a default 'completion' command
+   * Username returns the username.
    */
-  disableDefaultCmd: boolean
+  username(): string
+ }
+ interface Userinfo {
   /**
-   * DisableNoDescFlag prevents Cobra from creating the '--no-descriptions' flag
-   * for shells that support completion descriptions
+   * Password returns the password in case it is set, and whether it is set.
    */
-  disableNoDescFlag: boolean
+  password(): [string, boolean]
+ }
+ interface Userinfo {
   /**
-   * DisableDescriptions turns off all completion descriptions for shells
-   * that support them
+   * String returns the encoded userinfo information in the standard form
+   * of "username[:password]".
    */
-  disableDescriptions: boolean
-  /**
-   * HiddenDefaultCmd makes the default 'completion' command hidden
-   */
-  hiddenDefaultCmd: boolean
+  string(): string
  }
 }
 
@@ -18030,8 +18045,50 @@ namespace bufio {
   * ReadWriter stores pointers to a Reader and a Writer.
   * It implements io.ReadWriter.
   */
- type _subptgpX = Reader&Writer
- interface ReadWriter extends _subptgpX {
+ type _subhGNGY = Reader&Writer
+ interface ReadWriter extends _subhGNGY {
+ }
+}
+
+/**
+ * Package types implements some commonly used db serializable types
+ * like datetime, json, etc.
+ */
+namespace types {
+ /**
+  * JsonRaw defines a json value type that is safe for db read/write.
+  */
+ interface JsonRaw extends Array<number>{}
+ interface JsonRaw {
+  /**
+   * String returns the current JsonRaw instance as a json encoded string.
+   */
+  string(): string
+ }
+ interface JsonRaw {
+  /**
+   * MarshalJSON implements the [json.Marshaler] interface.
+   */
+  marshalJSON(): string|Array<number>
+ }
+ interface JsonRaw {
+  /**
+   * UnmarshalJSON implements the [json.Unmarshaler] interface.
+   */
+  unmarshalJSON(b: string|Array<number>): void
+ }
+ interface JsonRaw {
+  /**
+   * Value implements the [driver.Valuer] interface.
+   */
+  value(): any
+ }
+ interface JsonRaw {
+  /**
+   * Scan implements [sql.Scanner] interface to scan the provided value
+   * into the current JsonRaw instance.
+   */
+  scan(value: any): void
  }
 }
 
@@ -18131,39 +18188,6 @@ namespace net {
   [key:string]: any;
   network(): string // name of the network (for example, "tcp", "udp")
   string(): string // string form of address (for example, "192.0.2.1:25", "[2001:db8::1]:80")
- }
-}
-
-/**
- * Package url parses URLs and implements query escaping.
- */
-namespace url {
- /**
-  * The Userinfo type is an immutable encapsulation of username and
-  * password details for a URL. An existing Userinfo value is guaranteed
-  * to have a username set (potentially empty, as allowed by RFC 2396),
-  * and optionally a password.
-  */
- interface Userinfo {
- }
- interface Userinfo {
-  /**
-   * Username returns the username.
-   */
-  username(): string
- }
- interface Userinfo {
-  /**
-   * Password returns the password in case it is set, and whether it is set.
-   */
-  password(): [string, boolean]
- }
- interface Userinfo {
-  /**
-   * String returns the encoded userinfo information in the standard form
-   * of "username[:password]".
-   */
-  string(): string
  }
 }
 
@@ -18480,118 +18504,6 @@ namespace echo {
  interface PathParam {
   name: string
   value: string
- }
-}
-
-namespace store {
-}
-
-/**
- * Package types implements some commonly used db serializable types
- * like datetime, json, etc.
- */
-namespace types {
- /**
-  * JsonRaw defines a json value type that is safe for db read/write.
-  */
- interface JsonRaw extends Array<number>{}
- interface JsonRaw {
-  /**
-   * String returns the current JsonRaw instance as a json encoded string.
-   */
-  string(): string
- }
- interface JsonRaw {
-  /**
-   * MarshalJSON implements the [json.Marshaler] interface.
-   */
-  marshalJSON(): string|Array<number>
- }
- interface JsonRaw {
-  /**
-   * UnmarshalJSON implements the [json.Unmarshaler] interface.
-   */
-  unmarshalJSON(b: string|Array<number>): void
- }
- interface JsonRaw {
-  /**
-   * Value implements the [driver.Valuer] interface.
-   */
-  value(): any
- }
- interface JsonRaw {
-  /**
-   * Scan implements [sql.Scanner] interface to scan the provided value
-   * into the current JsonRaw instance.
-   */
-  scan(value: any): void
- }
-}
-
-namespace mailer {
- /**
-  * Message defines a generic email message struct.
-  */
- interface Message {
-  from: mail.Address
-  to: Array<mail.Address>
-  bcc: Array<mail.Address>
-  cc: Array<mail.Address>
-  subject: string
-  html: string
-  text: string
-  headers: _TygojaDict
-  attachments: _TygojaDict
- }
-}
-
-namespace search {
- /**
-  * Result defines the returned search result structure.
-  */
- interface Result {
-  page: number
-  perPage: number
-  totalItems: number
-  totalPages: number
-  items: any
- }
-}
-
-namespace settings {
- // @ts-ignore
- import validation = ozzo_validation
- interface EmailTemplate {
-  body: string
-  subject: string
-  actionUrl: string
-  hidden: boolean
- }
- interface EmailTemplate {
-  /**
-   * Validate makes EmailTemplate validatable by implementing [validation.Validatable] interface.
-   */
-  validate(): void
- }
- interface EmailTemplate {
-  /**
-   * Resolve replaces the placeholder parameters in the current email
-   * template and returns its components as ready-to-use strings.
-   */
-  resolve(appName: string, appUrl: string, token: string): string
- }
-}
-
-namespace hook {
- /**
-  * Handler defines a hook handler function.
-  */
- interface Handler<T> {(e: T): void }
- /**
-  * wrapped local Hook embedded struct to limit the public API surface.
-  */
- type _subrzKbw<T> = Hook<T>
- interface mainHook<T> extends _subrzKbw<T> {
  }
 }
 
@@ -19132,6 +19044,76 @@ namespace slog {
  import loginternal = internal
 }
 
+namespace store {
+}
+
+namespace hook {
+ /**
+  * Handler defines a hook handler function.
+  */
+ interface Handler<T> {(e: T): void }
+ /**
+  * wrapped local Hook embedded struct to limit the public API surface.
+  */
+ type _subFlBCJ<T> = Hook<T>
+ interface mainHook<T> extends _subFlBCJ<T> {
+ }
+}
+
+namespace search {
+ /**
+  * Result defines the returned search result structure.
+  */
+ interface Result {
+  page: number
+  perPage: number
+  totalItems: number
+  totalPages: number
+  items: any
+ }
+}
+
+namespace mailer {
+ /**
+  * Message defines a generic email message struct.
+  */
+ interface Message {
+  from: mail.Address
+  to: Array<mail.Address>
+  bcc: Array<mail.Address>
+  cc: Array<mail.Address>
+  subject: string
+  html: string
+  text: string
+  headers: _TygojaDict
+  attachments: _TygojaDict
+ }
+}
+
+namespace settings {
+ // @ts-ignore
+ import validation = ozzo_validation
+ interface EmailTemplate {
+  body: string
+  subject: string
+  actionUrl: string
+  hidden: boolean
+ }
+ interface EmailTemplate {
+  /**
+   * Validate makes EmailTemplate validatable by implementing [validation.Validatable] interface.
+   */
+  validate(): void
+ }
+ interface EmailTemplate {
+  /**
+   * Resolve replaces the placeholder parameters in the current email
+   * template and returns its components as ready-to-use strings.
+   */
+  resolve(appName: string, appUrl: string, token: string): string
+ }
+}
+
 namespace subscriptions {
  /**
   * Message defines a client's channel data.
@@ -19237,310 +19219,6 @@ namespace core {
  * like datetime, json, etc.
  */
 namespace types {
-}
-
-/**
- * Package bufio implements buffered I/O. It wraps an io.Reader or io.Writer
- * object, creating another object (Reader or Writer) that also implements
- * the interface but provides buffering and some help for textual I/O.
- */
-namespace bufio {
- /**
-  * Reader implements buffering for an io.Reader object.
-  */
- interface Reader {
- }
- interface Reader {
-  /**
-   * Size returns the size of the underlying buffer in bytes.
-   */
-  size(): number
- }
- interface Reader {
-  /**
-   * Reset discards any buffered data, resets all state, and switches
-   * the buffered reader to read from r.
-   * Calling Reset on the zero value of Reader initializes the internal buffer
-   * to the default size.
-   * Calling b.Reset(b) (that is, resetting a Reader to itself) does nothing.
-   */
-  reset(r: io.Reader): void
- }
- interface Reader {
-  /**
-   * Peek returns the next n bytes without advancing the reader. The bytes stop
-   * being valid at the next read call. If Peek returns fewer than n bytes, it
-   * also returns an error explaining why the read is short. The error is
-   * ErrBufferFull if n is larger than b's buffer size.
-   * 
-   * Calling Peek prevents a UnreadByte or UnreadRune call from succeeding
-   * until the next read operation.
-   */
-  peek(n: number): string|Array<number>
- }
- interface Reader {
-  /**
-   * Discard skips the next n bytes, returning the number of bytes discarded.
-   * 
-   * If Discard skips fewer than n bytes, it also returns an error.
-   * If 0 <= n <= b.Buffered(), Discard is guaranteed to succeed without
-   * reading from the underlying io.Reader.
-   */
-  discard(n: number): number
- }
- interface Reader {
-  /**
-   * Read reads data into p.
-   * It returns the number of bytes read into p.
-   * The bytes are taken from at most one Read on the underlying Reader,
-   * hence n may be less than len(p).
-   * To read exactly len(p) bytes, use io.ReadFull(b, p).
-   * If the underlying Reader can return a non-zero count with io.EOF,
-   * then this Read method can do so as well; see the [io.Reader] docs.
-   */
-  read(p: string|Array<number>): number
- }
- interface Reader {
-  /**
-   * ReadByte reads and returns a single byte.
-   * If no byte is available, returns an error.
-   */
-  readByte(): number
- }
- interface Reader {
-  /**
-   * UnreadByte unreads the last byte. Only the most recently read byte can be unread.
-   * 
-   * UnreadByte returns an error if the most recent method called on the
-   * Reader was not a read operation. Notably, Peek, Discard, and WriteTo are not
-   * considered read operations.
-   */
-  unreadByte(): void
- }
- interface Reader {
-  /**
-   * ReadRune reads a single UTF-8 encoded Unicode character and returns the
-   * rune and its size in bytes. If the encoded rune is invalid, it consumes one byte
-   * and returns unicode.ReplacementChar (U+FFFD) with a size of 1.
-   */
-  readRune(): [number, number]
- }
- interface Reader {
-  /**
-   * UnreadRune unreads the last rune. If the most recent method called on
-   * the Reader was not a ReadRune, UnreadRune returns an error. (In this
-   * regard it is stricter than UnreadByte, which will unread the last byte
-   * from any read operation.)
-   */
-  unreadRune(): void
- }
- interface Reader {
-  /**
-   * Buffered returns the number of bytes that can be read from the current buffer.
-   */
-  buffered(): number
- }
- interface Reader {
-  /**
-   * ReadSlice reads until the first occurrence of delim in the input,
-   * returning a slice pointing at the bytes in the buffer.
-   * The bytes stop being valid at the next read.
-   * If ReadSlice encounters an error before finding a delimiter,
-   * it returns all the data in the buffer and the error itself (often io.EOF).
-   * ReadSlice fails with error ErrBufferFull if the buffer fills without a delim.
-   * Because the data returned from ReadSlice will be overwritten
-   * by the next I/O operation, most clients should use
-   * ReadBytes or ReadString instead.
-   * ReadSlice returns err != nil if and only if line does not end in delim.
-   */
-  readSlice(delim: number): string|Array<number>
- }
- interface Reader {
-  /**
-   * ReadLine is a low-level line-reading primitive. Most callers should use
-   * ReadBytes('\n') or ReadString('\n') instead or use a Scanner.
-   * 
-   * ReadLine tries to return a single line, not including the end-of-line bytes.
-   * If the line was too long for the buffer then isPrefix is set and the
-   * beginning of the line is returned. The rest of the line will be returned
-   * from future calls. isPrefix will be false when returning the last fragment
-   * of the line. The returned buffer is only valid until the next call to
-   * ReadLine. ReadLine either returns a non-nil line or it returns an error,
-   * never both.
-   * 
-   * The text returned from ReadLine does not include the line end ("\r\n" or "\n").
-   * No indication or error is given if the input ends without a final line end.
-   * Calling UnreadByte after ReadLine will always unread the last byte read
-   * (possibly a character belonging to the line end) even if that byte is not
-   * part of the line returned by ReadLine.
-   */
-  readLine(): [string|Array<number>, boolean]
- }
- interface Reader {
-  /**
-   * ReadBytes reads until the first occurrence of delim in the input,
-   * returning a slice containing the data up to and including the delimiter.
-   * If ReadBytes encounters an error before finding a delimiter,
-   * it returns the data read before the error and the error itself (often io.EOF).
-   * ReadBytes returns err != nil if and only if the returned data does not end in
-   * delim.
-   * For simple uses, a Scanner may be more convenient.
-   */
-  readBytes(delim: number): string|Array<number>
- }
- interface Reader {
-  /**
-   * ReadString reads until the first occurrence of delim in the input,
-   * returning a string containing the data up to and including the delimiter.
-   * If ReadString encounters an error before finding a delimiter,
-   * it returns the data read before the error and the error itself (often io.EOF).
-   * ReadString returns err != nil if and only if the returned data does not end in
-   * delim.
-   * For simple uses, a Scanner may be more convenient.
-   */
-  readString(delim: number): string
- }
- interface Reader {
-  /**
-   * WriteTo implements io.WriterTo.
-   * This may make multiple calls to the Read method of the underlying Reader.
-   * If the underlying reader supports the WriteTo method,
-   * this calls the underlying WriteTo without buffering.
-   */
-  writeTo(w: io.Writer): number
- }
- /**
-  * Writer implements buffering for an io.Writer object.
-  * If an error occurs writing to a Writer, no more data will be
-  * accepted and all subsequent writes, and Flush, will return the error.
-  * After all data has been written, the client should call the
-  * Flush method to guarantee all data has been forwarded to
-  * the underlying io.Writer.
-  */
- interface Writer {
- }
- interface Writer {
-  /**
-   * Size returns the size of the underlying buffer in bytes.
-   */
-  size(): number
- }
- interface Writer {
-  /**
-   * Reset discards any unflushed buffered data, clears any error, and
-   * resets b to write its output to w.
-   * Calling Reset on the zero value of Writer initializes the internal buffer
-   * to the default size.
-   * Calling w.Reset(w) (that is, resetting a Writer to itself) does nothing.
-   */
-  reset(w: io.Writer): void
- }
- interface Writer {
-  /**
-   * Flush writes any buffered data to the underlying io.Writer.
-   */
-  flush(): void
- }
- interface Writer {
-  /**
-   * Available returns how many bytes are unused in the buffer.
-   */
-  available(): number
- }
- interface Writer {
-  /**
-   * AvailableBuffer returns an empty buffer with b.Available() capacity.
-   * This buffer is intended to be appended to and
-   * passed to an immediately succeeding Write call.
-   * The buffer is only valid until the next write operation on b.
-   */
-  availableBuffer(): string|Array<number>
- }
- interface Writer {
-  /**
-   * Buffered returns the number of bytes that have been written into the current buffer.
-   */
-  buffered(): number
- }
- interface Writer {
-  /**
-   * Write writes the contents of p into the buffer.
-   * It returns the number of bytes written.
-   * If nn < len(p), it also returns an error explaining
-   * why the write is short.
-   */
-  write(p: string|Array<number>): number
- }
- interface Writer {
-  /**
-   * WriteByte writes a single byte.
-   */
-  writeByte(c: number): void
- }
- interface Writer {
-  /**
-   * WriteRune writes a single Unicode code point, returning
-   * the number of bytes written and any error.
-   */
-  writeRune(r: number): number
- }
- interface Writer {
-  /**
-   * WriteString writes a string.
-   * It returns the number of bytes written.
-   * If the count is less than len(s), it also returns an error explaining
-   * why the write is short.
-   */
-  writeString(s: string): number
- }
- interface Writer {
-  /**
-   * ReadFrom implements io.ReaderFrom. If the underlying writer
-   * supports the ReadFrom method, this calls the underlying ReadFrom.
-   * If there is buffered data and an underlying ReadFrom, this fills
-   * the buffer and writes it before calling ReadFrom.
-   */
-  readFrom(r: io.Reader): number
- }
-}
-
-/**
- * Package mail implements parsing of mail messages.
- * 
- * For the most part, this package follows the syntax as specified by RFC 5322 and
- * extended by RFC 6532.
- * Notable divergences:
- * ```
- *   - Obsolete address formats are not parsed, including addresses with
- *     embedded route information.
- *   - The full range of spacing (the CFWS syntax element) is not supported,
- *     such as breaking addresses across lines.
- *   - No unicode normalization is performed.
- *   - The special characters ()[]:;@\, are allowed to appear unquoted in names.
- *   - A leading From line is permitted, as in mbox format (RFC 4155).
- * ```
- */
-namespace mail {
- /**
-  * Address represents a single mail address.
-  * An address such as "Barry Gibbs <bg@example.com>" is represented
-  * as Address{Name: "Barry Gibbs", Address: "bg@example.com"}.
-  */
- interface Address {
-  name: string // Proper name; may be empty.
-  address: string // user@domain
- }
- interface Address {
-  /**
-   * String formats the address as a valid RFC 5322 address.
-   * If the address's name contains non-ASCII characters
-   * the name will be rendered according to RFC 2047.
-   */
-  string(): string
- }
-}
-
-namespace search {
 }
 
 /**
@@ -20083,6 +19761,310 @@ namespace slog {
    * Resolve's return value is guaranteed not to be of Kind KindLogValuer.
    */
   resolve(): Value
+ }
+}
+
+/**
+ * Package bufio implements buffered I/O. It wraps an io.Reader or io.Writer
+ * object, creating another object (Reader or Writer) that also implements
+ * the interface but provides buffering and some help for textual I/O.
+ */
+namespace bufio {
+ /**
+  * Reader implements buffering for an io.Reader object.
+  */
+ interface Reader {
+ }
+ interface Reader {
+  /**
+   * Size returns the size of the underlying buffer in bytes.
+   */
+  size(): number
+ }
+ interface Reader {
+  /**
+   * Reset discards any buffered data, resets all state, and switches
+   * the buffered reader to read from r.
+   * Calling Reset on the zero value of Reader initializes the internal buffer
+   * to the default size.
+   * Calling b.Reset(b) (that is, resetting a Reader to itself) does nothing.
+   */
+  reset(r: io.Reader): void
+ }
+ interface Reader {
+  /**
+   * Peek returns the next n bytes without advancing the reader. The bytes stop
+   * being valid at the next read call. If Peek returns fewer than n bytes, it
+   * also returns an error explaining why the read is short. The error is
+   * ErrBufferFull if n is larger than b's buffer size.
+   * 
+   * Calling Peek prevents a UnreadByte or UnreadRune call from succeeding
+   * until the next read operation.
+   */
+  peek(n: number): string|Array<number>
+ }
+ interface Reader {
+  /**
+   * Discard skips the next n bytes, returning the number of bytes discarded.
+   * 
+   * If Discard skips fewer than n bytes, it also returns an error.
+   * If 0 <= n <= b.Buffered(), Discard is guaranteed to succeed without
+   * reading from the underlying io.Reader.
+   */
+  discard(n: number): number
+ }
+ interface Reader {
+  /**
+   * Read reads data into p.
+   * It returns the number of bytes read into p.
+   * The bytes are taken from at most one Read on the underlying Reader,
+   * hence n may be less than len(p).
+   * To read exactly len(p) bytes, use io.ReadFull(b, p).
+   * If the underlying Reader can return a non-zero count with io.EOF,
+   * then this Read method can do so as well; see the [io.Reader] docs.
+   */
+  read(p: string|Array<number>): number
+ }
+ interface Reader {
+  /**
+   * ReadByte reads and returns a single byte.
+   * If no byte is available, returns an error.
+   */
+  readByte(): number
+ }
+ interface Reader {
+  /**
+   * UnreadByte unreads the last byte. Only the most recently read byte can be unread.
+   * 
+   * UnreadByte returns an error if the most recent method called on the
+   * Reader was not a read operation. Notably, Peek, Discard, and WriteTo are not
+   * considered read operations.
+   */
+  unreadByte(): void
+ }
+ interface Reader {
+  /**
+   * ReadRune reads a single UTF-8 encoded Unicode character and returns the
+   * rune and its size in bytes. If the encoded rune is invalid, it consumes one byte
+   * and returns unicode.ReplacementChar (U+FFFD) with a size of 1.
+   */
+  readRune(): [number, number]
+ }
+ interface Reader {
+  /**
+   * UnreadRune unreads the last rune. If the most recent method called on
+   * the Reader was not a ReadRune, UnreadRune returns an error. (In this
+   * regard it is stricter than UnreadByte, which will unread the last byte
+   * from any read operation.)
+   */
+  unreadRune(): void
+ }
+ interface Reader {
+  /**
+   * Buffered returns the number of bytes that can be read from the current buffer.
+   */
+  buffered(): number
+ }
+ interface Reader {
+  /**
+   * ReadSlice reads until the first occurrence of delim in the input,
+   * returning a slice pointing at the bytes in the buffer.
+   * The bytes stop being valid at the next read.
+   * If ReadSlice encounters an error before finding a delimiter,
+   * it returns all the data in the buffer and the error itself (often io.EOF).
+   * ReadSlice fails with error ErrBufferFull if the buffer fills without a delim.
+   * Because the data returned from ReadSlice will be overwritten
+   * by the next I/O operation, most clients should use
+   * ReadBytes or ReadString instead.
+   * ReadSlice returns err != nil if and only if line does not end in delim.
+   */
+  readSlice(delim: number): string|Array<number>
+ }
+ interface Reader {
+  /**
+   * ReadLine is a low-level line-reading primitive. Most callers should use
+   * ReadBytes('\n') or ReadString('\n') instead or use a Scanner.
+   * 
+   * ReadLine tries to return a single line, not including the end-of-line bytes.
+   * If the line was too long for the buffer then isPrefix is set and the
+   * beginning of the line is returned. The rest of the line will be returned
+   * from future calls. isPrefix will be false when returning the last fragment
+   * of the line. The returned buffer is only valid until the next call to
+   * ReadLine. ReadLine either returns a non-nil line or it returns an error,
+   * never both.
+   * 
+   * The text returned from ReadLine does not include the line end ("\r\n" or "\n").
+   * No indication or error is given if the input ends without a final line end.
+   * Calling UnreadByte after ReadLine will always unread the last byte read
+   * (possibly a character belonging to the line end) even if that byte is not
+   * part of the line returned by ReadLine.
+   */
+  readLine(): [string|Array<number>, boolean]
+ }
+ interface Reader {
+  /**
+   * ReadBytes reads until the first occurrence of delim in the input,
+   * returning a slice containing the data up to and including the delimiter.
+   * If ReadBytes encounters an error before finding a delimiter,
+   * it returns the data read before the error and the error itself (often io.EOF).
+   * ReadBytes returns err != nil if and only if the returned data does not end in
+   * delim.
+   * For simple uses, a Scanner may be more convenient.
+   */
+  readBytes(delim: number): string|Array<number>
+ }
+ interface Reader {
+  /**
+   * ReadString reads until the first occurrence of delim in the input,
+   * returning a string containing the data up to and including the delimiter.
+   * If ReadString encounters an error before finding a delimiter,
+   * it returns the data read before the error and the error itself (often io.EOF).
+   * ReadString returns err != nil if and only if the returned data does not end in
+   * delim.
+   * For simple uses, a Scanner may be more convenient.
+   */
+  readString(delim: number): string
+ }
+ interface Reader {
+  /**
+   * WriteTo implements io.WriterTo.
+   * This may make multiple calls to the Read method of the underlying Reader.
+   * If the underlying reader supports the WriteTo method,
+   * this calls the underlying WriteTo without buffering.
+   */
+  writeTo(w: io.Writer): number
+ }
+ /**
+  * Writer implements buffering for an io.Writer object.
+  * If an error occurs writing to a Writer, no more data will be
+  * accepted and all subsequent writes, and Flush, will return the error.
+  * After all data has been written, the client should call the
+  * Flush method to guarantee all data has been forwarded to
+  * the underlying io.Writer.
+  */
+ interface Writer {
+ }
+ interface Writer {
+  /**
+   * Size returns the size of the underlying buffer in bytes.
+   */
+  size(): number
+ }
+ interface Writer {
+  /**
+   * Reset discards any unflushed buffered data, clears any error, and
+   * resets b to write its output to w.
+   * Calling Reset on the zero value of Writer initializes the internal buffer
+   * to the default size.
+   * Calling w.Reset(w) (that is, resetting a Writer to itself) does nothing.
+   */
+  reset(w: io.Writer): void
+ }
+ interface Writer {
+  /**
+   * Flush writes any buffered data to the underlying io.Writer.
+   */
+  flush(): void
+ }
+ interface Writer {
+  /**
+   * Available returns how many bytes are unused in the buffer.
+   */
+  available(): number
+ }
+ interface Writer {
+  /**
+   * AvailableBuffer returns an empty buffer with b.Available() capacity.
+   * This buffer is intended to be appended to and
+   * passed to an immediately succeeding Write call.
+   * The buffer is only valid until the next write operation on b.
+   */
+  availableBuffer(): string|Array<number>
+ }
+ interface Writer {
+  /**
+   * Buffered returns the number of bytes that have been written into the current buffer.
+   */
+  buffered(): number
+ }
+ interface Writer {
+  /**
+   * Write writes the contents of p into the buffer.
+   * It returns the number of bytes written.
+   * If nn < len(p), it also returns an error explaining
+   * why the write is short.
+   */
+  write(p: string|Array<number>): number
+ }
+ interface Writer {
+  /**
+   * WriteByte writes a single byte.
+   */
+  writeByte(c: number): void
+ }
+ interface Writer {
+  /**
+   * WriteRune writes a single Unicode code point, returning
+   * the number of bytes written and any error.
+   */
+  writeRune(r: number): number
+ }
+ interface Writer {
+  /**
+   * WriteString writes a string.
+   * It returns the number of bytes written.
+   * If the count is less than len(s), it also returns an error explaining
+   * why the write is short.
+   */
+  writeString(s: string): number
+ }
+ interface Writer {
+  /**
+   * ReadFrom implements io.ReaderFrom. If the underlying writer
+   * supports the ReadFrom method, this calls the underlying ReadFrom.
+   * If there is buffered data and an underlying ReadFrom, this fills
+   * the buffer and writes it before calling ReadFrom.
+   */
+  readFrom(r: io.Reader): number
+ }
+}
+
+namespace search {
+}
+
+/**
+ * Package mail implements parsing of mail messages.
+ * 
+ * For the most part, this package follows the syntax as specified by RFC 5322 and
+ * extended by RFC 6532.
+ * Notable divergences:
+ * ```
+ *   - Obsolete address formats are not parsed, including addresses with
+ *     embedded route information.
+ *   - The full range of spacing (the CFWS syntax element) is not supported,
+ *     such as breaking addresses across lines.
+ *   - No unicode normalization is performed.
+ *   - The special characters ()[]:;@\, are allowed to appear unquoted in names.
+ *   - A leading From line is permitted, as in mbox format (RFC 4155).
+ * ```
+ */
+namespace mail {
+ /**
+  * Address represents a single mail address.
+  * An address such as "Barry Gibbs <bg@example.com>" is represented
+  * as Address{Name: "Barry Gibbs", Address: "bg@example.com"}.
+  */
+ interface Address {
+  name: string // Proper name; may be empty.
+  address: string // user@domain
+ }
+ interface Address {
+  /**
+   * String formats the address as a valid RFC 5322 address.
+   * If the address's name contains non-ASCII characters
+   * the name will be rendered according to RFC 2047.
+   */
+  string(): string
  }
 }
 

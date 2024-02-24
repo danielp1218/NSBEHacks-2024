@@ -1,117 +1,131 @@
 <script lang="ts">
-    import Item from "$lib/components/Item.svelte";
-    import ItemSource from "$lib/components/ItemSource.svelte";
+	import Item from "$lib/components/Item.svelte";
+	import ItemSource from "$lib/components/ItemSource.svelte";
 
-    type Item = {
-        id: number;
-        x: number;
-        y: number;
-        height: number;
-        width: number;
-        text: string;
-    };
+	type Item = {
+		id: number;
+		x: number;
+		y: number;
+		height: number;
+		width: number;
+		text: string;
+	};
 
-    let items: Item[] = [
-        {id: 1, x: 0, y: 0, height: 50, width: 50, text: "Math"},
-        {id: 2, x: 200, y: 0, height: 50, width: 50, text: "Science"},
-        {id: 3, x: 400, y: 10, height: 50, width: 50, text: "Art"},
-        {id: 4, x: 600, y: 10, height: 50, width: 50, text: "Business"},
-        {id: 5, x: 0, y: 200, height: 50, width: 50, text: "Service"},
-        {id: 6, x: 200, y: 200, height: 50, width: 50, text: "Social Science"},
-        {id: 7, x: 400, y: 200, height: 50, width: 50, text: "Technology"}
-    ];
+	let items: Item[] = [
+		{ id: 1, x: 0, y: 0, height: 50, width: 50, text: "Math" },
+		{ id: 2, x: 200, y: 0, height: 50, width: 50, text: "Science" },
+		{ id: 3, x: 400, y: 10, height: 50, width: 50, text: "Art" },
+		{ id: 4, x: 600, y: 10, height: 50, width: 50, text: "Business" },
+		{ id: 5, x: 0, y: 200, height: 50, width: 50, text: "Service" },
+		{ id: 6, x: 200, y: 200, height: 50, width: 50, text: "Social Science" },
+		{ id: 7, x: 400, y: 200, height: 50, width: 50, text: "Technology" }
+	];
 
-    let itemNames: Set<string> = new Set();
-    for (const item of items) {
-        itemNames.add(item.text);
-    }
+	let itemNames: Set<string> = new Set();
+	for (const item of items) {
+		itemNames.add(item.text);
+	}
 
-    function checkForOverlap(
-        currentItem: Item,
-        currentX: number,
-        currentY: number,
-        combine: boolean
-    ) {
-        let curIndex = items.findIndex((item) => item.id === currentItem.id);
-        const overlapIndex = items.findIndex((item, idx) => {
-            if (idx === curIndex) return false; // Skip checking against itself
-            // Check if the current div overlaps with div
-            const horizontalOverlap =
-                currentX < item.x + item.width && currentX + currentItem.width > item.x;
-            const verticalOverlap =
-                currentY < item.y + item.height && currentY + currentItem.height > item.y;
-            return horizontalOverlap && verticalOverlap;
-        });
+	async function checkForOverlap(
+		currentItem: Item,
+		currentX: number,
+		currentY: number,
+		combine: boolean
+	) {
+		let curIndex = items.findIndex((item) => item.id === currentItem.id);
+		const overlapIndex = items.findIndex((item, idx) => {
+			if (idx === curIndex) return false; // Skip checking against itself
+			// Check if the current div overlaps with div
+			const horizontalOverlap =
+				currentX < item.x + item.width && currentX + currentItem.width > item.x;
+			const verticalOverlap =
+				currentY < item.y + item.height && currentY + currentItem.height > item.y;
+			return horizontalOverlap && verticalOverlap;
+		});
 
-        if (combine && overlapIndex !== -1) {
-            console.log(`Item ${curIndex} overlaps with Div ${overlapIndex}`);
-            combineItems(curIndex, overlapIndex);
-        }
-    }
+		if (combine && overlapIndex !== -1) {
+			console.log(`Item ${curIndex} overlaps with Div ${overlapIndex}`);
+			await combineItems(curIndex, overlapIndex);
+		}
+	}
 
-    function combineItems(index1: number, index2: number) {
-        let item1 = items[index1];
-        let item2 = items[index2];
+	async function combineItems(index1: number, index2: number) {
+		let item1 = items[index1];
+		let item2 = items[index2];
 
-        item1.x = (item1.x + item2.x) / 2;
-        item1.y = (item1.y + item2.y) / 2;
-        item1.text = getNewText(item1.text, item2.text);
-        itemNames.add(item1.text);
-        items.splice(index2, 1);
-        itemNames = itemNames;
+		item1.x = (item1.x + item2.x) / 2;
+		item1.y = (item1.y + item2.y) / 2;
+		item1.text = await getNewText(item1.text, item2.text);
+		itemNames.add(item1.text);
+		items.splice(index2, 1);
+		itemNames = itemNames;
 
-        items = items;
-    }
+		items = items;
+	}
 
-    function getNewText(text1: string, text2: string) {
-        return text1 + " " + text2;
-    }
+	async function getNewText(text1: string, text2: string) {
+		const response = await fetch("/api/merge",
+			{
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json"
+				},
+				body: JSON.stringify({
+					career1: text1,
+					career2: text2
+				})
+			}
+		);
 
-    function createNewItem(event: MouseEvent, text: string) {
-        console.log("Creating new item");
-        const newItem = {
-            id: Date.now(),
-            x: event.clientX,
-            y: event.clientY,
-            height: 50,
-            width: 50,
-            text
-        };
-        items = [...items, newItem];
-        itemNames.add(text);
-        itemNames = itemNames;
+		const data = await response.json();
+		console.log(data.result);
+		return data.result;
+	}
 
-    }
+	function createNewItem(event: MouseEvent, text: string) {
+		console.log("Creating new item");
+		const newItem = {
+			id: Date.now(),
+			x: event.clientX,
+			y: event.clientY,
+			height: 50,
+			width: 50,
+			text
+		};
+		items = [...items, newItem];
+		itemNames.add(text);
+		itemNames = itemNames;
+	}
 </script>
 
 <div class="w-64 h-full fixed bg-gray-800 text-white right-0 p-3">
-    <div class="sidebar">
-        {#each itemNames as text}
-            <div on:mousedown={(event) => createNewItem(event, text)} class="m-3">
-                <ItemSource {text}/>
-            </div>
-        {/each}
-    </div>
+	<div class="sidebar">
+		{#each itemNames as text}
+			<div on:mousedown={(event) => createNewItem(event, text)} class="m-3">
+				<ItemSource {text} />
+			</div>
+		{/each}
+	</div>
 </div>
 
 {#each items as item (item.id)}
-    <Item
-            text={item.text}
-            bind:x={item.x}
-            bind:y={item.y}
-            bind:height={item.height}
-            bind:width={item.width}
-            on:drop={(event) => checkForOverlap(item, event.detail.x, event.detail.y, true)}
-    />
+	<Item
+		text={item.text}
+		bind:x={item.x}
+		bind:y={item.y}
+		bind:height={item.height}
+		bind:width={item.width}
+		on:drop={async (event) => await checkForOverlap(item, event.detail.x, event.detail.y, true)}
+	/>
 {/each}
 
 <style>
     .sidebar {
-        display:flow;
-        overflow-y:auto;
+        display: flow;
+        overflow-y: auto;
         box-sizing: border-box;
-        margin-left:auto;
-        margin-right:auto;
-        height:100%;
+        margin-left: auto;
+        margin-right: auto;
+        height: 100%;
     }
 </style>
