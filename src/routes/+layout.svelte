@@ -20,7 +20,7 @@
 </svelte:head>
 
 {#if loading}
-	<div class="loading-screen flex flex-col gap-4">
+	<div class="loading-screen flex flex-col gap-4" draggable="false">
 		<h1 class="loading-text">Loading</h1>
 		<div class="dot-pulse"></div>
 	</div>

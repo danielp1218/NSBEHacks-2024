@@ -319,7 +319,7 @@
 	class="m-0 modal justify-center h-screen w-screen flex border-4 opacity-100 transition-opacity fixed top-0 left-0 z-40"
 	class:modal-hidden={!modalOpened}
 >
-	<div class="bg-white text-black p-5 shadow-2xl rounded-3xl modal-content">
+	<div class="bg-white text-black shadow-2xl rounded-3xl modal-content p-12">
 		<h1 class="font-bold p-2 text-3xl">{titleCase(modalTitle)}</h1>
 		<hr class="my-2 h-0.5 bg-black" />
 		<p class="overflow-scroll h-[80%]">
