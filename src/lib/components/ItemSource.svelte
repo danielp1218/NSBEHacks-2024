@@ -2,7 +2,7 @@
     export let text: string;
     const titleCase = (str: string) => {
         if (!str) return "";
-        return str.toLowerCase().split(' ').map(function (word) {
+        return str.toLowerCase().split(/\s+/).map(function (word) {
             // Check if the word is 'it', if so, return 'IT'
             if (word === "it") {
                 return "IT";

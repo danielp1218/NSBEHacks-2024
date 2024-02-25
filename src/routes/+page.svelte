@@ -79,14 +79,16 @@
 			await combineItems(curIndex, overlapIndex);
 		}
 		if (!combine) {
-			if (overlapIndex === -1) {
-				if (prevOverlapIndex >= 0 && prevOverlapIndex < items.length) {
-					items[prevOverlapIndex].hover = false;
+
+			for(let i = 0; i < items.length; i++){
+				if(i !== overlapIndex){
+					items[i].hover = false;
+				} else{
+					items[i].hover = true;
 				}
-			} else {
+			}
+			if(overlapIndex!==-1){
 				items[curIndex].hover = true;
-				items[overlapIndex].hover = true;
-				prevOverlapIndex = overlapIndex;
 			}
 		}
 	}
@@ -100,9 +102,11 @@
 
 		items.splice(index2, 1);
 		let temp: string = item1.text;
+		item1.hover = true;
 		item1.text = "Generating...";
 		items = items;
 		item1.text = await getNewText(temp, item2.text);
+		item1.hover = false;
 		itemNames.add(item1.text.toLowerCase());
 		itemNames = itemNames;
 		items = items;
@@ -124,6 +128,9 @@
 
 		const data = await response.json();
 		console.log(data.result);
+		if(!data.result || data.result === "Invalid Input"){
+			return text1;
+		}
 		return data.result;
 	}
 
@@ -147,27 +154,44 @@
 		items = [];
 	}
 
-	const validationRegex = /[a-zA-Z\s]*/;
+	const validationRegex = /^[a-zA-Z ]+$/;
 	let customCareer = "";
+	let sidebar: HTMLElement;
+	let addError: boolean = false;
+	let errorTimeoutId = setTimeout(() => {
+		addError = false;
+	}, 3000);
 
 	const addCustomCareer = () => {
-		if (customCareer.length > 0 && validationRegex.test(customCareer)) {
+		if (customCareer.length > 0 && validationRegex.	test(customCareer)) {
+			if(itemNames.has(customCareer.toLowerCase())){
+				return;
+			}
 			itemNames.add(customCareer.toLowerCase());
 			itemNames = itemNames;
 			customCareer = "";
+			sidebar.scrollTo(0, sidebar.scrollHeight);
+		} else if (customCareer.length > 0) {
+			console.log("fewoi");
+			addError = true;
+			clearTimeout(errorTimeoutId);
+			errorTimeoutId = setTimeout(() => {
+				addError = false;
+			}, 3000);
 		}
 	};
 </script>
 
 <div class="w-64 h-full fixed bg-gray-800 text-white right-0 p-3">
-	<div class="sidebar">
+	<div class="sidebar" bind:this={sidebar}>
 		{#each itemNames as text}
 			<div on:mousedown={(event) => createNewItem(event, text)} class="m-3">
 				<ItemSource {text} />
 			</div>
 		{/each}
 	</div>
-	<div class="fixed bottom-0 right-0 w-64">
+<div class="fixed bottom-0 right-0 w-64">
+		<p class="bg-red-500 text-white pl-2 p-2 opacity-0 transition-opacity" class:add-career-error={addError}>Please enter a valid career</p>
 		<div class="flex flex-row">
 			<button
 				on:click={addCustomCareer}
@@ -250,4 +274,9 @@
     .add-career-button:hover {
         background-color: #a285fc;
     }
+
+	.add-career-error {
+		opacity: 1;
+		transition: 0.2s all ease-in-out;
+	}
 </style>
