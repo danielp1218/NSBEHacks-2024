@@ -1,5 +1,6 @@
 <script lang="ts">
     export let text: string;
+    export let emoji: string = "🙂";
     const titleCase = (str: string) => {
         if (!str) return "";
         return str.toLowerCase().split(/\s+/).map(function (word) {
@@ -16,7 +17,7 @@
 </script>
 
 <div class="career-item">
-    <h1 class="career-item-text select-none">{titleCase(text)}</h1>
+    <h1 class="career-item-text select-none">{emoji} {titleCase(text)}</h1>
 </div>
 
 <style>

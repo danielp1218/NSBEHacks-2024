@@ -1,74 +1,79 @@
 <script lang="ts">
-    import {createEventDispatcher, onMount} from "svelte";
+	import { createEventDispatcher, onMount } from "svelte";
 
-    const dispatch = createEventDispatcher();
-    export let x: number = 0;
-    export let y: number = 0;
-    export let height: number = 50;
-    export let width: number = 50;
-    export let text: string;
+	const dispatch = createEventDispatcher();
+	export let x: number = 0;
+	export let y: number = 0;
+	export let height: number = 50;
+	export let width: number = 50;
+	export let text: string;
 
-    export let created : boolean = false;
+	export let created: boolean = false;
 
-    export let hover: boolean = false;
+	export let hover: boolean = false;
+	export let emoji: string = "🙂";
 
-    let moving: boolean = false;
+	let moving: boolean = false;
 
-    function handleMouseDown() {
-        moving = true;
-    }
+	function handleMouseDown() {
+		moving = true;
+	}
 
-    function handleMouseMove(e: MouseEvent) {
-        if (moving) {
-            x += e.movementX;
-            y += e.movementY;
-            dispatch("drag", {x, y});
-        }
-    }
+	function handleMouseMove(e: MouseEvent) {
+		if (moving) {
+			x += e.movementX;
+			y += e.movementY;
+			dispatch("drag", { x, y });
+		}
+	}
 
-    function handleMouseUp() {
-        if (moving) {
-            dispatch("drop", {x, y});
-        }
-        moving = false;
-    }
+	function handleMouseUp() {
+		if (moving) {
+			dispatch("drop", { x, y });
+		}
+		moving = false;
+	}
 
-    const titleCase = (str: string) => {
-        if (!str) return "";
-        return str.toLowerCase().split(' ').map(function (word) {
-            // Check if the word is 'it', if so, return 'IT'
-            if (word === "it") {
-                return "IT";
-            } else {
-                return word.replace(word[0], word[0].toUpperCase());
-            }
-        }).join(' ');
-    };
+	const titleCase = (str: string) => {
+		if (!str) return "";
+		return str.toLowerCase().split(" ").map(function(word) {
+			// Check if the word is 'it', if so, return 'IT'
+			if (word === "it") {
+				return "IT";
+			} else if (word === "ai") {
+				return "AI";
+			} else if (word === "ux") {
+				return "UX";
+			} else {
+				return word.replace(word[0], word[0].toUpperCase());
+			}
+		}).join(" ");
+	};
 
-    onMount(() => {
-        if(created){
-            handleMouseDown();
-            created=false;
-        }
-    });
+	onMount(() => {
+		if (created) {
+			handleMouseDown();
+			created = false;
+		}
+	});
 </script>
 
 
 <div
-        class="draggable career-item"
-        style="left: {x}px; top: {y}px"
-        on:mousedown={handleMouseDown}
-        on:mouseenter={() => (hover = true)}
-        on:mouseleave={() => (hover = false)}
-        class:z-50={moving}
-        bind:clientHeight={height}
-        bind:clientWidth={width}
-        class:career-item-hover={hover}
+	class="draggable career-item"
+	style="left: {x}px; top: {y}px"
+	on:mousedown={handleMouseDown}
+	on:mouseenter={() => (hover = true)}
+	on:mouseleave={() => (hover = false)}
+	class:z-50={moving}
+	bind:clientHeight={height}
+	bind:clientWidth={width}
+	class:career-item-hover={hover}
 >
-    <h1 class="career-item-text select-none">{titleCase(text)}</h1>
+	<h1 class="career-item-text select-none">{emoji} {titleCase(text)}</h1>
 </div>
 
-<svelte:window on:mouseup={handleMouseUp} on:mousemove={handleMouseMove} on:load={()=>(moving=false)}/>
+<svelte:window on:mouseup={handleMouseUp} on:mousemove={handleMouseMove} on:load={()=>(moving=false)} />
 
 <style>
     .draggable {

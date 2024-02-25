@@ -1,6 +1,7 @@
 import { error, json } from "@sveltejs/kit";
 import type { RequestHandler } from "./$types";
 import { openai } from "$lib/openai";
+import { pb } from "$lib/pocketbase";
 
 export const POST: RequestHandler = async ({ request }) => {
 	let { career } = await request.json();
@@ -10,6 +11,12 @@ export const POST: RequestHandler = async ({ request }) => {
 	}
 
 	career = career.trim().toLowerCase();
+
+	// Check if career already has an emoji
+	const careerData = await pb.collection("merge_cache").getFirstListItem(`result = "${career}"`);
+	if (careerData.emoji) {
+		return json({ emoji: careerData.emoji });
+	}
 
 	const onlyLettersPattern = /^[A-Za-z\s]+$/;
 	if (!onlyLettersPattern.test(career)) {
@@ -32,6 +39,12 @@ export const POST: RequestHandler = async ({ request }) => {
 
 	if (!result.choices[0].message.content) {
 		error(500, "Something went wrong");
+	}
+
+	if (careerData) {
+		await pb.collection("merge_cache").update(careerData.id, { emoji: result.choices[0].message.content });
+	} else {
+		await pb.collection("merge_cache").create({ result: career, emoji: result.choices[0].message.content });
 	}
 
 	return json({ emoji: result.choices[0].message.content });
