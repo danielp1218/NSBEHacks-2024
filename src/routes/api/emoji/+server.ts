@@ -9,12 +9,11 @@ const waitForUnlock = () => {
 	if (lock) {
 		setTimeout(waitForUnlock, 50);
 	}
-}
+};
 
 export const POST: RequestHandler = async ({ request }) => {
-
 	if (lock) {
-		waitForUnlock()
+		waitForUnlock();
 	}
 	lock = true;
 
@@ -44,7 +43,8 @@ export const POST: RequestHandler = async ({ request }) => {
 		messages: [
 			{
 				role: "system",
-				content: "Please find the emoji for a career. Respond with only ONE emoji, even if the request is incomplete."
+				content:
+					"Please find the emoji for a career. Respond with only ONE emoji, even if the request is incomplete."
 			},
 			{
 				role: "user",

@@ -11,21 +11,29 @@
 		});
 	};
 
-	const fetchWithTimeout = async (url: URL | RequestInfo, options: RequestInit | undefined, timeoutInMs: number): Promise<Response> => {
+	const fetchWithTimeout = async (
+		url: URL | RequestInfo,
+		options: RequestInit | undefined,
+		timeoutInMs: number
+	): Promise<Response> => {
 		return Promise.race([
 			fetch(url, options),
-			await timeout(timeoutInMs) as Promise<Response>
+			(await timeout(timeoutInMs)) as Promise<Response>
 		]);
 	};
 
 	const merge = async () => {
-		const response = await fetchWithTimeout(`/api/info`, {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json"
+		const response = await fetchWithTimeout(
+			`/api/info`,
+			{
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json"
+				},
+				body: JSON.stringify({ career: career1 })
 			},
-			body: JSON.stringify({ career: career1 })
-		}, 500000);
+			500000
+		);
 		const data = await response.json();
 		result = data.info;
 	};

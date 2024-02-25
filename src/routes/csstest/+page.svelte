@@ -18,26 +18,35 @@
 </script>
 
 <div class="m-1 fixed top-2 right-64 block">
-	<img src={Help} alt="Help" class="w-auto h-20 opacity-50 transition-opacity"
-		 on:mouseover={() => hover = true}
-		 on:mouseleave={() => hover = false}
-		 class:help-icon-hover={hover}
-		 on:click={() => modalOpened=true}
+	<img
+		src={Help}
+		alt="Help"
+		class="w-auto h-20 opacity-50 transition-opacity"
+		on:mouseover={() => (hover = true)}
+		on:mouseleave={() => (hover = false)}
+		class:help-icon-hover={hover}
+		on:click={() => (modalOpened = true)}
 	/>
 </div>
-<div class="opacity-0 fixed right-80 mr-7 top-9" class:box={helpClicked} class:sb1={helpClicked}>Drag a career to me for a detailed description!</div>
-<div class="m-0 modal justify-center h-screen w-screen flex border-4 opacity-100 transition-opacity fixed top-0 left-0 z-40" class:modal-hidden={!modalOpened}>
+<div class="opacity-0 fixed right-80 mr-7 top-9" class:box={helpClicked} class:sb1={helpClicked}>
+	Drag a career to me for a detailed description!
+</div>
+<div
+	class="m-0 modal justify-center h-screen w-screen flex border-4 opacity-100 transition-opacity fixed top-0 left-0 z-40"
+	class:modal-hidden={!modalOpened}
+>
 	<div class="bg-white text-black p-5 shadow-2xl rounded-3xl modal-content">
 		<h1 class="font-bold p-2 text-3xl">Career Name</h1>
-		<hr class="my-2 h-0.5 bg-black"/>
-		<p class="overflow-scroll h-[80%]">
-
-		</p>
-		<div class="fixed top-4 right-4 font-bold text-2xl" on:click={() => modalOpened=false}>x</div>
+		<hr class="my-2 h-0.5 bg-black" />
+		<p class="overflow-scroll h-[80%]"></p>
+		<div class="fixed top-4 right-4 font-bold text-2xl" on:click={() => (modalOpened = false)}>
+			x
+		</div>
 	</div>
 </div>
+
 <style>
-	.help-icon-hover{
+	.help-icon-hover {
 		opacity: 1;
 		transition: 0.2s opacity ease-in-out;
 	}
@@ -49,7 +58,7 @@
 		font-weight: 900;
 		color: #fff;
 		font-family: arial;
-		opacity:1;
+		opacity: 1;
 		transition: 0.2s opacity ease-in-out;
 	}
 
@@ -64,20 +73,19 @@
 		border-bottom: 10px solid transparent;
 		right: -19px;
 		top: 6px;
-		opacity:1;
+		opacity: 1;
 		transition: 0.2s opacity ease-in-out;
 	}
 
-	.modal{
-		background: rgba(0,0,0,0.5);
+	.modal {
+		background: rgba(0, 0, 0, 0.5);
 		opacity: 1;
 		transition: 0.2s all ease-in-out;
-
 	}
 
-	.modal-content{
+	.modal-content {
 		position: fixed;
-		width:600px;
+		width: 600px;
 		height: 400px;
 		top: 50%;
 		left: 50%;
@@ -85,8 +93,8 @@
 		transform: translate(-50%, -50%);
 	}
 
-	.modal-hidden{
-		display:none;
+	.modal-hidden {
+		display: none;
 		opacity: 0;
 		transition: 0.2s all ease-in-out;
 	}
