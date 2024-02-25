@@ -3,12 +3,12 @@
 	let career2 = "";
 	let result: string | null = null;
 	const merge = async () => {
-		const response = await fetch(`/api/merge`, {
+		const response = await fetch(`/api/emoji`, {
 			method: "POST",
-			body: JSON.stringify({ career1, career2 })
+			body: JSON.stringify({ career: career1 })
 		});
 		const data = await response.json();
-		result = data.result;
+		result = data.emoji;
 	};
 </script>
 
