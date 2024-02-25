@@ -77,6 +77,7 @@
         background: #f5f5f5;
         font-family: "Kumbh Sans", sans-serif;
         font-size: 2rem;
+        animation: fadeOut 1s 2s ease-in-out forwards;
     }
 
     .dot-pulse {
@@ -163,9 +164,5 @@
         100% {
             opacity: 0;
         }
-    }
-
-    .loading-screen {
-        animation: fadeOut 1s 2s ease-in-out forwards;
     }
 </style>
