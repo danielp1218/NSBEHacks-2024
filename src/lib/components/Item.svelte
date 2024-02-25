@@ -39,7 +39,7 @@
 		return str
 			.toLowerCase()
 			.split(" ")
-			.map(function(word) {
+			.map(function (word) {
 				// Check if the word is 'it', if so, return 'IT'
 				if (word === "it") {
 					return "IT";
@@ -84,34 +84,35 @@
 />
 
 <style>
-    .draggable {
-        user-select: none;
-        cursor: move;
-        position: absolute;
-        pointer-events: auto;
-    }
+	.draggable {
+		user-select: none;
+		cursor: move;
+		position: absolute;
+		pointer-events: auto;
+	}
 
-    .career-item {
-        background: #8696fe;
-        border-radius: 5px;
-        padding: 12px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        transition: 0.3s background-color;
-        white-space: nowrap;
-        transform: translate(-50%, -50%);
-    }
+	.career-item {
+		background: #8696fe;
+		border-radius: 5px;
+		padding: 12px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		transition: 0.3s background-color;
+		white-space: nowrap;
+		transform: translate(-50%, -50%);
+	}
 
-    .career-item-hover {
-        background: #4942e4;
-        transition: 0.3s background-color;
-        cursor: grab;
-    }
+	.career-item-hover {
+		background: #4942e4;
+		transition: 0.3s background-color;
+		cursor: grab;
+	}
 
-    .career-item-text {
-        color: #faf6ed;
-        font-family: Kumbh Sans,
-        sans-serif;
-    }
+	.career-item-text {
+		color: #faf6ed;
+		font-family:
+			Kumbh Sans,
+			sans-serif;
+	}
 </style>

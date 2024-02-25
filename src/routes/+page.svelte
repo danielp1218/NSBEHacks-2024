@@ -55,18 +55,28 @@
 
 	let itemNameToEmoji: Map<string, string> = new Map();
 
-	function lazyInitSidebar(){
+	function lazyInitSidebar() {
 		for (const itemText of [
-			"Math", "Science", "Art", "Social Science", "Technology", "Business"
+			"Math",
+			"Science",
+			"Art",
+			"Social Science",
+			"Technology",
+			"Business"
 		]) {
 			itemNameToEmoji.set(itemText.toLowerCase(), "🙂");
 		}
 		itemNameToEmoji = itemNameToEmoji;
 	}
 
-	async function initSidebar(){
+	async function initSidebar() {
 		for (const itemText of [
-			"Math", "Science", "Art", "Social Science", "Technology", "Business"
+			"Math",
+			"Science",
+			"Art",
+			"Social Science",
+			"Technology",
+			"Business"
 		]) {
 			itemNameToEmoji.set(itemText.toLowerCase(), await getEmoji(itemText));
 			itemNameToEmoji = itemNameToEmoji;
@@ -145,7 +155,6 @@
 			await combineItems(curIndex, overlapIndex);
 		}
 		if (!combine) {
-
 			for (let i = 0; i < items.length; i++) {
 				items[i].hover = i === overlapIndex;
 			}
@@ -165,8 +174,8 @@
 		let temp: string = item1.text;
 		const newItem: Item = {
 			id: Date.now(),
-			x: (item1.x + item2.x)/2,
-			y: (item1.y + item2.y)/2,
+			x: (item1.x + item2.x) / 2,
+			y: (item1.y + item2.y) / 2,
 			height: item1.height,
 			width: item1.width,
 			text: "Generating...",
@@ -174,7 +183,7 @@
 		};
 
 		newItem.hover = true;
-		newItem.emoji="🤔";
+		newItem.emoji = "🤔";
 		items.splice(index1, 1);
 		items.splice(index2, 1);
 		items.push(newItem);
@@ -190,8 +199,8 @@
 	}
 
 	async function getNewText(text1: string, text2: string) {
-		if(text1.includes("...")) return text2;
-		if(text2.includes("...")) return text1;
+		if (text1.includes("...")) return text2;
+		if (text2.includes("...")) return text1;
 		const response = await fetch("/api/merge", {
 			method: "POST",
 			headers: {
@@ -239,7 +248,7 @@
 		addError = false;
 	}, 3000);
 
-	const addCustomCareer = async() => {
+	const addCustomCareer = async () => {
 		if (customCareer.length > 0 && validationRegex.test(customCareer)) {
 			if (itemNameToEmoji.has(customCareer.toLowerCase())) {
 				return;
@@ -342,7 +351,10 @@
 				{/if}
 			{/each}
 		</p>
-		<div class="fixed top-4 right-4 font-bold text-2xl cursor-pointer" on:click={() => (modalOpened = false)}>
+		<div
+			class="fixed top-4 right-4 font-bold text-2xl cursor-pointer"
+			on:click={() => (modalOpened = false)}
+		>
 			x
 		</div>
 	</div>
@@ -351,14 +363,21 @@
 <div class="w-64 h-full fixed bg-gray-800 text-white right-0 p-3">
 	<div class="sidebar" bind:this={sidebar}>
 		{#each itemNameToEmoji.entries() as [text, emoji]}
-			<div on:mousedown={async (event) => await createNewItem(event, text, emoji)} class="m-3">
-				<ItemSource {text} {emoji}/>
+			<div
+				on:mousedown={async (event) => await createNewItem(event, text, emoji)}
+				class="m-3"
+			>
+				<ItemSource {text} {emoji} />
 			</div>
 		{/each}
 	</div>
 	<div class="fixed bottom-0 right-0 w-64">
-		<p class="bg-red-500 text-white pl-2 p-2 opacity-0 transition-opacity" class:add-career-error={addError}>Please
-			enter a valid career</p>
+		<p
+			class="bg-red-500 text-white pl-2 p-2 opacity-0 transition-opacity"
+			class:add-career-error={addError}
+		>
+			Please enter a valid career
+		</p>
 		<div class="flex flex-row">
 			<button
 				on:click={addCustomCareer}
@@ -366,8 +385,12 @@
 			>
 				+
 			</button>
-			<input bind:value={customCareer} class="p-4 w-48 text-black" placeholder="Add an interest here"
-				   width="200px">
+			<input
+				bind:value={customCareer}
+				class="p-4 w-48 text-black"
+				placeholder="Add an interest here"
+				width="200px"
+			/>
 		</div>
 	</div>
 </div>
@@ -433,10 +456,10 @@
 		cursor: pointer;
 	}
 
-    .trashcan-hover {
-        opacity: 1;
-        transition: 0.2s all ease-in-out;
-    }
+	.trashcan-hover {
+		opacity: 1;
+		transition: 0.2s all ease-in-out;
+	}
 
 	.add-button:hover {
 		transition: 0.1s all ease-in-out;
@@ -447,19 +470,19 @@
 		background-color: #f1b373;
 	}
 
-    .add-career-button:hover {
-        background-color: #f08e3f;
-    }
+	.add-career-button:hover {
+		background-color: #f08e3f;
+	}
 
-    .add-career-error {
-        opacity: 1;
-        transition: 0.2s all ease-in-out;
-    }
+	.add-career-error {
+		opacity: 1;
+		transition: 0.2s all ease-in-out;
+	}
 
-    .help-icon-hover {
-        opacity: 1;
-        transition: 0.2s all ease-in-out;
-    }
+	.help-icon-hover {
+		opacity: 1;
+		transition: 0.2s all ease-in-out;
+	}
 	.box {
 		width: 300px;
 		background: #f08e3f;
@@ -482,12 +505,12 @@
 		border-bottom: 10px solid transparent;
 		right: -19px;
 		top: 6px;
-		opacity:1;
+		opacity: 1;
 		transition: 0.2s opacity ease-in-out;
 	}
 
-	.modal{
-		background: rgba(0,0,0,0.5);
+	.modal {
+		background: rgba(0, 0, 0, 0.5);
 		opacity: 1;
 		transition: 0.2s all ease-in-out;
 	}
