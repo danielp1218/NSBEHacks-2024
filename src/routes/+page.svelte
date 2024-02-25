@@ -269,7 +269,6 @@
 			customCareer = "";
 			sidebar.scrollTo(0, sidebar.scrollHeight);
 		} else if (customCareer.length > 0) {
-			console.log("fewoi");
 			addError = true;
 			clearTimeout(errorTimeoutId);
 			errorTimeoutId = setTimeout(() => {
@@ -299,7 +298,7 @@
 		while (true) {
 			const { value, done } = await reader.read();
 			console.log("resp", done, value);
-			if (done) break;
+			if (done || !modalOpened) break;
 			modalDescription += `${value}`;
 		}
 	}
