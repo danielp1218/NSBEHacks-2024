@@ -324,7 +324,7 @@
 <img draggable="false" src={Logo} alt="Ignite Logo" class="w-auto h-20 fixed opacity-80 top-0 left-0" />
 
 <div class="m-1 mr-4 fixed top-2 right-64 block">
-	<img src={Help} alt="Help" class="w-auto h-20 opacity-50 transition-opacity"
+	<img src={Help} alt="Help" class="w-auto h-20 opacity-50 transition-opacity cursor-pointer"
 		 bind:this={helpIcon}
 		 on:mouseover={() => helpIconHover = true}
 		 on:mouseleave={() => helpIconHover = false}
@@ -348,10 +348,9 @@
 				{/if}
 			{/each}
 		</p>
-		<div class="fixed top-4 right-4 font-bold text-2xl" on:click={() => modalOpened=false}>x</div>
+		<div class="fixed top-4 right-4 font-bold text-2xl cursor-pointer" on:click={() => modalOpened=false}>x</div>
 	</div>
 </div>
-
 <div class="w-64 h-full fixed bg-gray-800 text-white right-0 p-3">
 	<div class="sidebar" bind:this={sidebar}>
 		{#each itemNames as text}

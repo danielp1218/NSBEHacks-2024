@@ -46,7 +46,6 @@ export const POST: RequestHandler = async ({ request }) => {
 			for await (const chunk of result) {
 				response += chunk.choices[0]?.delta?.content || "";
 				controller.enqueue(chunk.choices[0]?.delta?.content || "");
-				console.log(chunk.choices[0]?.delta?.content || "");
 			}
 			await pb.collection("info").create({ career, info: response });
 			controller.close();

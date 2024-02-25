@@ -35,6 +35,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@tsparticles/svelte": "^3.0.0",
 		"openai": "^4.28.0",
 		"pocketbase": "^0.21.1",
 		"pocketbase-typegen": "^1.2.1",
