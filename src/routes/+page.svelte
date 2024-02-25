@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Item from "$lib/components/Item.svelte";
 	import ItemSource from "$lib/components/ItemSource.svelte";
+	import Trash from "$lib/images/trashcan.png";
 
 	type Item = {
 		id: number;
@@ -58,7 +59,7 @@
 		item1.y = (item1.y + item2.y) / 2;
 
 		items.splice(index2, 1);
-		let temp:string= item1.text;
+		let temp: string = item1.text;
 		item1.text = "Generating...";
 		items = items;
 		item1.text = await getNewText(temp, item2.text);
@@ -125,6 +126,10 @@
 	/>
 {/each}
 
+<div class="trashcan">
+	<img alt="Trashcan" src={Trash} width="128px" />
+</div>
+
 <style>
     .sidebar {
         display: flow;
@@ -133,5 +138,13 @@
         margin-left: auto;
         margin-right: auto;
         height: 100%;
+    }
+
+    .trashcan {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        padding: 12px;
+        z-index: -100;
     }
 </style>
