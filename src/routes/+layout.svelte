@@ -5,6 +5,11 @@
 	for (let i = 0; i < 25 * 25; i++) {
 		arr.push(i);
 	}
+
+	let loading = true;
+	setTimeout(() => {
+		loading = false;
+	}, 2000);
 </script>
 
 <svelte:head>
@@ -13,10 +18,12 @@
 	</style>
 </svelte:head>
 
-<div class="loading-screen flex flex-col gap-4">
-	<h1 class="loading-text">Loading</h1>
-	<div class="dot-pulse"></div>
-</div>
+{#if loading}
+	<div class="loading-screen flex flex-col gap-4">
+		<h1 class="loading-text">Loading</h1>
+		<div class="dot-pulse"></div>
+	</div>
+{/if}
 
 <div class="dot-grid">
 	{#each arr as _}
@@ -37,6 +44,11 @@
 <style lang="postcss">
     :global(body) {
     }
+
+	.loading-text {
+		font-family: "Kumbh Sans", sans-serif;
+		font-size: 2rem;
+	}
 
     .dot-grid {
         z-index: -100;
