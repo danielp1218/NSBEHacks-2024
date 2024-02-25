@@ -5,7 +5,6 @@
 	import Logo from "$lib/images/logo.png";
 	import Help from "$lib/images/help.png";
 	import { browser } from "$app/environment";
-	import {onMount} from "svelte";
 
 	let trashCan: HTMLElement;
 	let trashCanHover: boolean = false;
@@ -153,18 +152,33 @@
 		item1.x = (item1.x + item2.x) / 2;
 		item1.y = (item1.y + item2.y) / 2;
 
-		items.splice(index2, 1);
 		let temp: string = item1.text;
-		item1.hover = true;
-		item1.text = "Generating...";
-		items = items;
-		item1.text = await getNewText(temp, item2.text);
-		item1.hover = false;
+		const newItem: Item = {
+			id: Date.now(),
+			x: item1.x,
+			y: item1.y,
+			height: item1.height,
+			width: item1.width,
+			text: "Generating...",
+			created: false
+		};
 
+		newItem.hover = true;
+
+		items = items;
+		newItem.text = await getNewText(temp, item2.text);
+		newItem.hover = false;
 		const emoji = await getEmoji(item1.text);
+
 		itemNameToEmoji.set(item1.text.toLowerCase(), emoji);
 		itemNameToEmoji = itemNameToEmoji;
-		item1.emoji = emoji;
+		items.push(newItem);
+		itemNameToEmoji.set(newItem.text.toLowerCase(), await getEmoji(newItem.text));
+		itemNameToEmoji = itemNameToEmoji;
+		newItem.emoji = itemNameToEmoji.get(newItem.text.toLowerCase()) ?? "🙂";
+
+		items.splice(index1, 1);
+		items.splice(index2, 1);
 		items = items;
 	}
 
