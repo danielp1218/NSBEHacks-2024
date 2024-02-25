@@ -165,7 +165,6 @@
 
 		newItem.hover = true;
 		newItem.emoji="🤔";
-//get rid of item1 and item2
 		items.splice(index1, 1);
 		items.splice(index2, 1);
 		items.push(newItem);
@@ -181,6 +180,8 @@
 	}
 
 	async function getNewText(text1: string, text2: string) {
+		if(text1.includes("...")) return text2;
+		if(text2.includes("...")) return text1;
 		const response = await fetch("/api/merge", {
 			method: "POST",
 			headers: {
