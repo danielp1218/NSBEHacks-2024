@@ -1,23 +1,45 @@
 <script lang="ts">
-    export let text: string;
-    export let emoji: string = "🙂";
-    const titleCase = (str: string) => {
-        if (!str) return "";
-        return str.toLowerCase().split(/\s+/).map(function (word) {
-            // Check if the word is 'it', if so, return 'IT'
-            if (word === "it") {
-                return "IT";
-            } else {
-                return word.replace(word[0], word[0].toUpperCase());
-            }
-        }).join(' ');
-    };
+	import { browser } from "$app/environment";
 
-    text=titleCase(text);
+	export let text: string;
+	const titleCase = (str: string) => {
+		if (!str) return "";
+		return str.toLowerCase().split(/\s+/).map(function(word) {
+			// Check if the word is 'it', if so, return 'IT'
+			if (word === "it") {
+				return "IT";
+			} else {
+				return word.replace(word[0], word[0].toUpperCase());
+			}
+		}).join(" ");
+	};
+
+	text = titleCase(text);
+	let emoji = "🙂";
+	const loadEmoji = async () => {
+		const response = await fetch("/api/emoji",
+			{
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json"
+				},
+				body: JSON.stringify({
+					career: text
+				})
+			}
+		);
+
+		const data = await response.json();
+		emoji = data.emoji ?? "🙂";
+	};
+
+	if (browser) {
+		loadEmoji();
+	}
 </script>
 
 <div class="career-item">
-    <h1 class="career-item-text select-none">{emoji} {titleCase(text)}</h1>
+	<h1 class="career-item-text select-none">{emoji} {titleCase(text)}</h1>
 </div>
 
 <style>

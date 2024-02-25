@@ -12,10 +12,14 @@ export const POST: RequestHandler = async ({ request }) => {
 
 	career = career.trim().toLowerCase();
 
-	// Check if career already has an emoji
-	const careerData = await pb.collection("merge_cache").getFirstListItem(`result = "${career}"`);
-	if (careerData.emoji) {
-		return json({ emoji: careerData.emoji });
+	let careerData;
+	try {
+		careerData = await pb.collection("merge_cache").getFirstListItem(`result = "${career}"`);
+		if (careerData.emoji) {
+			return json({ emoji: careerData.emoji });
+		}
+	} catch (error) {
+		careerData = null;
 	}
 
 	const onlyLettersPattern = /^[A-Za-z\s]+$/;

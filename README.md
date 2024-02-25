@@ -1,6 +1,4 @@
 TODO:
-1. Logo
-2. Emoji
-3. Question Mark
-4. Background
-5. Better animations
+1. Question Mark
+2. Background
+3. Better animations

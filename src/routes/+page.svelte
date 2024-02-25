@@ -3,7 +3,8 @@
 	import ItemSource from "$lib/components/ItemSource.svelte";
 	import Trash from "$lib/images/trashcan.png";
 	import Logo from "$lib/images/logo.png";
-	import Help from "$lib/images/Help.png";
+	import Help from "$lib/images/help.png";
+	import { browser } from "$app/environment";
 
 	let trashCan: HTMLElement;
 	let trashCanHover: boolean = false;
@@ -20,6 +21,7 @@
 		text: string;
 		created?: boolean;
 		hover?: boolean;
+		emoji?: string;
 	};
 
 	let items: Item[] = [
@@ -27,10 +29,34 @@
 		{ id: 2, x: 400, y: 200, height: 50, width: 50, text: "Science" },
 		{ id: 3, x: 600, y: 200, height: 50, width: 50, text: "Art" },
 		{ id: 4, x: 800, y: 200, height: 50, width: 50, text: "Business" },
-		{ id: 5, x: 200, y: 400, height: 50, width: 50, text: "Service" },
-		{ id: 6, x: 400, y: 400, height: 50, width: 50, text: "Social Science" },
-		{ id: 7, x: 600, y: 400, height: 50, width: 50, text: "Technology" }
+		{ id: 5, x: 400, y: 400, height: 50, width: 50, text: "Social Science" },
+		{ id: 6, x: 600, y: 400, height: 50, width: 50, text: "Technology" }
 	];
+
+
+	const loadEmojis = async () => {
+		for (const item of items) {
+			const response = await fetch("/api/emoji",
+				{
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: JSON.stringify({
+						career: item.text
+					})
+				}
+			);
+
+			const data = await response.json();
+			item.emoji = data.emoji ?? "🙂";
+		}
+		items = items;
+	};
+
+	if (browser) {
+		loadEmojis();
+	}
 
 	let itemNames: Set<string> = new Set();
 	for (const item of items) {
@@ -66,7 +92,7 @@
 			}
 		}
 
-		if(helpIcon){
+		if (helpIcon) {
 			const helpIconRect = helpIcon.getBoundingClientRect();
 			if (
 				currentX + currentItem.width / 2 > helpIconRect.left &&
@@ -107,14 +133,10 @@
 		}
 		if (!combine) {
 
-			for(let i = 0; i < items.length; i++){
-				if(i !== overlapIndex){
-					items[i].hover = false;
-				} else{
-					items[i].hover = true;
-				}
+			for (let i = 0; i < items.length; i++) {
+				items[i].hover = i === overlapIndex;
 			}
-			if(overlapIndex!==-1){
+			if (overlapIndex !== -1) {
 				items[curIndex].hover = true;
 			}
 		}
@@ -136,6 +158,23 @@
 		item1.hover = false;
 		itemNames.add(item1.text.toLowerCase());
 		itemNames = itemNames;
+
+		// Get new emoji
+		const response = await fetch("/api/emoji",
+			{
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json"
+				},
+				body: JSON.stringify({
+					career: item1.text
+				})
+			}
+		);
+
+		const data = await response.json();
+		item1.emoji = data.emoji ?? "🙂";
+
 		items = items;
 	}
 
@@ -155,14 +194,30 @@
 
 		const data = await response.json();
 		console.log(data.result);
-		if(!data.result || data.result === "Invalid Input"){
+		if (!data.result || data.result === "Invalid Input" || data.result.length >= 50) {
 			return text1;
 		}
 		return data.result;
 	}
 
-	function createNewItem(event: MouseEvent, text: string) {
+	async function createNewItem(event: MouseEvent, text: string) {
 		console.log("Creating new item");
+
+		// Get emoji
+		const emoji = await fetch("/api/emoji",
+			{
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json"
+				},
+				body: JSON.stringify({
+					career: text
+				})
+			}
+		);
+
+		const emojiData = await emoji.json();
+
 		const newItem = {
 			id: Date.now(),
 			x: event.clientX,
@@ -170,7 +225,8 @@
 			height: 50,
 			width: 50,
 			text,
-			created: true
+			created: true,
+			emoji: emojiData.emoji ?? "🙂"
 		};
 		items = [...items, newItem];
 		itemNames.add(text);
@@ -190,8 +246,8 @@
 	}, 3000);
 
 	const addCustomCareer = () => {
-		if (customCareer.length > 0 && validationRegex.	test(customCareer)) {
-			if(itemNames.has(customCareer.toLowerCase())){
+		if (customCareer.length > 0 && validationRegex.test(customCareer)) {
+			if (itemNames.has(customCareer.toLowerCase())) {
 				return;
 			}
 			itemNames.add(customCareer.toLowerCase());
@@ -209,10 +265,10 @@
 	};
 </script>
 
-<img src={Logo} alt="Ignite Logo" class="w-auto h-20 fixed opacity-80 top-0 left-0" />
+<img draggable="false" src={Logo} alt="Ignite Logo" class="w-auto h-20 fixed opacity-80 top-0 left-0" />
 
 <div class="m-1 fixed top-2 right-64">
-	<img src={Help} alt="Help" class="w-auto h-20 opacity-50 transition-opacity"
+	<img draggable="false" src={Help} alt="Help" class="w-auto h-20 opacity-50 transition-opacity"
 		 bind:this={helpIcon}
 		 class:help-icon-hover={helpIconHover}
 		 on:mouseenter={()=>(helpIconHover=true)} on:mouseleave={()=>(helpIconHover=false)}
@@ -223,13 +279,14 @@
 <div class="w-64 h-full fixed bg-gray-800 text-white right-0 p-3">
 	<div class="sidebar" bind:this={sidebar}>
 		{#each itemNames as text}
-			<div on:mousedown={(event) => createNewItem(event, text)} class="m-3">
+			<div on:mousedown={async (event) => await createNewItem(event, text)} class="m-3">
 				<ItemSource {text} />
 			</div>
 		{/each}
 	</div>
-<div class="fixed bottom-0 right-0 w-64">
-		<p class="bg-red-500 text-white pl-2 p-2 opacity-0 transition-opacity" class:add-career-error={addError}>Please enter a valid career</p>
+	<div class="fixed bottom-0 right-0 w-64">
+		<p class="bg-red-500 text-white pl-2 p-2 opacity-0 transition-opacity" class:add-career-error={addError}>Please
+			enter a valid career</p>
 		<div class="flex flex-row">
 			<button
 				on:click={addCustomCareer}
@@ -237,7 +294,8 @@
 			>
 				+
 			</button>
-			<input bind:value={customCareer} class="p-4 w-48 text-black" placeholder="Add an interest here" width="200px">
+			<input bind:value={customCareer} class="p-4 w-48 text-black" placeholder="Add an interest here"
+				   width="200px">
 		</div>
 	</div>
 </div>
@@ -245,6 +303,7 @@
 {#each items as item (item.id)}
 	<Item
 		text={item.text}
+		emoji={item.emoji ?? "🙂"}
 		bind:x={item.x}
 		bind:y={item.y}
 		bind:height={item.height}
@@ -260,12 +319,13 @@
 	 on:mouseenter={()=>(trashCanHover=true)} on:mouseleave={()=>(trashCanHover=false)}
 	 on:click={clearItems}
 >
-	<img alt="Trashcan" src={Trash} width="128px" />
+	<img draggable="false" alt="Trashcan" src={Trash} width="128px" />
 </div>
 
 <style>
     * {
         font-family: "Kumbh Sans", sans-serif;
+		user-select: none;
     }
 
     .sidebar {
@@ -274,7 +334,8 @@
         box-sizing: border-box;
         margin-left: auto;
         margin-right: auto;
-        height: 92%;
+        height: 95%;
+		padding-bottom: 24px;
     }
 
     .trashcan {
@@ -313,13 +374,13 @@
         background-color: #f08e3f;
     }
 
-	.add-career-error {
-		opacity: 1;
-		transition: 0.2s all ease-in-out;
-	}
+    .add-career-error {
+        opacity: 1;
+        transition: 0.2s all ease-in-out;
+    }
 
-	.help-icon-hover {
-		opacity: 1;
-		transition: 0.2s all ease-in-out;
-	}
+    .help-icon-hover {
+        opacity: 1;
+        transition: 0.2s all ease-in-out;
+    }
 </style>
