@@ -323,7 +323,7 @@
 
 <img draggable="false" src={Logo} alt="Ignite Logo" class="w-auto h-20 fixed opacity-80 top-0 left-0" />
 
-<div class="m-1 fixed top-2 right-64 block">
+<div class="m-1 mr-4 fixed top-2 right-64 block">
 	<img src={Help} alt="Help" class="w-auto h-20 opacity-50 transition-opacity"
 		 bind:this={helpIcon}
 		 on:mouseover={() => helpIconHover = true}
