@@ -19,25 +19,7 @@
 	};
 
 	text = titleCase(text);
-	let emoji = "🙂";
-	const loadEmoji = async () => {
-		const response = await fetch("/api/emoji", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json"
-			},
-			body: JSON.stringify({
-				career: text
-			})
-		});
-
-		const data = await response.json();
-		emoji = data.emoji ?? "🙂";
-	};
-
-	if (browser) {
-		loadEmoji();
-	}
+	export let emoji = "🙂";
 </script>
 
 <div class="career-item">

@@ -5,6 +5,7 @@
 	import Logo from "$lib/images/logo.png";
 	import Help from "$lib/images/help.png";
 	import { browser } from "$app/environment";
+	import {onMount} from "svelte";
 
 	let trashCan: HTMLElement;
 	let trashCanHover: boolean = false;
@@ -39,42 +40,33 @@
 	};
 
 	let items: Item[] = [];
+	async function getEmoji(career: string) {
+		const response = await fetch("/api/emoji", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify({
+				career
+			})
+		});
+		const data = await response.json();
+		return data.emoji ?? "🙂";
+	}
 
-	const loadEmojis = async () => {
-		for (const item of items) {
-			const response = await fetch("/api/emoji", {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json"
-				},
-				body: JSON.stringify({
-					career: item.text
-				})
-			});
+	let itemNameToEmoji: Map<string, string> = new Map();
 
-			const data = await response.json();
-			item.emoji = data.emoji ?? "🙂";
+	async function initSidebar(){
+		for (const itemText of [
+			"Math", "Science", "Art", "Social Science", "Technology", "Business"
+		]) {
+			itemNameToEmoji.set(itemText.toLowerCase(), await getEmoji(itemText));
 		}
-		items = items;
-	};
-
+		itemNameToEmoji = itemNameToEmoji;
+	}
 	if (browser) {
-		loadEmojis();
+		initSidebar();
 	}
-
-	let itemNames: Set<string> = new Set();
-	for (const item of [
-		{ id: 1, x: 200, y: 200, height: 50, width: 50, text: "Math" },
-		{ id: 2, x: 400, y: 200, height: 50, width: 50, text: "Science" },
-		{ id: 3, x: 600, y: 200, height: 50, width: 50, text: "Art" },
-		{ id: 4, x: 800, y: 200, height: 50, width: 50, text: "Business" },
-		{ id: 5, x: 400, y: 400, height: 50, width: 50, text: "Social Science" },
-		{ id: 6, x: 600, y: 400, height: 50, width: 50, text: "Technology" }
-	]) {
-		itemNames.add(item.text.toLowerCase());
-	}
-
-	let prevOverlapIndex: number = -1;
 
 	async function checkForOverlap(
 		currentItem: Item,
@@ -168,23 +160,11 @@
 		items = items;
 		item1.text = await getNewText(temp, item2.text);
 		item1.hover = false;
-		itemNames.add(item1.text.toLowerCase());
-		itemNames = itemNames;
 
-		// Get new emoji
-		const response = await fetch("/api/emoji", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json"
-			},
-			body: JSON.stringify({
-				career: item1.text
-			})
-		});
-
-		const data = await response.json();
-		item1.emoji = data.emoji ?? "🙂";
-
+		const emoji = await getEmoji(item1.text);
+		itemNameToEmoji.set(item1.text.toLowerCase(), emoji);
+		itemNameToEmoji = itemNameToEmoji;
+		item1.emoji = emoji;
 		items = items;
 	}
 
@@ -208,21 +188,8 @@
 		return data.result;
 	}
 
-	async function createNewItem(event: MouseEvent, text: string) {
+	async function createNewItem(event: MouseEvent, text: string, emoji: string = "🙂") {
 		console.log("Creating new item");
-
-		// Get emoji
-		const emoji = await fetch("/api/emoji", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json"
-			},
-			body: JSON.stringify({
-				career: text
-			})
-		});
-
-		const emojiData = await emoji.json();
 
 		const newItem = {
 			id: Date.now(),
@@ -232,11 +199,9 @@
 			width: 50,
 			text,
 			created: true,
-			emoji: emojiData.emoji ?? "🙂"
+			emoji
 		};
 		items = [...items, newItem];
-		itemNames.add(text);
-		itemNames = itemNames;
 	}
 
 	function clearItems() {
@@ -251,13 +216,13 @@
 		addError = false;
 	}, 3000);
 
-	const addCustomCareer = () => {
+	const addCustomCareer = async() => {
 		if (customCareer.length > 0 && validationRegex.test(customCareer)) {
-			if (itemNames.has(customCareer.toLowerCase())) {
+			if (itemNameToEmoji.has(customCareer.toLowerCase())) {
 				return;
 			}
-			itemNames.add(customCareer.toLowerCase());
-			itemNames = itemNames;
+			itemNameToEmoji.set(customCareer.toLowerCase(), await getEmoji(customCareer));
+			itemNameToEmoji = itemNameToEmoji;
 			customCareer = "";
 			sidebar.scrollTo(0, sidebar.scrollHeight);
 		} else if (customCareer.length > 0) {
@@ -362,9 +327,9 @@
 
 <div class="w-64 h-full fixed bg-gray-800 text-white right-0 p-3">
 	<div class="sidebar" bind:this={sidebar}>
-		{#each itemNames as text}
-			<div on:mousedown={async (event) => await createNewItem(event, text)} class="m-3">
-				<ItemSource {text} />
+		{#each itemNameToEmoji.entries() as [text, emoji]}
+			<div on:mousedown={async (event) => await createNewItem(event, text, emoji)} class="m-3">
+				<ItemSource {text} {emoji}/>
 			</div>
 		{/each}
 	</div>
