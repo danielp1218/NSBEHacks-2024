@@ -2,13 +2,32 @@
 	let career1 = "";
 	let career2 = "";
 	let result: string | null = null;
-	const merge = async () => {
-		const response = await fetch(`/api/emoji`, {
-			method: "POST",
-			body: JSON.stringify({ career: career1 })
+
+	const timeout = (ms: number) => {
+		return new Promise((resolve, reject) => {
+			setTimeout(() => {
+				reject(new Error("Request timed out"));
+			}, ms);
 		});
+	};
+
+	const fetchWithTimeout = async (url: URL | RequestInfo, options: RequestInit | undefined, timeoutInMs: number): Promise<Response> => {
+		return Promise.race([
+			fetch(url, options),
+			await timeout(timeoutInMs) as Promise<Response>
+		]);
+	};
+
+	const merge = async () => {
+		const response = await fetchWithTimeout(`/api/info`, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify({ career: career1 })
+		}, 500000);
 		const data = await response.json();
-		result = data.emoji;
+		result = data.info;
 	};
 </script>
 

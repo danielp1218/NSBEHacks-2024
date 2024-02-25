@@ -3,21 +3,7 @@ import type { RequestHandler } from "./$types";
 import { openai } from "$lib/openai";
 import { pb } from "$lib/pocketbase";
 
-let lock = false;
-
-const waitForUnlock = () => {
-	if (lock) {
-		setTimeout(waitForUnlock, 50);
-	}
-}
-
 export const POST: RequestHandler = async ({ request }) => {
-
-	if (lock) {
-		waitForUnlock()
-	}
-	lock = true;
-
 	let { career } = await request.json();
 
 	if (!career) {
@@ -28,8 +14,8 @@ export const POST: RequestHandler = async ({ request }) => {
 
 	let careerData;
 	try {
-		careerData = await pb.collection("emojis").getFirstListItem(`career = "${career}"`);
-		return json({ emoji: careerData.emoji });
+		careerData = await pb.collection("info").getFirstListItem(`career = "${career}"`);
+		return json({ info: careerData.info });
 	} catch (error) {
 		careerData = null;
 	}
@@ -44,11 +30,11 @@ export const POST: RequestHandler = async ({ request }) => {
 		messages: [
 			{
 				role: "system",
-				content: "Please find the emoji for a career. Respond with only ONE emoji, even if the request is incomplete."
+				content: "Provide a description of a specified career path. Separate into these sections, and use bullet points: responsibilities, education/training/skills required, and other information that would be helpful to someone considering this career."
 			},
 			{
 				role: "user",
-				content: `Find the emoji for ${career}`
+				content: `Describe ${career}`
 			}
 		]
 	});
@@ -57,9 +43,7 @@ export const POST: RequestHandler = async ({ request }) => {
 		error(500, "Something went wrong");
 	}
 
-	await pb.collection("emojis").create({ career, emoji: result.choices[0].message.content });
-
-	lock = false;
+	await pb.collection("info").create({ career, info: result.choices[0].message.content });
 
 	return json({ emoji: result.choices[0].message.content });
 };

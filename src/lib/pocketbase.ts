@@ -7,3 +7,4 @@ import {
 
 export const pb = new PocketBase(SECRET_POCKETBASE_URL);
 await pb.admins.authWithPassword(SECRET_POCKETBASE_EMAIL, SECRET_POCKETBASE_PASSWORD);
+pb.autoCancellation(false)
