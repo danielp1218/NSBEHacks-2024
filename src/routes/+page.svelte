@@ -33,21 +33,22 @@
 	}
 
 	let prevOverlapIndex: number = -1;
+
 	async function checkForOverlap(
 		currentItem: Item,
 		currentX: number,
 		currentY: number,
 		combine: boolean
 	) {
-		if(trashCan) {
+		if (trashCan) {
 			const trashCanRect = trashCan.getBoundingClientRect();
 			if (
-				currentX+currentItem.width/2 > trashCanRect.left &&
-				currentX-currentItem.width/2 < trashCanRect.right &&
-				currentY+currentItem.height/2 > trashCanRect.top &&
-				currentY-currentItem.height/2 < trashCanRect.bottom
+				currentX + currentItem.width / 2 > trashCanRect.left &&
+				currentX - currentItem.width / 2 < trashCanRect.right &&
+				currentY + currentItem.height / 2 > trashCanRect.top &&
+				currentY - currentItem.height / 2 < trashCanRect.bottom
 			) {
-				if(combine){
+				if (combine) {
 					items = items.filter((item) => item.id !== currentItem.id);
 					trashCanHover = false;
 					return;
@@ -55,11 +56,14 @@
 					trashCanHover = true;
 					return;
 				}
-			} else{
+			} else {
 				trashCanHover = false;
 			}
 		}
 		let curIndex = items.findIndex((item) => item.id === currentItem.id);
+
+		if (curIndex >= items.length || curIndex === -1) return;
+
 		const overlapIndex = items.findIndex((item, idx) => {
 			if (idx === curIndex) return false; // Skip checking against itself
 			// Check if the current div overlaps with div
@@ -74,9 +78,9 @@
 			console.log(`Item ${curIndex} overlaps with Div ${overlapIndex}`);
 			await combineItems(curIndex, overlapIndex);
 		}
-		if (!combine){
-			if(overlapIndex === -1){
-				if(prevOverlapIndex !== -1){
+		if (!combine) {
+			if (overlapIndex === -1) {
+				if (prevOverlapIndex >= 0 && prevOverlapIndex < items.length) {
 					items[prevOverlapIndex].hover = false;
 				}
 			} else {
@@ -142,6 +146,17 @@
 	function clearItems() {
 		items = [];
 	}
+
+	const validationRegex = /[a-zA-Z\s]*/;
+	let customCareer = "";
+
+	const addCustomCareer = () => {
+		if (customCareer.length > 0 && validationRegex.test(customCareer)) {
+			itemNames.add(customCareer.toLowerCase());
+			itemNames = itemNames;
+			customCareer = "";
+		}
+	};
 </script>
 
 <div class="w-64 h-full fixed bg-gray-800 text-white right-0 p-3">
@@ -152,10 +167,17 @@
 			</div>
 		{/each}
 	</div>
-	<button class="add-button fixed right-0 bottom-0 text-center bg-blue-800 w-64 h-16 justify-center align-middle transition-all"
-	>
-		+
-	</button>
+	<div class="fixed bottom-0 right-0 w-64">
+		<div class="flex flex-row">
+			<button
+				on:click={addCustomCareer}
+				class="text-4xl add-button text-center w-96 h-16 justify-center align-middle transition-all add-career-button"
+			>
+				+
+			</button>
+			<input bind:value={customCareer} class="p-4 w-48 text-black" placeholder="Add an interest here" width="200px">
+		</div>
+	</div>
 </div>
 
 {#each items as item (item.id)}
@@ -180,38 +202,52 @@
 </div>
 
 <style>
+    * {
+        font-family: "Kumbh Sans", sans-serif;
+    }
+
     .sidebar {
         display: flow;
         overflow-y: auto;
         box-sizing: border-box;
         margin-left: auto;
         margin-right: auto;
-        height: 100%;
+        height: 92%;
     }
 
     .trashcan {
         position: absolute;
         bottom: 0;
         left: 0;
-		height:70px;
-		width:70px;
+        height: 70px;
+        width: 70px;
         margin: 30px;
         z-index: -100;
-		opacity:0.5;
-		transition: 0.2s all ease-in-out;
-	}
-
-	.trashcan img {
-		height:fit-content;
-		width:fit-content;
+        opacity: 0.5;
+        transition: 0.2s all ease-in-out;
     }
-	.trashcan-hover {
-		opacity: 1;
-		transition: 0.2s all ease-in-out;
-	}
 
-	.add-button:hover{
-		transition:0.1s all ease-in-out;
-		background-color: #4a5568;
-	}
+    .trashcan img {
+        height: fit-content;
+        width: fit-content;
+        cursor: pointer;
+    }
+
+    .trashcan-hover {
+        opacity: 1;
+        transition: 0.2s all ease-in-out;
+    }
+
+    .add-button:hover {
+        transition: 0.1s all ease-in-out;
+        background-color: #4a5568;
+    }
+
+    .add-career-button {
+        background-color: #C4B0FF;
+    }
+
+    .add-career-button:hover {
+        background-color: #a285fc;
+    }
 </style>
