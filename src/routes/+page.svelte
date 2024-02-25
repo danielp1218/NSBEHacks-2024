@@ -2,9 +2,14 @@
 	import Item from "$lib/components/Item.svelte";
 	import ItemSource from "$lib/components/ItemSource.svelte";
 	import Trash from "$lib/images/trashcan.png";
+	import Logo from "$lib/images/logo.png";
+	import Help from "$lib/images/Help.png";
 
 	let trashCan: HTMLElement;
 	let trashCanHover: boolean = false;
+
+	let helpIcon: HTMLElement;
+	let helpIconHover: boolean = false;
 
 	type Item = {
 		id: number;
@@ -60,6 +65,28 @@
 				trashCanHover = false;
 			}
 		}
+
+		if(helpIcon){
+			const helpIconRect = helpIcon.getBoundingClientRect();
+			if (
+				currentX + currentItem.width / 2 > helpIconRect.left &&
+				currentX - currentItem.width / 2 < helpIconRect.right &&
+				currentY + currentItem.height / 2 > helpIconRect.top &&
+				currentY - currentItem.height / 2 < helpIconRect.bottom
+			) {
+				if (combine) {
+					items = items.filter((item) => item.id !== currentItem.id);
+					helpIconHover = false;
+					return;
+				} else {
+					helpIconHover = true;
+					return;
+				}
+			} else {
+				helpIconHover = false;
+			}
+		}
+
 		let curIndex = items.findIndex((item) => item.id === currentItem.id);
 
 		if (curIndex >= items.length || curIndex === -1) return;
@@ -182,6 +209,17 @@
 	};
 </script>
 
+<img src={Logo} alt="Ignite Logo" class="w-auto h-20 fixed opacity-80 top-0 left-0" />
+
+<div class="m-1 fixed top-2 right-64">
+	<img src={Help} alt="Help" class="w-auto h-20 opacity-50 transition-opacity"
+		 bind:this={helpIcon}
+		 class:help-icon-hover={helpIconHover}
+		 on:mouseenter={()=>(helpIconHover=true)} on:mouseleave={()=>(helpIconHover=false)}
+
+	/>
+</div>
+
 <div class="w-64 h-full fixed bg-gray-800 text-white right-0 p-3">
 	<div class="sidebar" bind:this={sidebar}>
 		{#each itemNames as text}
@@ -268,14 +306,19 @@
     }
 
     .add-career-button {
-        background-color: #C4B0FF;
+        background-color: #f1b373;
     }
 
     .add-career-button:hover {
-        background-color: #a285fc;
+        background-color: #f08e3f;
     }
 
 	.add-career-error {
+		opacity: 1;
+		transition: 0.2s all ease-in-out;
+	}
+
+	.help-icon-hover {
 		opacity: 1;
 		transition: 0.2s all ease-in-out;
 	}
