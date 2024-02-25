@@ -36,7 +36,8 @@ export const POST: RequestHandler = async ({ request }) => {
 				role: "user",
 				content: `Describe ${career}`
 			}
-		]
+		],
+		stream: true
 	});
 
 	if (!result.choices[0].message.content) {

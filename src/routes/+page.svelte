@@ -11,6 +11,20 @@
 
 	let helpIcon: HTMLElement;
 	let helpIconHover: boolean = false;
+	let helpHoverTimeout = setTimeout(() => {
+		helpClicked = false;
+	}, 3000);
+	let helpClicked: boolean = false;
+	$: {
+		if (helpClicked) {
+			clearTimeout(helpHoverTimeout);
+			helpHoverTimeout = setTimeout(() => {
+				helpClicked = false;
+			}, 5000);
+		}
+	}
+
+	let modalOpened: boolean = false;
 
 	type Item = {
 		id: number;
@@ -33,7 +47,7 @@
 		{ id: 6, x: 600, y: 400, height: 50, width: 50, text: "Technology" }
 	];
 
-	const timeout = (ms) => {
+	const timeout = (ms: number) => {
 		return new Promise((resolve, reject) => {
 			setTimeout(() => {
 				reject(new Error("Request timed out"));
@@ -115,7 +129,7 @@
 				currentY - currentItem.height / 2 < helpIconRect.bottom
 			) {
 				if (combine) {
-					items = items.filter((item) => item.id !== currentItem.id);
+					await openModal(currentItem.text);
 					helpIconHover = false;
 					return;
 				} else {
@@ -277,17 +291,53 @@
 			}, 3000);
 		}
 	};
+
+	let modalDescription: string = "";
+	async function openModal(career: string) {
+		modalOpened = true;
+		modalDescription = "";
+		const response = await fetch("/api/info",
+				{
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: JSON.stringify({
+						career: career
+					})
+				});
+		const reader = response.body!.pipeThrough(new TextDecoderStream()).getReader();
+		while (true) {
+			const { value, done } = await reader.read();
+			console.log("resp", done, value);
+			if (done) break;
+			modalDescription += `${value}<br>`;
+		}
+	}
 </script>
 
 <img draggable="false" src={Logo} alt="Ignite Logo" class="w-auto h-20 fixed opacity-80 top-0 left-0" />
 
-<div class="m-1 fixed top-2 right-64">
-	<img draggable="false" src={Help} alt="Help" class="w-auto h-20 opacity-50 transition-opacity"
+<div class="m-1 fixed top-2 right-64 block">
+	<img src={Help} alt="Help" class="w-auto h-20 opacity-50 transition-opacity"
 		 bind:this={helpIcon}
+		 on:mouseover={() => helpIconHover = true}
+		 on:mouseleave={() => helpIconHover = false}
 		 class:help-icon-hover={helpIconHover}
-		 on:mouseenter={()=>(helpIconHover=true)} on:mouseleave={()=>(helpIconHover=false)}
-
+		 on:click={() => helpClicked=true}
 	/>
+</div>
+
+<div class="opacity-0 fixed right-80 mr-7 top-9" class:box={helpClicked} class:sb1={helpClicked}>Drag a career to me for a detailed description!</div>
+<div class="m-0 modal justify-center h-screen w-screen flex border-4 opacity-100 transition-opacity fixed top-0 left-0 z-40" class:modal-hidden={!modalOpened}>
+	<div class="bg-white text-black p-5 shadow-2xl rounded-3xl modal-content">
+		<h1 class="font-bold p-2 text-3xl">Career Name</h1>
+		<hr class="my-2 h-0.5 bg-black"/>
+		<p class="overflow-scroll h-[80%]" >
+			{modalDescription}
+		</p>
+		<div class="fixed top-4 right-4 font-bold text-2xl" on:click={() => modalOpened=false}>x</div>
+	</div>
 </div>
 
 <div class="w-64 h-full fixed bg-gray-800 text-white right-0 p-3">
@@ -397,4 +447,52 @@
         opacity: 1;
         transition: 0.2s all ease-in-out;
     }
+	.box {
+		width: 300px;
+		background: #00bfb6;
+		padding: 20px;
+		text-align: center;
+		font-weight: 900;
+		color: #fff;
+		opacity:1;
+		transition: 0.2s opacity ease-in-out;
+	}
+
+	.sb1:before {
+		content: "";
+		width: 0;
+		height: 0;
+		position: absolute;
+		border-left: 10px solid #00bfb6;
+		border-right: 10px solid transparent;
+		border-top: 10px solid #00bfb6;
+		border-bottom: 10px solid transparent;
+		right: -19px;
+		top: 6px;
+		opacity:1;
+		transition: 0.2s opacity ease-in-out;
+	}
+
+	.modal{
+		background: rgba(0,0,0,0.5);
+		opacity: 1;
+		transition: 0.2s all ease-in-out;
+
+	}
+
+	.modal-content{
+		position: fixed;
+		width:600px;
+		height: 400px;
+		top: 50%;
+		left: 50%;
+		margin-right: -50%;
+		transform: translate(-50%, -50%);
+	}
+
+	.modal-hidden{
+		display:none;
+		opacity: 0;
+		transition: 0.2s all ease-in-out;
+	}
 </style>
