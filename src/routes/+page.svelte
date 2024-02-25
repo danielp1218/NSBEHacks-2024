@@ -155,8 +155,8 @@
 		let temp: string = item1.text;
 		const newItem: Item = {
 			id: Date.now(),
-			x: item1.x,
-			y: item1.y,
+			x: (item1.x + item2.x)/2,
+			y: (item1.y + item2.y)/2,
 			height: item1.height,
 			width: item1.width,
 			text: "Generating...",
@@ -164,21 +164,19 @@
 		};
 
 		newItem.hover = true;
-
-		items = items;
-		newItem.text = await getNewText(temp, item2.text);
-		newItem.hover = false;
-		const emoji = await getEmoji(item1.text);
-
-		itemNameToEmoji.set(item1.text.toLowerCase(), emoji);
-		itemNameToEmoji = itemNameToEmoji;
-		items.push(newItem);
-		itemNameToEmoji.set(newItem.text.toLowerCase(), await getEmoji(newItem.text));
-		itemNameToEmoji = itemNameToEmoji;
-		newItem.emoji = itemNameToEmoji.get(newItem.text.toLowerCase()) ?? "🙂";
-
+		newItem.emoji="🤔";
+//get rid of item1 and item2
 		items.splice(index1, 1);
 		items.splice(index2, 1);
+		items.push(newItem);
+		items = items;
+		newItem.text = await getNewText(temp, item2.text);
+		const emoji = await getEmoji(newItem.text);
+
+		itemNameToEmoji.set(newItem.text.toLowerCase(), emoji);
+		itemNameToEmoji = itemNameToEmoji;
+		newItem.emoji = emoji;
+		newItem.hover = false;
 		items = items;
 	}
 
