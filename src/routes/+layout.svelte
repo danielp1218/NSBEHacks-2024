@@ -1,5 +1,6 @@
 <script lang="ts">
 	import "../app.css";
+	import { PUBLIC_LOADING_TIME } from "$env/static/public";
 
 	let arr: number[] = [];
 	for (let i = 0; i < 25 * 25; i++) {
@@ -9,7 +10,7 @@
 	let loading = true;
 	setTimeout(() => {
 		loading = false;
-	}, 2000);
+	}, parseInt(PUBLIC_LOADING_TIME ?? "3000"));
 </script>
 
 <svelte:head>
@@ -45,10 +46,10 @@
     :global(body) {
     }
 
-	.loading-text {
-		font-family: "Kumbh Sans", sans-serif;
-		font-size: 2rem;
-	}
+    .loading-text {
+        font-family: "Kumbh Sans", sans-serif;
+        font-size: 2rem;
+    }
 
     .dot-grid {
         z-index: -100;
