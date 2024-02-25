@@ -114,6 +114,7 @@
 				currentY - currentItem.height / 2 < helpIconRect.bottom
 			) {
 				if (combine) {
+					items = items.filter((item) => item.id !== currentItem.id);
 					await openModal(currentItem.text);
 					helpIconHover = false;
 					return;
@@ -278,9 +279,12 @@
 	};
 
 	let modalDescription: string = "";
+	let modalTitle: string = "";
+	let modalDisplay: string[] = [];
 	async function openModal(career: string) {
-		modalOpened = true;
 		modalDescription = "";
+		modalTitle = career;
+		modalOpened = true;
 		const response = await fetch("/api/info",
 				{
 					method: "POST",
@@ -299,6 +303,22 @@
 			modalDescription += `${value}`;
 		}
 	}
+	const titleCase = (str: string) => {
+		if (!str) return "";
+		return str.toLowerCase().split(" ").map(function(word) {
+			// Check if the word is 'it', if so, return 'IT'
+			if (word === "it") {
+				return "IT";
+			} else if (word === "ai") {
+				return "AI";
+			} else if (word === "ux") {
+				return "UX";
+			} else {
+				return word.replace(word[0], word[0].toUpperCase());
+			}
+		}).join(" ");
+	};
+
 </script>
 
 <img draggable="false" src={Logo} alt="Ignite Logo" class="w-auto h-20 fixed opacity-80 top-0 left-0" />
@@ -316,10 +336,17 @@
 <div class="opacity-0 fixed right-80 mr-7 top-9" class:box={helpClicked} class:sb1={helpClicked}>Drag a career to me for a detailed description!</div>
 <div class="m-0 modal justify-center h-screen w-screen flex border-4 opacity-100 transition-opacity fixed top-0 left-0 z-40" class:modal-hidden={!modalOpened}>
 	<div class="bg-white text-black p-5 shadow-2xl rounded-3xl modal-content">
-		<h1 class="font-bold p-2 text-3xl">Career Name</h1>
+		<h1 class="font-bold p-2 text-3xl">{titleCase(modalTitle)}</h1>
 		<hr class="my-2 h-0.5 bg-black"/>
 		<p class="overflow-scroll h-[80%]" >
-			{modalDescription}
+			{#each modalDescription.split(/\n-|~/) as text}
+				{#if text.includes(":")}
+					<br>
+					<p class="font-bold">{text}</p>
+				{:else if text.trim().length > 0}
+					<p>{"• "+text}</p>
+				{/if}
+			{/each}
 		</p>
 		<div class="fixed top-4 right-4 font-bold text-2xl" on:click={() => modalOpened=false}>x</div>
 	</div>
@@ -434,7 +461,7 @@
     }
 	.box {
 		width: 300px;
-		background: #00bfb6;
+		background: #f08e3f;
 		padding: 20px;
 		text-align: center;
 		font-weight: 900;
@@ -448,9 +475,9 @@
 		width: 0;
 		height: 0;
 		position: absolute;
-		border-left: 10px solid #00bfb6;
+		border-left: 10px solid #f08e3f;
 		border-right: 10px solid transparent;
-		border-top: 10px solid #00bfb6;
+		border-top: 10px solid #f08e3f;
 		border-bottom: 10px solid transparent;
 		right: -19px;
 		top: 6px;
@@ -467,8 +494,8 @@
 
 	.modal-content{
 		position: fixed;
-		width:600px;
-		height: 400px;
+		width:800px;
+		height: 500px;
 		top: 50%;
 		left: 50%;
 		margin-right: -50%;

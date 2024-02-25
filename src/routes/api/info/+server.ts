@@ -1,4 +1,4 @@
-import { error, json } from "@sveltejs/kit";
+import {error, json, text} from "@sveltejs/kit";
 import type { RequestHandler } from "./$types";
 import { openai } from "$lib/openai";
 import { pb } from "$lib/pocketbase";
@@ -15,7 +15,7 @@ export const POST: RequestHandler = async ({ request }) => {
 	let careerData;
 	try {
 		careerData = await pb.collection("info").getFirstListItem(`career = "${career}"`);
-		return json({ info: careerData.info });
+		return text(careerData.info);
 	} catch (error) {
 		careerData = null;
 	}
@@ -30,7 +30,7 @@ export const POST: RequestHandler = async ({ request }) => {
 		messages: [
 			{
 				role: "system",
-				content: "Provide a description of a specified career path. Separate into these sections, and use bullet points: responsibilities, education/training/skills required, and other information that would be helpful to someone considering this career."
+				content: "Provide a description of a specified career path. Separate into these sections: responsibilities, education/training/skills required, and extra information that would be helpful to someone considering this career. Use dashes as bullet points. Reserve tildes (~) and colons (:) for section titles. Section titles must end with exactly one colon at the end of the section title. Section titles must also be completely surrounded by one tilde on each side (surround the one colon as well)."
 			},
 			{
 				role: "user",
@@ -48,10 +48,10 @@ export const POST: RequestHandler = async ({ request }) => {
 				controller.enqueue(chunk.choices[0]?.delta?.content || "");
 				console.log(chunk.choices[0]?.delta?.content || "");
 			}
+			await pb.collection("info").create({ career, info: response });
 			controller.close();
 		}
 	});
-	await pb.collection("info").create({ career, info: response });
 
 	return new Response(stream, { headers: { "Content-Type": "text/event-stream" } });
 };
