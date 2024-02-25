@@ -1,4 +1,4 @@
-import {error, json, text} from "@sveltejs/kit";
+import { error, json, text } from "@sveltejs/kit";
 import type { RequestHandler } from "./$types";
 import { openai } from "$lib/openai";
 import { pb } from "$lib/pocketbase";
@@ -30,7 +30,8 @@ export const POST: RequestHandler = async ({ request }) => {
 		messages: [
 			{
 				role: "system",
-				content: "Provide a description of a specified career path. Separate into these sections: responsibilities, education/training/skills required, and extra information that would be helpful to someone considering this career. Use dashes as bullet points. Reserve tildes (~) and colons (:) for section titles. Section titles must end with exactly one colon at the end of the section title. Section titles must also be completely surrounded by one tilde on each side (surround the one colon as well)."
+				content:
+					"Provide a description of a specified career path. Separate into these sections: responsibilities, education/training/skills required, and extra information that would be helpful to someone in Canada considering this career. Use dashes as bullet points. Reserve tildes (~) and colons (:) for section titles. Section titles must end with exactly one colon at the end of the section title. Section titles must also be completely surrounded by one tilde on each side (surround the one colon as well)."
 			},
 			{
 				role: "user",

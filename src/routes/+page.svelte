@@ -49,17 +49,15 @@
 
 	const loadEmojis = async () => {
 		for (const item of items) {
-			const response = await fetch("/api/emoji",
-				{
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json"
-					},
-					body: JSON.stringify({
-						career: item.text
-					}),
-				}
-			);
+			const response = await fetch("/api/emoji", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json"
+				},
+				body: JSON.stringify({
+					career: item.text
+				})
+			});
 
 			const data = await response.json();
 			item.emoji = data.emoji ?? "🙂";
@@ -174,17 +172,15 @@
 		itemNames = itemNames;
 
 		// Get new emoji
-		const response = await fetch("/api/emoji",
-			{
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json"
-				},
-				body: JSON.stringify({
-					career: item1.text
-				})
-			}
-		);
+		const response = await fetch("/api/emoji", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify({
+				career: item1.text
+			})
+		});
 
 		const data = await response.json();
 		item1.emoji = data.emoji ?? "🙂";
@@ -193,18 +189,16 @@
 	}
 
 	async function getNewText(text1: string, text2: string) {
-		const response = await fetch("/api/merge",
-			{
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json"
-				},
-				body: JSON.stringify({
-					career1: text1,
-					career2: text2
-				})
-			}
-		);
+		const response = await fetch("/api/merge", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify({
+				career1: text1,
+				career2: text2
+			})
+		});
 
 		const data = await response.json();
 		console.log(data.result);
@@ -218,17 +212,15 @@
 		console.log("Creating new item");
 
 		// Get emoji
-		const emoji = await fetch("/api/emoji",
-			{
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json"
-				},
-				body: JSON.stringify({
-					career: text
-				})
-			}
-		);
+		const emoji = await fetch("/api/emoji", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify({
+				career: text
+			})
+		});
 
 		const emojiData = await emoji.json();
 
@@ -269,7 +261,6 @@
 			customCareer = "";
 			sidebar.scrollTo(0, sidebar.scrollHeight);
 		} else if (customCareer.length > 0) {
-			console.log("fewoi");
 			addError = true;
 			clearTimeout(errorTimeoutId);
 			errorTimeoutId = setTimeout(() => {
@@ -280,77 +271,94 @@
 
 	let modalDescription: string = "";
 	let modalTitle: string = "";
-	let modalDisplay: string[] = [];
-	async function openModal(career: string) {
+	async function openModal(career: string, emoji: string = "🙂") {
 		modalDescription = "";
-		modalTitle = career;
+		modalTitle = career + emoji;
 		modalOpened = true;
-		const response = await fetch("/api/info",
-				{
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json"
-					},
-					body: JSON.stringify({
-						career: career
-					})
-				});
+		const response = await fetch("/api/info", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify({
+				career: career
+			})
+		});
 		const reader = response.body!.pipeThrough(new TextDecoderStream()).getReader();
 		while (true) {
 			const { value, done } = await reader.read();
 			console.log("resp", done, value);
-			if (done) break;
+			if (done || !modalOpened) break;
 			modalDescription += `${value}`;
 		}
 	}
 	const titleCase = (str: string) => {
 		if (!str) return "";
-		return str.toLowerCase().split(" ").map(function(word) {
-			// Check if the word is 'it', if so, return 'IT'
-			if (word === "it") {
-				return "IT";
-			} else if (word === "ai") {
-				return "AI";
-			} else if (word === "ux") {
-				return "UX";
-			} else {
-				return word.replace(word[0], word[0].toUpperCase());
-			}
-		}).join(" ");
+		return str
+			.toLowerCase()
+			.split(" ")
+			.map(function (word) {
+				// Check if the word is 'it', if so, return 'IT'
+				if (word === "it") {
+					return "IT";
+				} else if (word === "ai") {
+					return "AI";
+				} else if (word === "ux") {
+					return "UX";
+				} else {
+					return word.replace(word[0], word[0].toUpperCase());
+				}
+			})
+			.join(" ");
 	};
-
 </script>
 
-<img draggable="false" src={Logo} alt="Ignite Logo" class="w-auto h-20 fixed opacity-80 top-0 left-0" />
+<img
+	draggable="false"
+	src={Logo}
+	alt="Ignite Logo"
+	class="w-auto h-20 fixed opacity-80 top-0 left-0 m-5"
+/>
 
 <div class="m-1 mr-4 fixed top-2 right-64 block">
-	<img src={Help} alt="Help" class="w-auto h-20 opacity-50 transition-opacity cursor-pointer"
-		 bind:this={helpIcon}
-		 on:mouseover={() => helpIconHover = true}
-		 on:mouseleave={() => helpIconHover = false}
-		 class:help-icon-hover={helpIconHover}
-		 on:click={() => helpClicked=true}
+	<img
+		src={Help}
+		alt="Help"
+		class="w-auto h-20 opacity-50 transition-opacity"
+		bind:this={helpIcon}
+		on:mouseover={() => (helpIconHover = true)}
+		on:mouseleave={() => (helpIconHover = false)}
+		class:help-icon-hover={helpIconHover}
+		on:click={() => (helpClicked = true)}
 	/>
 </div>
 
-<div class="opacity-0 fixed right-80 mr-7 top-9" class:box={helpClicked} class:sb1={helpClicked}>Drag a career to me for a detailed description!</div>
-<div class="m-0 modal justify-center h-screen w-screen flex border-4 opacity-100 transition-opacity fixed top-0 left-0 z-40" class:modal-hidden={!modalOpened}>
+<div class="opacity-0 fixed right-80 mr-7 top-9" class:box={helpClicked} class:sb1={helpClicked}>
+	Drag a career to me for a detailed description!
+</div>
+<div
+	class="m-0 modal justify-center h-screen w-screen flex border-4 opacity-100 transition-opacity fixed top-0 left-0 z-40"
+	class:modal-hidden={!modalOpened}
+>
 	<div class="bg-white text-black p-5 shadow-2xl rounded-3xl modal-content">
 		<h1 class="font-bold p-2 text-3xl">{titleCase(modalTitle)}</h1>
-		<hr class="my-2 h-0.5 bg-black"/>
-		<p class="overflow-scroll h-[80%]" >
+		<hr class="my-2 h-0.5 bg-black" />
+		<p class="overflow-scroll h-[80%]">
 			{#each modalDescription.split(/\n-|~/) as text}
 				{#if text.includes(":")}
-					<br>
+					<br />
 					<p class="font-bold">{text}</p>
 				{:else if text.trim().length > 0}
-					<p>{"• "+text}</p>
+					<p>{"• " + text}</p>
 				{/if}
 			{/each}
 		</p>
-		<div class="fixed top-4 right-4 font-bold text-2xl cursor-pointer" on:click={() => modalOpened=false}>x</div>
+		<div class="fixed top-4 right-4 font-bold text-2xl" on:click={() => (modalOpened = false)}>
+			x
+		</div>
 	</div>
 </div>
+
 <div class="w-64 h-full fixed bg-gray-800 text-white right-0 p-3">
 	<div class="sidebar" bind:this={sidebar}>
 		{#each itemNames as text}
@@ -386,64 +394,69 @@
 		created={item.created}
 		hover={item.hover}
 		on:drop={async (event) => await checkForOverlap(item, event.detail.x, event.detail.y, true)}
-		on:drag={async (event) => await checkForOverlap(item, event.detail.x, event.detail.y, false)}
+		on:drag={async (event) =>
+			await checkForOverlap(item, event.detail.x, event.detail.y, false)}
 	/>
 {/each}
 
-<div class="trashcan" bind:this={trashCan} class:trashcan-hover={trashCanHover}
-	 on:mouseenter={()=>(trashCanHover=true)} on:mouseleave={()=>(trashCanHover=false)}
-	 on:click={clearItems}
+<div
+	class="trashcan"
+	bind:this={trashCan}
+	class:trashcan-hover={trashCanHover}
+	on:mouseenter={() => (trashCanHover = true)}
+	on:mouseleave={() => (trashCanHover = false)}
+	on:click={clearItems}
 >
 	<img draggable="false" alt="Trashcan" src={Trash} width="128px" />
 </div>
 
 <style>
-    * {
-        font-family: "Kumbh Sans", sans-serif;
+	* {
+		font-family: "Kumbh Sans", sans-serif;
 		user-select: none;
-    }
+	}
 
-    .sidebar {
-        display: flow;
-        overflow-y: auto;
-        box-sizing: border-box;
-        margin-left: auto;
-        margin-right: auto;
-        height: 95%;
+	.sidebar {
+		display: flow;
+		overflow-y: auto;
+		box-sizing: border-box;
+		margin-left: auto;
+		margin-right: auto;
+		height: 95%;
 		padding-bottom: 24px;
-    }
+	}
 
-    .trashcan {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        height: 70px;
-        width: 70px;
-        margin: 30px;
-        z-index: -100;
-        opacity: 0.5;
-        transition: 0.2s all ease-in-out;
-    }
+	.trashcan {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		height: 70px;
+		width: 70px;
+		margin: 25px 15px 25px 25px;
+		z-index: -100;
+		opacity: 0.5;
+		transition: 0.2s all ease-in-out;
+	}
 
-    .trashcan img {
-        height: fit-content;
-        width: fit-content;
-        cursor: pointer;
-    }
+	.trashcan img {
+		height: fit-content;
+		width: fit-content;
+		cursor: pointer;
+	}
 
     .trashcan-hover {
         opacity: 1;
         transition: 0.2s all ease-in-out;
     }
 
-    .add-button:hover {
-        transition: 0.1s all ease-in-out;
-        background-color: #4a5568;
-    }
+	.add-button:hover {
+		transition: 0.1s all ease-in-out;
+		background-color: #4a5568;
+	}
 
-    .add-career-button {
-        background-color: #f1b373;
-    }
+	.add-career-button {
+		background-color: #f1b373;
+	}
 
     .add-career-button:hover {
         background-color: #f08e3f;
@@ -465,7 +478,7 @@
 		text-align: center;
 		font-weight: 900;
 		color: #fff;
-		opacity:1;
+		opacity: 1;
 		transition: 0.2s opacity ease-in-out;
 	}
 
@@ -488,12 +501,11 @@
 		background: rgba(0,0,0,0.5);
 		opacity: 1;
 		transition: 0.2s all ease-in-out;
-
 	}
 
-	.modal-content{
+	.modal-content {
 		position: fixed;
-		width:800px;
+		width: 800px;
 		height: 500px;
 		top: 50%;
 		left: 50%;
@@ -501,8 +513,8 @@
 		transform: translate(-50%, -50%);
 	}
 
-	.modal-hidden{
-		display:none;
+	.modal-hidden {
+		display: none;
 		opacity: 0;
 		transition: 0.2s all ease-in-out;
 	}

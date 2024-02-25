@@ -36,18 +36,22 @@
 
 	const titleCase = (str: string) => {
 		if (!str) return "";
-		return str.toLowerCase().split(" ").map(function(word) {
-			// Check if the word is 'it', if so, return 'IT'
-			if (word === "it") {
-				return "IT";
-			} else if (word === "ai") {
-				return "AI";
-			} else if (word === "ux") {
-				return "UX";
-			} else {
-				return word.replace(word[0], word[0].toUpperCase());
-			}
-		}).join(" ");
+		return str
+			.toLowerCase()
+			.split(" ")
+			.map(function (word) {
+				// Check if the word is 'it', if so, return 'IT'
+				if (word === "it") {
+					return "IT";
+				} else if (word === "ai") {
+					return "AI";
+				} else if (word === "ux") {
+					return "UX";
+				} else {
+					return word.replace(word[0], word[0].toUpperCase());
+				}
+			})
+			.join(" ");
 	};
 
 	onMount(() => {
@@ -57,7 +61,6 @@
 		}
 	});
 </script>
-
 
 <div
 	class="draggable career-item"
@@ -73,36 +76,42 @@
 	<h1 class="career-item-text select-none">{emoji} {titleCase(text)}</h1>
 </div>
 
-<svelte:window on:mouseup={handleMouseUp} on:mousemove={handleMouseMove} on:load={()=>(moving=false)} />
+<svelte:window
+	on:mouseup={handleMouseUp}
+	on:mousemove={handleMouseMove}
+	on:load={() => (moving = false)}
+/>
 
 <style>
-    .draggable {
-        user-select: none;
-        cursor: move;
-        position: absolute;
-        pointer-events: auto;
-    }
+	.draggable {
+		user-select: none;
+		cursor: move;
+		position: absolute;
+		pointer-events: auto;
+	}
 
-    .career-item {
-        background: #8696FE;
-        border-radius: 5px;
-        padding: 12px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        transition: 0.3s background-color;
-        white-space: nowrap;
-        transform: translate(-50%, -50%);
-    }
+	.career-item {
+		background: #8696fe;
+		border-radius: 5px;
+		padding: 12px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		transition: 0.3s background-color;
+		white-space: nowrap;
+		transform: translate(-50%, -50%);
+	}
 
-    .career-item-hover {
-        background: #4942E4;
-        transition: 0.3s background-color;
-        cursor: grab;
-    }
+	.career-item-hover {
+		background: #4942e4;
+		transition: 0.3s background-color;
+		cursor: grab;
+	}
 
-    .career-item-text {
-        color: #faf6ed;
-        font-family: Kumbh Sans, sans-serif;
-    }
+	.career-item-text {
+		color: #faf6ed;
+		font-family:
+			Kumbh Sans,
+			sans-serif;
+	}
 </style>
