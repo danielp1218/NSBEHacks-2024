@@ -38,14 +38,7 @@
 		emoji?: string;
 	};
 
-	let items: Item[] = [
-		{ id: 1, x: 200, y: 200, height: 50, width: 50, text: "Math" },
-		{ id: 2, x: 400, y: 200, height: 50, width: 50, text: "Science" },
-		{ id: 3, x: 600, y: 200, height: 50, width: 50, text: "Art" },
-		{ id: 4, x: 800, y: 200, height: 50, width: 50, text: "Business" },
-		{ id: 5, x: 400, y: 400, height: 50, width: 50, text: "Social Science" },
-		{ id: 6, x: 600, y: 400, height: 50, width: 50, text: "Technology" }
-	];
+	let items: Item[] = [];
 
 	const loadEmojis = async () => {
 		for (const item of items) {
@@ -70,7 +63,14 @@
 	}
 
 	let itemNames: Set<string> = new Set();
-	for (const item of items) {
+	for (const item of [
+		{ id: 1, x: 200, y: 200, height: 50, width: 50, text: "Math" },
+		{ id: 2, x: 400, y: 200, height: 50, width: 50, text: "Science" },
+		{ id: 3, x: 600, y: 200, height: 50, width: 50, text: "Art" },
+		{ id: 4, x: 800, y: 200, height: 50, width: 50, text: "Business" },
+		{ id: 5, x: 400, y: 400, height: 50, width: 50, text: "Social Science" },
+		{ id: 6, x: 600, y: 400, height: 50, width: 50, text: "Technology" }
+	]) {
 		itemNames.add(item.text.toLowerCase());
 	}
 
@@ -113,7 +113,7 @@
 			) {
 				if (combine) {
 					items = items.filter((item) => item.id !== currentItem.id);
-					await openModal(currentItem.text);
+					await openModal(currentItem.text, currentItem.emoji);
 					helpIconHover = false;
 					return;
 				} else {
@@ -273,7 +273,7 @@
 	let modalTitle: string = "";
 	async function openModal(career: string, emoji: string = "🙂") {
 		modalDescription = "";
-		modalTitle = career + emoji;
+		modalTitle = career + " " + emoji;
 		modalOpened = true;
 		const response = await fetch("/api/info", {
 			method: "POST",
@@ -322,9 +322,10 @@
 
 <div class="m-1 mr-4 fixed top-2 right-64 block">
 	<img
+		draggable="false"
 		src={Help}
 		alt="Help"
-		class="w-auto h-20 opacity-50 transition-opacity"
+		class="w-auto h-20 opacity-50 transition-opacity cursor-pointer"
 		bind:this={helpIcon}
 		on:mouseover={() => (helpIconHover = true)}
 		on:mouseleave={() => (helpIconHover = false)}
@@ -373,7 +374,7 @@
 		<div class="flex flex-row">
 			<button
 				on:click={addCustomCareer}
-				class="text-4xl add-button text-center w-96 h-16 justify-center align-middle transition-all add-career-button"
+				class="text-4xl add-button text-center w-96 h-16 justify-center align-middle transition-all add-career-button cursor-pointer"
 			>
 				+
 			</button>

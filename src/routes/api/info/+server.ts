@@ -35,7 +35,7 @@ export const POST: RequestHandler = async ({ request }) => {
 			},
 			{
 				role: "user",
-				content: `Describe ${career}`
+				content: `Describe a career in ${career}`
 			}
 		],
 		stream: true

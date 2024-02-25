@@ -7,7 +7,6 @@
 	export let height: number = 50;
 	export let width: number = 50;
 	export let text: string;
-
 	export let created: boolean = false;
 
 	export let hover: boolean = false;
