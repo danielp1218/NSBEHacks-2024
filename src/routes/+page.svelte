@@ -55,15 +55,25 @@
 
 	let itemNameToEmoji: Map<string, string> = new Map();
 
+	function lazyInitSidebar(){
+		for (const itemText of [
+			"Math", "Science", "Art", "Social Science", "Technology", "Business"
+		]) {
+			itemNameToEmoji.set(itemText.toLowerCase(), "🙂");
+		}
+		itemNameToEmoji = itemNameToEmoji;
+	}
+
 	async function initSidebar(){
 		for (const itemText of [
 			"Math", "Science", "Art", "Social Science", "Technology", "Business"
 		]) {
 			itemNameToEmoji.set(itemText.toLowerCase(), await getEmoji(itemText));
+			itemNameToEmoji = itemNameToEmoji;
 		}
-		itemNameToEmoji = itemNameToEmoji;
 	}
 	if (browser) {
+		lazyInitSidebar();
 		initSidebar();
 	}
 
