@@ -40,11 +40,18 @@ export const POST: RequestHandler = async ({ request }) => {
 		stream: true
 	});
 
-	if (!result.choices[0].message.content) {
-		error(500, "Something went wrong");
-	}
+	let response = "";
+	const stream = new ReadableStream({
+		async start(controller) {
+			for await (const chunk of result) {
+				response += chunk.choices[0]?.delta?.content || "";
+				controller.enqueue(chunk.choices[0]?.delta?.content || "");
+				console.log(chunk.choices[0]?.delta?.content || "");
+			}
+			controller.close();
+		}
+	});
+	await pb.collection("info").create({ career, info: response });
 
-	await pb.collection("info").create({ career, info: result.choices[0].message.content });
-
-	return json({ emoji: result.choices[0].message.content });
+	return new Response(stream, { headers: { "Content-Type": "text/event-stream" } });
 };

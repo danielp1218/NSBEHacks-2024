@@ -47,21 +47,6 @@
 		{ id: 6, x: 600, y: 400, height: 50, width: 50, text: "Technology" }
 	];
 
-	const timeout = (ms: number) => {
-		return new Promise((resolve, reject) => {
-			setTimeout(() => {
-				reject(new Error("Request timed out"));
-			}, ms);
-		});
-	};
-
-	const fetchWithTimeout = async (url, options, timeoutInMs) => {
-		return Promise.race([
-			fetch(url, options),
-			timeout(timeoutInMs)
-		]);
-	};
-
 	const loadEmojis = async () => {
 		for (const item of items) {
 			const response = await fetch("/api/emoji",
@@ -311,7 +296,7 @@
 			const { value, done } = await reader.read();
 			console.log("resp", done, value);
 			if (done) break;
-			modalDescription += `${value}<br>`;
+			modalDescription += `${value}`;
 		}
 	}
 </script>
