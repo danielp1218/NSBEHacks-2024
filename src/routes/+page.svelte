@@ -3,6 +3,9 @@
 	import ItemSource from "$lib/components/ItemSource.svelte";
 	import Trash from "$lib/images/trashcan.png";
 
+	let trashCan: HTMLElement;
+	let trashCanHover: boolean = false;
+
 	type Item = {
 		id: number;
 		x: number;
@@ -11,6 +14,7 @@
 		width: number;
 		text: string;
 		created?: boolean;
+		hover?: boolean;
 	};
 
 	let items: Item[] = [
@@ -28,12 +32,35 @@
 		itemNames.add(item.text.toLowerCase());
 	}
 
+	let prevOverlapIndex: number = -1;
 	async function checkForOverlap(
 		currentItem: Item,
 		currentX: number,
 		currentY: number,
 		combine: boolean
 	) {
+		if(trashCan) {
+			const trashCanRect = trashCan.getBoundingClientRect();
+			if (
+				currentX+currentItem.width/2 > trashCanRect.left &&
+				currentX-currentItem.width/2 < trashCanRect.right &&
+				currentY+currentItem.height/2 > trashCanRect.top &&
+				currentY-currentItem.height/2 < trashCanRect.bottom
+			) {
+				if(combine){
+					items = items.filter((item) => item.id !== currentItem.id);
+					trashCanHover = false;
+					return;
+				} else {
+					trashCanHover = true;
+					return;
+				}
+			} else{
+				console.log("foewijofjwefew");
+
+				trashCanHover = false;
+			}
+		}
 		let curIndex = items.findIndex((item) => item.id === currentItem.id);
 		const overlapIndex = items.findIndex((item, idx) => {
 			if (idx === curIndex) return false; // Skip checking against itself
@@ -48,6 +75,17 @@
 		if (combine && overlapIndex !== -1) {
 			console.log(`Item ${curIndex} overlaps with Div ${overlapIndex}`);
 			await combineItems(curIndex, overlapIndex);
+		}
+		if (!combine){
+			if(overlapIndex === -1){
+				if(prevOverlapIndex !== -1){
+					items[prevOverlapIndex].hover = false;
+				}
+			} else {
+				items[curIndex].hover = true;
+				items[overlapIndex].hover = true;
+				prevOverlapIndex = overlapIndex;
+			}
 		}
 	}
 
@@ -102,6 +140,10 @@
 		itemNames.add(text);
 		itemNames = itemNames;
 	}
+
+	function clearItems() {
+		items = [];
+	}
 </script>
 
 <div class="w-64 h-full fixed bg-gray-800 text-white right-0 p-3">
@@ -122,11 +164,16 @@
 		bind:height={item.height}
 		bind:width={item.width}
 		created={item.created}
+		hover={item.hover}
 		on:drop={async (event) => await checkForOverlap(item, event.detail.x, event.detail.y, true)}
+		on:drag={async (event) => await checkForOverlap(item, event.detail.x, event.detail.y, false)}
 	/>
 {/each}
 
-<div class="trashcan">
+<div class="trashcan" bind:this={trashCan} class:trashcan-hover={trashCanHover}
+	 on:mouseenter={()=>(trashCanHover=true)} on:mouseleave={()=>(trashCanHover=false)}
+	 on:click={clearItems}
+>
 	<img alt="Trashcan" src={Trash} width="128px" />
 </div>
 
@@ -144,7 +191,20 @@
         position: absolute;
         bottom: 0;
         left: 0;
-        padding: 12px;
+		height:70px;
+		width:70px;
+        margin: 30px;
         z-index: -100;
+		opacity:0.5;
+		transition: 0.2s all ease-in-out;
+	}
+
+	.trashcan img {
+		height:fit-content;
+		width:fit-content;
     }
+	.trashcan-hover {
+		opacity: 1;
+		transition: 0.2s all ease-in-out;
+	}
 </style>

@@ -10,6 +10,8 @@
 
     export let created : boolean = false;
 
+    export let hover: boolean = false;
+
     let moving: boolean = false;
 
     function handleMouseDown() {
@@ -56,9 +58,12 @@
         class="draggable career-item"
         style="left: {x}px; top: {y}px"
         on:mousedown={handleMouseDown}
+        on:mouseenter={() => (hover = true)}
+        on:mouseleave={() => (hover = false)}
         class:z-50={moving}
         bind:clientHeight={height}
         bind:clientWidth={width}
+        class:career-item-hover={hover}
 >
     <h1 class="career-item-text select-none">{titleCase(text)}</h1>
 </div>
@@ -85,7 +90,7 @@
         transform: translate(-50%, -50%);
     }
 
-    .career-item:hover {
+    .career-item-hover {
         background: #4942E4;
         transition: 0.3s background-color;
         cursor: grab;
