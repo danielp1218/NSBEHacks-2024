@@ -354,7 +354,7 @@
 				{/if}
 			{/each}
 		</p>
-		<div class="fixed top-4 right-4 font-bold text-2xl" on:click={() => (modalOpened = false)}>
+		<div class="fixed top-4 right-4 font-bold text-2xl cursor-pointer" on:click={() => (modalOpened = false)}>
 			x
 		</div>
 	</div>
