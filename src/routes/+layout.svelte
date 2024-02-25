@@ -166,6 +166,6 @@
     }
 
     .loading-screen {
-        animation: fadeOut 1s 3s ease-in-out forwards;
+        animation: fadeOut 1s 2s ease-in-out forwards;
     }
 </style>
