@@ -56,8 +56,6 @@
 					return;
 				}
 			} else{
-				console.log("foewijofjwefew");
-
 				trashCanHover = false;
 			}
 		}
@@ -154,6 +152,10 @@
 			</div>
 		{/each}
 	</div>
+	<button class="add-button fixed right-0 bottom-0 text-center bg-blue-800 w-64 h-16 justify-center align-middle transition-all"
+	>
+		+
+	</button>
 </div>
 
 {#each items as item (item.id)}
@@ -206,5 +208,10 @@
 	.trashcan-hover {
 		opacity: 1;
 		transition: 0.2s all ease-in-out;
+	}
+
+	.add-button:hover{
+		transition:0.1s all ease-in-out;
+		background-color: #4a5568;
 	}
 </style>
